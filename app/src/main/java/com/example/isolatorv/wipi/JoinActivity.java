@@ -147,9 +147,11 @@ public class JoinActivity extends Activity {
 
     private void initFragment(){
         Fragment fragment;
+        Intent intent;
 
         if(pref.getBoolean(Constants.IS_LOGGED_IN, false)){
             fragment = new ProfileFragment();
+
         }
         else {
             fragment = new LoginFragment_wipi();

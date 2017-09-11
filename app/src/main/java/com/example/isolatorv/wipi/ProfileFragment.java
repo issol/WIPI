@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -33,7 +34,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private TextView tv_name,tv_email,tv_message;
     private SharedPreferences pref;
-    private AppCompatButton btn_change_password,btn_logout;
+    private AppCompatButton btn_change_password,btn_logout, btn_goMain;
     private EditText et_old_password,et_new_password;
     private AlertDialog dialog;
     private ProgressBar progress;
@@ -62,6 +63,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btn_change_password = (AppCompatButton)view.findViewById(R.id.btn_chg_password);
         btn_logout = (AppCompatButton)view.findViewById(R.id.btn_logout);
         btn_change_password.setOnClickListener(this);
+        btn_goMain = (AppCompatButton)view.findViewById(R.id.btn_goMain);
+        btn_goMain.setOnClickListener(this);
         btn_logout.setOnClickListener(this);
 
     }
@@ -120,6 +123,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_logout:
                 logout();
                 break;
+            case R.id.btn_goMain:
+                goToMain();
+                break;
+
         }
     }
 
@@ -139,6 +146,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame,login);
         ft.commit();
+    }
+    private void goToMain(){
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        startActivity(intent);
+
     }
 
     private void changePasswordProcess(String email,String old_password,String new_password){
