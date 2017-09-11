@@ -1,31 +1,83 @@
 package com.example.isolatorv.wipi;
 
-import android.app.Activity;
+
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
-import com.skp.Tmap.TMapView;
+import android.support.annotation.IdRes;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 
-public class MainActivity extends Activity {
+
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+
+public class MainActivity extends FragmentActivity {
+    BottomBar bottomBar;
+
+    DogRiceFragment dogRiceFragment;
+    DiaryFragment diaryFragment;
+    MapFragment mapFragment;
+    OptionFragment optionFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Justice();
 
-        RelativeLayout relativeLayout = new RelativeLayout(this);
-        TMapView tMapView = new TMapView(this);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                switch (tabId) {
+                    case R.id.tab_dog_rice:
+                        openFragment(dogRiceFragment);
+                        break;
+                    case R.id.tab_map:
+                        openFragment(mapFragment);
+                        break;
+                    case R.id.tab_diary:
+                        openFragment(diaryFragment);
+                        break;
+                    case R.id.tab_option:
+                        openFragment(optionFragment);
+                        break;
+                }
+            }
+        });
 
-        tMapView.setSKPMapApiKey("9b47693d-6b37-3bc5-b943-2bdd1340c5ee");
-
-        tMapView.setCompassMode(true);
-        tMapView.setIconVisibility(true);
-        tMapView.setZoomLevel(15);
-        tMapView.setMapType(TMapView.MAPTYPE_STANDARD);
-        tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
-        tMapView.setSightVisible(true);
-        relativeLayout.addView(tMapView);
-        setContentView(relativeLayout);
     }
+
+
+    //변수,객체 선언 및 정의 매서드
+    /*openFragment**********************************************************************************/
+    private void Justice(){
+        //하단 바 정의
+        bottomBar = (BottomBar)findViewById(R.id.bottomBar);
+
+        //플래그먼트 정의
+        dogRiceFragment = new DogRiceFragment();
+        diaryFragment = new DiaryFragment();
+        mapFragment = new MapFragment();
+        optionFragment = new OptionFragment();
+    }
+    /*openFragment**********************************************************************************/
+
+    //플래그먼트 오픈 매서드
+    /*openFragment**********************************************************************************/
+    private void openFragment(Fragment fragment)   {
+        //플래그먼트 매니져 android.support.app.v4.fragment 연결방법
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.contentContainer,fragment);
+        transaction.addToBackStack(null);   //스택에 저장 -뒤로가기 버튼구별
+        transaction.commit();
+    }
+    /*openFragment**********************************************************************************/
+
 }

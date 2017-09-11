@@ -3,93 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
+        jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.2.0_14d1ba28e555bbf29b8e92d6ab19695389b3a001/classes.dex" />
+        sha1="2e7c6868a0900b05d902b89979719f59673d1654">
+        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0dec62ca2326210598c6b2826bd87aeac2c0a2d8\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/isolatorv/.android/build-cache/409b4e9bfcbcc83577c7d581b745c74d20ce1ac8/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7a0dc5ea0965f8793ce507a68acfa2dfcfafcb40/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.6.0_c14759e38f5f962073d2644f2141fe7183c9b536/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.android/build-cache/f8fd41c52a3530f8f3c505cb9734212ba1acb366/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="95519720620b553f63afc789beba9ad582807f7c">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_297b1363ea77f40ccd176a4af97cdc51129e4642/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_30fb5f3aa4b1b540ea019ff41b3ef9bb8220de33/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.android/build-cache/e3200d36e7083b27966bedbfd8f0f7e8b054fb67/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_86a0610ec9dcf475a46c87c3915835259e9f9398/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.0.0/5c06d197fb7fa875ad452f562e3310dd9949d066/retrofit-2.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="5c06d197fb7fa875ad452f562e3310dd9949d066">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.0_d875eb5e1d7c04db56947a52e3764e642c20245f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.1/b9d63507329a7178e026fc334f87587ee5070ac5/gson-2.6.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.6.1_139e4a13959561e960f2c1b80783073147b43463/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.0/49eb3ad545e7701234e4dd83db8dc1344b577f23/converter-gson-2.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="49eb3ad545e7701234e4dd83db8dc1344b577f23">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.0.0_6a02f72792d9c03dc2be1a672d92ec6097e49294/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="43965fa569a01ddbd4b0e71250cdf05727f0487f">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_cda3a4c9186bd0b6b452151eb2bccc307393357b/classes.dex" />
+        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_03953f63a454aaf743631797e3b516b64c37bfbf\classes.dex" />
     </item>
 
 </items>
