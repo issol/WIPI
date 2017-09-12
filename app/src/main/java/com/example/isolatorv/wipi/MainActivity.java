@@ -11,13 +11,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
+import android.widget.Toast;
 
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 public class MainActivity extends FragmentActivity {
+
+    private static long back_pressed;
     BottomBar bottomBar;
 
     DogRiceFragment dogRiceFragment;
@@ -80,4 +82,20 @@ public class MainActivity extends FragmentActivity {
     }
     /*openFragment**********************************************************************************/
 
+    //뒤로가기 버튼 눌렀을때 호출
+    /*onBackPressed********************************************************************************/
+    @Override
+    public void onBackPressed() {
+        // finish() is called in super: we only override this method to be able to override the transition
+
+            if (back_pressed + 2000 > System.currentTimeMillis()){
+                super.onBackPressed();
+                finish();
+            } else{
+                Toast.makeText(getBaseContext(), "한번 더 뒤로가기를 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+                back_pressed = System.currentTimeMillis();
+            }
+
+    }
+    /*onBackPressed********************************************************************************/
 }
