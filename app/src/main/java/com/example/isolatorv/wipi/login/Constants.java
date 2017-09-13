@@ -1,4 +1,4 @@
-package com.example.isolatorv.wipi;
+package com.example.isolatorv.wipi.login;
 
 /**
  * Created by isolatorv on 2017. 9. 10..

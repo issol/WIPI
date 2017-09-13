@@ -1,4 +1,4 @@
-package com.example.isolatorv.wipi;
+package com.example.isolatorv.wipi.login;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -13,11 +13,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.isolatorv.wipi.LoginFragment_wipi;
-
-import com.example.isolatorv.wipi.ServerRequest;
-import com.example.isolatorv.wipi.ServerResponse;
-import com.example.isolatorv.wipi.User;
+import com.example.isolatorv.wipi.R;
 
 
 import retrofit2.Call;

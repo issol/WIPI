@@ -1,4 +1,4 @@
-package com.example.isolatorv.wipi;
+package com.example.isolatorv.wipi.login;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -19,9 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import com.example.isolatorv.wipi.ServerRequest;
-import com.example.isolatorv.wipi.ServerResponse;
-import com.example.isolatorv.wipi.User;
+import com.example.isolatorv.wipi.R;
 
 
 /**

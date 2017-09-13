@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".JoinActivity" android:theme="@style/NoActionTheme">
+        <activity android:name=".login.JoinActivity" android:theme="@style/NoActionTheme">
 
         </activity>
 
