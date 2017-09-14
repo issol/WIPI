@@ -6,7 +6,7 @@ package com.example.isolatorv.wipi.login;
 
 public class Constants {
 
-    public static final String BASE_URL = "http://13.228.91.43";
+    public static final String BASE_URL = "http://13.229.34.115";
     public static final String REGISTER_OPERATION = "register";
     public static final String LOGIN_OPERATION = "login";
     public static final String CHANGE_PASSWORD_OPERATION = "chgPass";

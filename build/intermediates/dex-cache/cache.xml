@@ -3,70 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="0d76fa7f3d8fcdccadd601d67558006dc62f3177">
-        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0dec62ca2326210598c6b2826bd87aeac2c0a2d8\classes.dex" />
+        sha1="a7beec46babefb297e9346dc37da567084af127a">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2a7eeb749bde5bbf2a98f4784aee783406e30edc/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-<<<<<<< HEAD
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_30fb5f3aa4b1b540ea019ff41b3ef9bb8220de33/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.android/build-cache/e3200d36e7083b27966bedbfd8f0f7e8b054fb67/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_86a0610ec9dcf475a46c87c3915835259e9f9398/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.0.0/5c06d197fb7fa875ad452f562e3310dd9949d066/retrofit-2.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="5c06d197fb7fa875ad452f562e3310dd9949d066">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.0_d875eb5e1d7c04db56947a52e3764e642c20245f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.1/b9d63507329a7178e026fc334f87587ee5070ac5/gson-2.6.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.6.1_139e4a13959561e960f2c1b80783073147b43463/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.0/49eb3ad545e7701234e4dd83db8dc1344b577f23/converter-gson-2.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="49eb3ad545e7701234e4dd83db8dc1344b577f23">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.0.0_6a02f72792d9c03dc2be1a672d92ec6097e49294/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="0eaf8175bbe6bf985e2d4c62222642e88c99d9f4">
-        <dex dex="/Users/isolatorv/Desktop/WIPI/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_cda3a4c9186bd0b6b452151eb2bccc307393357b/classes.dex" />
-=======
-        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_03953f63a454aaf743631797e3b516b64c37bfbf\classes.dex" />
->>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c534a09896c2708287456dd145cdd291908bd341/classes.dex" />
     </item>
 
 </items>
