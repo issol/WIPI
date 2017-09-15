@@ -23,12 +23,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3de4acfe-3901-4a0f-a26c-43a0f5de95cd" name="Default" comment="">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/Constants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/JoinActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/LoginFragment_wipi.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/LoginFragment_wipi.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ProfileFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ProfileFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/RegisterFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RegisterFragment.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/RequestInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RequestInterface.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerRequest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerResponse.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/User.java" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/placesAPI_1_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_base_11_0_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_basement_11_0_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_location_11_0_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_maps_11_0_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_places_11_0_4.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_tasks_11_0_4.xml" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/SplashActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/login.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/map.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/map.xml" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
     </list>
     <ignored path="WIPI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,11 +98,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="11496">
               <caret line="690" column="0" selection-start-line="690" selection-start-column="0" selection-end-line="690" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="JoinActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+=======
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="567">
+              <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="ServerRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RequestInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RegisterFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+=======
+      <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2451">
+              <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onActivityCreated#0;class#MapFragment#0" expanded="false" />
@@ -88,6 +218,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,6 +228,43 @@
             </state>
           </provider>
           <provider editor-type-id="android-manifest">
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/Constants.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginFragment_wipi.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/LoginFragment_wipi.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfileFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ProfileFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+=======
+      <file leaf-file-name="map.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/map.xml">
+          <provider editor-type-id="android-designer2">
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
             <state />
           </provider>
         </entry>
@@ -104,11 +272,18 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="384">
               <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
               <folding>
                 <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="144">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
             </state>
           </provider>
         </entry>
@@ -2270,6 +2445,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/LoginFragment_wipi.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ProfileFragment.java" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/LoginFragment_wipi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/User.java" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/DogRiceFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/DiaryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
@@ -2282,7 +2466,11 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
       </list>
     </option>
   </component>
@@ -2339,6 +2527,69 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
+=======
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WIPI" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WIPI" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WIPI" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wipi" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="login" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WIPI" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         </subPane>
       </pane>
     </panes>
@@ -2760,7 +3011,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java">
+=======
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="888">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
@@ -2823,7 +3078,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerRequest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
@@ -2840,14 +3095,14 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerResponse.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/JoinActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2864,7 +3119,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerRequest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
@@ -2881,10 +3136,22 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerResponse.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
         </state>
       </provider>
     </entry>
@@ -2930,6 +3197,8 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -2937,6 +3206,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/join.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-67">
@@ -2947,6 +3217,8 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/RequestInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -2961,6 +3233,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/SplashActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -2974,6 +3247,17 @@
           <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
         </state>
       </provider>
+<<<<<<< HEAD
+=======
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -2982,19 +3266,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/login.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="768">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/LoginFragment_wipi.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -3017,13 +3326,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="-390">
+          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ServerRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -3035,14 +3354,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/JoinActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="225">
+          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+=======
         <state relative-caret-position="2688">
           <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
         </state>
@@ -3052,8 +3391,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+<<<<<<< HEAD
         </state>
       </provider>
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/diary.xml">
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -3062,8 +3416,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+<<<<<<< HEAD
         </state>
       </provider>
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dogrice.xml">
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -3108,16 +3477,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="456">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="25" selection-end-column="0" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/LoginFragment_wipi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/DogRiceFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="96">
           <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+=======
+        <state relative-caret-position="384">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
         </state>
+<<<<<<< HEAD
+=======
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/DiaryFragment.java">
@@ -3144,12 +3539,34 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ProfileFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="102">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RegisterFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+=======
+        <state relative-caret-position="144">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
           <folding />
         </state>
       </provider>
@@ -3169,8 +3586,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="11496">
           <caret line="690" column="0" selection-start-line="690" selection-start-column="0" selection-end-line="690" selection-end-column="0" />
+=======
+        <state relative-caret-position="-2451">
+          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onActivityCreated#0;class#MapFragment#0" expanded="false" />
@@ -3193,5 +3616,50 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RequestInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
   </component>
 </project>
