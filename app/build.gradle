@@ -17,6 +17,17 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def date = new Date();
+                    def formattedDate = date.format('yyyyMMddHHmmss')
+                    output.outputFile = new File(output.outputFile.parent,
+                            output.outputFile.name.replace("-release", "-easy_diary-" + formattedDate)
+                            //for Debug use output.outputFile = new File(output.outputFile.parent,
+                            //                             output.outputFile.name.replace("-debug", "-" + formattedDate)
+                    )
+                }
+            }
         }
     }
 }
@@ -27,8 +38,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //compile project(':com.skp.Tmap_1.0.47')
-    
-
     compile 'com.facebook.android:facebook-android-sdk:4.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
@@ -41,6 +50,24 @@ dependencies {
     compile 'com.google.android.gms:play-services-places:11.0.4'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
-
+    compile 'org.apache.commons:commons-lang3:3.0'
+    compile 'commons-io:commons-io:2.4'
+    // Jake Wharton
+    compile 'com.jakewharton:butterknife:8.4.0'
+    // Joda.org
+    compile 'joda-time:joda-time:2.1'
+    // Philipp Jahoda
+   // compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    // Roomorama
+    compile 'com.roomorama:caldroid:3.0.1'
+    // com.darwinsys
+    compile 'com.darwinsys:hirondelle-date4j:1.5.1'
+    // Chris Banes
+   // compile 'com.github.chrisbanes:PhotoView:2.0.0'
+    // QuadFlask
+   // compile 'com.github.QuadFlask:colorpicker:0.0.13'
+    // Alex Curran
+    compile 'com.github.amlcurran.showcaseview:library:5.4.3'
     testCompile 'junit:junit:4.12'
+
 }

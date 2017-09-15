@@ -3,17 +3,15 @@ package com.example.isolatorv.wipi;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.RelativeLayout;
 
 import android.support.annotation.IdRes;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 
+import com.example.isolatorv.wipi.diary.models.DiaryFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 

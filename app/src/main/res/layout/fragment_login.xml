@@ -24,10 +24,11 @@
         <EditText
             android:hint="Email"
             android:id="@+id/et_email"
+            android:drawableRight="@mipmap/ic_email"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-       <!--     android:drawableRight="@drawable/ic_email"-->
+
 
 
     </android.support.design.widget.TextInputLayout>
@@ -41,10 +42,11 @@
         <EditText
             android:hint="Password"
             android:id="@+id/et_password"
+            android:drawableRight="@mipmap/ic_key"
             android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-           <!-- android:drawableRight="@drawable/ic_key"-->
+
 
 
     </android.support.design.widget.TextInputLayout>

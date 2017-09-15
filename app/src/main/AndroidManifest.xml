@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".login.UserProfileActivity"/>
         <activity
             android:name=".login.JoinActivity"
             android:theme="@style/NoActionTheme"></activity>
