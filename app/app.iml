@@ -152,10 +152,18 @@
     <orderEntry type="library" exported="" name="appcompat-v7-25.3.1" level="project" />
     <orderEntry type="library" exported="" name="animated-vector-drawable-25.3.1" level="project" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+    <orderEntry type="library" exported="" name="play-services-tasks-11.0.4" level="project" />
+    <orderEntry type="module" module-name="com.skp.Tmap_1.0.47" exported="" />
+    <orderEntry type="library" exported="" name="android-android-26" level="project" />
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
     <orderEntry type="library" exported="" name="play-services-tasks-11.0.4" level="project" />
     <orderEntry type="module" module-name="com.skp.Tmap_1.0.47" exported="" />
     <orderEntry type="library" exported="" name="android-android-26" level="project" />
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
   </component>
 </module>

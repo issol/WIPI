@@ -27,7 +27,11 @@
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 <<<<<<< HEAD
       <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/Constants.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/Constants.java" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/JoinActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java" />
@@ -48,11 +52,19 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_tasks_11_0_4.xml" />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
@@ -63,7 +75,11 @@
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 <<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/SplashActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/SplashActivity.java" />
@@ -78,12 +94,21 @@
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
     </list>
     <ignored path="WIPI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -117,14 +142,22 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="11496">
               <caret line="690" column="0" selection-start-line="690" selection-start-column="0" selection-end-line="690" selection-end-column="0" />
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 <<<<<<< HEAD
       <file leaf-file-name="JoinActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/JoinActivity.java">
@@ -215,6 +248,11 @@
               <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
       <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MapFragment.java">
@@ -222,9 +260,13 @@
             <state relative-caret-position="213">
               <caret line="686" column="22" selection-start-line="686" selection-start-column="22" selection-end-line="686" selection-end-column="22" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onActivityCreated#0;class#MapFragment#0" expanded="false" />
@@ -250,7 +292,10 @@
       </file>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -261,7 +306,12 @@
           </provider>
           <provider editor-type-id="android-manifest">
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 <<<<<<< HEAD
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/Constants.java">
@@ -298,6 +348,11 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/map.xml">
           <provider editor-type-id="android-designer2">
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
@@ -309,9 +364,13 @@
           </provider>
           <provider editor-type-id="android-manifest">
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
             <state />
           </provider>
         </entry>
@@ -321,29 +380,47 @@
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+            <state relative-caret-position="384">
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
             <state relative-caret-position="144">
               <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 =======
             <state relative-caret-position="125">
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
             <state relative-caret-position="384">
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
               <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
               <folding>
                 <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
               </folding>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
             <state relative-caret-position="144">
               <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+<<<<<<< HEAD
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
             </state>
           </provider>
         </entry>
@@ -2507,9 +2584,15 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/ProfileFragment.java" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 =======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/LoginFragment_wipi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ServerResponse.java" />
@@ -2517,11 +2600,19 @@
 =======
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/DogRiceFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/DiaryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
@@ -2536,16 +2627,28 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/MainActivity.java" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 =======
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
 =======
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/OptionFragment.java" />
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       </list>
     </option>
   </component>
@@ -2606,7 +2709,11 @@
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="WIPI" />
@@ -2668,11 +2775,19 @@
             </PATH_ELEMENT>
           </PATH>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         </subPane>
       </pane>
     </panes>
@@ -3332,9 +3447,15 @@
       </provider>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 =======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
     </entry>
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -3344,11 +3465,19 @@
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -3359,6 +3488,18 @@
           <caret line="51" column="15" selection-start-line="51" selection-start-column="15" selection-end-line="51" selection-end-column="15" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
           <folding />
 =======
@@ -3369,6 +3510,7 @@
           <folding />
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3390,6 +3532,18 @@
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
           <folding />
 =======
@@ -3400,6 +3554,7 @@
           <folding />
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         </state>
       </provider>
     </entry>
@@ -3461,6 +3616,18 @@
           <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+          <folding />
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
           <folding />
 =======
@@ -3471,6 +3638,7 @@
           <folding />
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3505,11 +3673,19 @@
           <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+        </state>
+      </provider>
+=======
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
         </state>
       </provider>
 =======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
           <folding />
         </state>
@@ -3523,13 +3699,22 @@
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/diary.xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
         </state>
       </provider>
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -3540,11 +3725,19 @@
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+        </state>
+      </provider>
+=======
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
         </state>
       </provider>
 =======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
           <folding />
         </state>
@@ -3558,13 +3751,22 @@
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dogrice.xml">
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
         </state>
       </provider>
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
@@ -3611,11 +3813,19 @@
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="456">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="25" selection-end-column="0" />
+=======
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
         <state relative-caret-position="456">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="25" selection-end-column="0" />
 =======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         <state relative-caret-position="0">
           <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
@@ -3623,13 +3833,22 @@
             <element signature="imports" expanded="true" />
           </folding>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
         <state relative-caret-position="456">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="25" selection-end-column="0" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         </state>
       </provider>
     </entry>
@@ -3643,11 +3862,19 @@
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="96">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+=======
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
         <state relative-caret-position="96">
           <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
 =======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         <state relative-caret-position="384">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
@@ -3655,13 +3882,22 @@
             <element signature="imports" expanded="true" />
           </folding>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
         <state relative-caret-position="96">
           <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         </state>
 <<<<<<< HEAD
 =======
@@ -3696,13 +3932,21 @@
     </entry>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/ProfileFragment.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -3722,15 +3966,24 @@
         <state relative-caret-position="144">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 =======
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
           <folding />
         </state>
       </provider>
@@ -3752,6 +4005,8 @@
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
         <state relative-caret-position="-2451">
           <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
@@ -3760,6 +4015,7 @@
           <caret line="686" column="22" selection-start-line="686" selection-start-column="22" selection-end-line="686" selection-end-column="22" />
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         <state relative-caret-position="11496">
           <caret line="690" column="0" selection-start-line="690" selection-start-column="0" selection-end-line="690" selection-end-column="0" />
 =======
@@ -3767,7 +4023,19 @@
           <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
 >>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+<<<<<<< HEAD
+=======
+        <state relative-caret-position="-2451">
+          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+>>>>>>> 5f7589f06f8ad9492f64cc76231105e243d22ecc
+=======
+        <state relative-caret-position="213">
+          <caret line="686" column="22" selection-start-line="686" selection-start-column="22" selection-end-line="686" selection-end-column="22" />
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onActivityCreated#0;class#MapFragment#0" expanded="false" />
@@ -3794,7 +4062,11 @@
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/isolatorv/wipi/login/RequestInterface.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -3838,10 +4110,18 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
+=======
+=======
+>>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
+>>>>>>> 08c4ccbcd0f130ffad6ad31fe9015ee3f210f601
+=======
 =======
 >>>>>>> 3423f6324d74e3c3f59f3cf49025141d34849f33
 =======
 >>>>>>> bec751373dca21a1f9b3ba850ef3e51deb677c84
 >>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
   </component>
 </project>

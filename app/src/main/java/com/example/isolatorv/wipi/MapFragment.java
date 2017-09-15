@@ -229,6 +229,8 @@ public class MapFragment extends Fragment implements
             mGoogleApiClient.disconnect();
         }
 
+        mMoveMapByAPI = true;
+
         super.onStop();
         mapView.onStop();
     }
@@ -247,6 +249,7 @@ public class MapFragment extends Fragment implements
     /*onLowMemory**********************************************************************************/
     @Override
     public void onLowMemory() {
+        mMoveMapByAPI = true;
         super.onLowMemory();
         mapView.onLowMemory();
     }
