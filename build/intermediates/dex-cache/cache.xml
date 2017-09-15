@@ -3,11 +3,29 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\tlsdm\.android\build-cache\5a235a5387f05bcdc008af53b0413355878ba81f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f85f6d68d9babcbfe5780c47d63dfe2cf962ac75\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_d90844307bd60e4bd3019da37f9b123612437e88\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="9d9f5e88bfa637d1a9ed6207f5ff967e6b3e24d9">
+        sha1="aaa456cf8abbbec35fd06625c9d1b086bb9e6fcc">
         <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0dec62ca2326210598c6b2826bd87aeac2c0a2d8\classes.dex" />
     </item>
 

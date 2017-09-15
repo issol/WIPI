@@ -3,10 +3,13 @@ package com.example.isolatorv.wipi.login;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -50,7 +53,6 @@ public class JoinActivity extends Activity {
     private String str_passwd;
 
 
-
     //FaceBook
     String userName = "";
     String userId ="";
@@ -58,7 +60,7 @@ public class JoinActivity extends Activity {
 
     private SharedPreferences pref;
 
-    private CallbackManager callbackManager;
+
     //private List<String> permsissonsNeeds = Arrays.asList("email");
 
     @Override
@@ -67,68 +69,18 @@ public class JoinActivity extends Activity {
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.login);
 
+
         pref = getPreferences(0);
         initFragment();
 
-        //페이스북 연동
-
-        callbackManager = CallbackManager.Factory.create();
-
-        LoginButton loginButton = (LoginButton) findViewById(R.id.login_button_facebook);
-        loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.v("result", object.toString());
-
-                        if (Profile.getCurrentProfile() != null) {
-
-                            try {
-                                userGender = object.getString("gender");
-                                userId = object.getString("id");
-                                userName = object.getString("name");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-
-
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,email,gender,birthday");
-                graphRequest.setParameters(parameters);
-                graphRequest.executeAsync();
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Log.e("Error", error.toString());
-            }
-        });
-        //로그인 체크
-
-
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
-        callbackManager.onActivityResult(requestCode,resultCode,data);
 
     }
 
     private void initFragment(){
+
         Fragment fragment;
         Intent intent;
+
 
         if(pref.getBoolean(Constants.IS_LOGGED_IN, false)){
             fragment = new ProfileFragment();
@@ -141,11 +93,16 @@ public class JoinActivity extends Activity {
         FragmentTransaction ft =  getFragmentManager().beginTransaction();
         ft.replace(R.id.fragment_frame, fragment);
         ft.commit();
+
     }
 
+    public static void downKeyboard(Context context, Button button) {
 
+        InputMethodManager mInputMethodManager = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        mInputMethodManager.hideSoftInputFromWindow(button.getWindowToken(), 0);
 
+    }
 
 
 
