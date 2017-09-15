@@ -3,7 +3,12 @@
 
     <item
         is-multidex="true"
+<<<<<<< HEAD
         jar="C:\Users\tlsdm\.android\build-cache\5a235a5387f05bcdc008af53b0413355878ba81f\output\jars\classes.jar"
+=======
+<<<<<<< HEAD
+        jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
@@ -21,12 +26,35 @@
     </item>
     <item
         is-multidex="true"
+<<<<<<< HEAD
+=======
+        jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3d16840b804d219e9e5b69a5b885cae3e8370a16">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2a7eeb749bde5bbf2a98f4784aee783406e30edc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/isolatorv/.android/build-cache/9e4634a684c19f1d35f7e4e04e04f8fedb80a63f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_212056922b1f85035182ee7b2148bb7d3d56ba75/classes.dex" />
+=======
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
         jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="aaa456cf8abbbec35fd06625c9d1b086bb9e6fcc">
         <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0dec62ca2326210598c6b2826bd87aeac2c0a2d8\classes.dex" />
+<<<<<<< HEAD
+=======
+>>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
+>>>>>>> 94e83196f369a20111ab49f494eab0cde6816edb
     </item>
 
 </items>
