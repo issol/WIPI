@@ -10,7 +10,7 @@
     </style>
 
     <style name="NoActionTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/login_background</item>
+
 
     </style>
 
