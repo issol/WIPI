@@ -3,6 +3,7 @@
 
     <item
         is-multidex="true"
+<<<<<<< HEAD
         jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -36,6 +37,14 @@
         revision="26.0.0"
         sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
         <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_212056922b1f85035182ee7b2148bb7d3d56ba75/classes.dex" />
+=======
+        jar="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="9d9f5e88bfa637d1a9ed6207f5ff967e6b3e24d9">
+        <dex dex="C:\Users\tlsdm\Desktop\WIPI\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_0dec62ca2326210598c6b2826bd87aeac2c0a2d8\classes.dex" />
+>>>>>>> 6c8c733165370050e8f3b39e896e0c6cf6bd8f9c
     </item>
 
 </items>
