@@ -39,7 +39,7 @@ import com.example.isolatorv.wipi.diary.DiaryConstants;
 import com.example.isolatorv.wipi.diary.FontUtils;
 import com.example.isolatorv.wipi.diary.PermissionUtils;
 import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
-import com.example.isolatorv.wipi.diary.setting.SettingsActivity;
+
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
@@ -572,10 +572,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                 finish();
 //                this.overridePendingTransition(R.anim.anim_left_to_center, R.anim.anim_center_to_right);
                 break;
-            case R.id.action_settings:
-                Intent settingIntent = new Intent(CreateDiaryActivity.this, SettingsActivity.class);
-                startActivity(settingIntent);
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }

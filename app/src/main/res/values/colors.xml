@@ -16,4 +16,9 @@
     <!--Showcase Color-->
     <color name="showCaseViewBackground">#e570A3B4</color>
     <color name="showCaseButtonBackground">#4A4A4C</color>
+
+        <color name="saffron">#F4B63E</color>
+        <color name="eggplant">#663D4E</color>
+        <color name="sienna">#EB6460</color>
+
 </resources>

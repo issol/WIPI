@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/isolatorv/.android/build-cache/9cf159448d8c7814caf7a499ce1453bec65e7522/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="4dfe2dd3f402072c5268f341830cdc5263187074">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7d5b249c7c84026e22fd12e189ba0948989a5367/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"

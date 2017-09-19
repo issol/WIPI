@@ -40,7 +40,7 @@ import com.example.isolatorv.wipi.diary.DiaryConstants;
 import com.example.isolatorv.wipi.diary.FontUtils;
 import com.example.isolatorv.wipi.diary.PermissionUtils;
 import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
-import com.example.isolatorv.wipi.diary.setting.SettingsActivity;
+
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -497,10 +497,7 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
                 finish();
 //                this.overridePendingTransition(R.anim.anim_left_to_center, R.anim.anim_center_to_right);
                 break;
-            case R.id.action_settings:
-                Intent settingIntent = new Intent(UpdateDiaryActivity.this, SettingsActivity.class);
-                startActivity(settingIntent);
-                break;
+
 //            case R.id.toolbarToggle:
 //                if (mSubToolbar.getVisibility() == View.GONE) {
 //                    mSubToolbar.setVisibility(View.VISIBLE);

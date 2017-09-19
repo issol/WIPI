@@ -62,6 +62,8 @@ dependencies {
     compile 'com.android.support:support-vector-drawable:25.3.0'
     compile 'com.google.android.gms:play-services-drive:8.4.0'
 
+    compile 'com.yalantis:phoenix:1.2.3'
+
 
     // Jake Wharton
     apt 'com.jakewharton:butterknife-compiler:8.4.0'

@@ -58,9 +58,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.tv_login:
-                goToLogin();
-                break;
 
             case R.id.btn_register:
 
@@ -72,6 +69,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
                     progress.setVisibility(View.VISIBLE);
                     registerProcess(name,email,password);
+
 
                 } else {
 
@@ -108,6 +106,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
                 ServerResponse resp = response.body();
                 Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
                 progress.setVisibility(View.INVISIBLE);
+                goToLogin();
             }
 
             @Override
