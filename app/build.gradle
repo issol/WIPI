@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 26
@@ -11,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -37,7 +40,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //compile project(':com.skp.Tmap_1.0.47')
+
     compile 'com.facebook.android:facebook-android-sdk:4.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
@@ -52,22 +55,32 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'org.apache.commons:commons-lang3:3.0'
     compile 'commons-io:commons-io:2.4'
+
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:support-v4:25.3.0'
+    compile 'com.android.support:support-vector-drawable:25.3.0'
+    compile 'com.google.android.gms:play-services-drive:8.4.0'
+
+
     // Jake Wharton
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     // Joda.org
-    compile 'joda-time:joda-time:2.1'
+    compile group: 'joda-time', name: 'joda-time', version: '2.1'
     // Philipp Jahoda
-   // compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     // Roomorama
-    compile 'com.roomorama:caldroid:3.0.1'
+    compile group: 'com.roomorama', name: 'caldroid', version: '3.0.1'
     // com.darwinsys
     compile 'com.darwinsys:hirondelle-date4j:1.5.1'
     // Chris Banes
-   // compile 'com.github.chrisbanes:PhotoView:2.0.0'
+    compile 'com.github.chrisbanes:PhotoView:2.0.0'
     // QuadFlask
-   // compile 'com.github.QuadFlask:colorpicker:0.0.13'
+    compile 'com.github.QuadFlask:colorpicker:0.0.13'
     // Alex Curran
     compile 'com.github.amlcurran.showcaseview:library:5.4.3'
     testCompile 'junit:junit:4.12'
+
 
 }

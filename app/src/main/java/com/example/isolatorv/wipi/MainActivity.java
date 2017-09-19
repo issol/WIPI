@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 
-import com.example.isolatorv.wipi.diary.models.DiaryFragment;
+import com.example.isolatorv.wipi.DiaryFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 

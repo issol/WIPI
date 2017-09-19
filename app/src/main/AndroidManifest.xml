@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="false"
@@ -18,7 +20,9 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".login.JoinActivity"
-            android:theme="@style/NoActionTheme"></activity>
+            android:theme="@style/AppTheme.FullScreen">
+
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -52,7 +56,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            android:name=".diary.IntroActivity"
+            android:label="@string/app_name">
 
-    </application>
+        </activity>
+
+
+        <activity android:name=".diary.setting.SettingsActivity" android:label="" android:theme="@style/AppTheme" />
+        <activity android:name=".diary.setting.LicensesActivity" android:label="Licenses" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.diaries.CreateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.diaries.ReadDiaryDetailActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.diaries.UpdateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.diaries.ReadDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.googledrive.GoogleDriveUploader" />
+        <activity android:name=".diary.googledrive.GoogleDriveDownloader" />
+        <activity android:name=".diary.chart.BarChartActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.calendar.CalendarActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.diaries.LockDiaryActivity" />
+        <activity android:name=".diary.setting.LockSettingActivity" />
+        <activity android:name=".diary.photo.PhotoViewPagerActivity" android:theme="@style/AppTheme.NoActionBar" android:hardwareAccelerated="false" />
+        <activity android:name=".diary.diaries.PostCardActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.colorpicker.ColorPickerActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".diary.timeline.TimelineActivity" android:theme="@style/AppTheme.NoActionBar" />
+
+
+</application>
 
 </manifest>
