@@ -3,7 +3,7 @@ package com.example.isolatorv.wipi.login;
 /**
  * Created by isolatorv on 2017. 9. 10..
  */
-
+// String
 public class Constants {
 
     public static final String BASE_URL = "http://13.229.34.115";
@@ -19,6 +19,7 @@ public class Constants {
     public static final String EMAIL = "email";
     public static final String UNIQUE_ID = "unique_id";
 
-    public static final String TAG = "Learn2Crack";
+
+    public static final String TAG = "WIPI";
 
 }

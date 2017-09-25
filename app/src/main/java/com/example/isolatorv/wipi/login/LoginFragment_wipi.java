@@ -26,17 +26,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import com.example.isolatorv.wipi.R;
-import com.facebook.AccessTokenTracker;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.Profile;
-import com.facebook.ProfileTracker;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.facebook.FacebookSdk;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,13 +49,6 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
     private SharedPreferences pref;
 
 
-    private CallbackManager callbackManager;
-    private AccessTokenTracker accessTokenTracker;
-    private ProfileTracker profileTracker;
-
-    String first_name, last_name, profile_pic ,id;
-    LoginButton loginButton;
-
 
 
     @Override
@@ -84,7 +66,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
         pref = getActivity().getPreferences(0);
 
-        callbackManager = CallbackManager.Factory.create();
+
         btn_login = (AppCompatButton) view.findViewById(R.id.btn_login);
         tv_register = (TextView) view.findViewById(R.id.tv_register);
         et_email = (EditText) view.findViewById(R.id.et_email);

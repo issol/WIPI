@@ -2,30 +2,28 @@ package com.example.isolatorv.wipi;
 
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.RelativeLayout;
 
 import android.support.annotation.IdRes;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
     private static long back_pressed;
     BottomBar bottomBar;
 
-    DogRiceFragment dogRiceFragment;
+    FeedFragment feedFragment;
     DiaryFragment diaryFragment;
     MapFragment mapFragment;
     OptionFragment optionFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class MainActivity extends FragmentActivity {
             public void onTabSelected(@IdRes int tabId) {
                 switch (tabId) {
                     case R.id.tab_dog_rice:
-                        openFragment(dogRiceFragment);
+                        openFragment(feedFragment);
                         break;
                     case R.id.tab_map:
                         openFragment(mapFragment);
@@ -63,10 +61,11 @@ public class MainActivity extends FragmentActivity {
         bottomBar = (BottomBar)findViewById(R.id.bottomBar);
 
         //플래그먼트 정의
-        dogRiceFragment = new DogRiceFragment();
+        feedFragment = new FeedFragment();
         diaryFragment = new DiaryFragment();
         mapFragment = new MapFragment();
         optionFragment = new OptionFragment();
+
     }
     /*openFragment**********************************************************************************/
 

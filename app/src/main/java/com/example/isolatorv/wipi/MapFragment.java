@@ -1,5 +1,16 @@
 package com.example.isolatorv.wipi;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * Created by tlsdm on 2017-09-06.
+ */
+
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -7,23 +18,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import com.google.android.gms.common.ConnectionResult;
@@ -69,7 +74,7 @@ public class MapFragment extends Fragment implements
         PlacesListener {
 
     private GoogleApiClient mGoogleApiClient = null;
-    private GoogleMap mGoogleMap =null;
+    private GoogleMap mGoogleMap = null;
     private MapView mapView = null;
     private Marker currentMarker = null;
 
@@ -86,7 +91,7 @@ public class MapFragment extends Fragment implements
     boolean mMoveMapByAPI = true;
     Location mCurrentLocation;
 
-    private boolean currentPositionOn=false;
+    private boolean currentPositionOn = true;
     LatLng currentPosition;
     List<Marker> previous_marker = null;
 
@@ -97,11 +102,16 @@ public class MapFragment extends Fragment implements
 
     private OnMyListener mOnMyListener;
 
+    private boolean hostpitalreday = true;
+    private boolean petstoreready = false;
+    List<TestClass> hospitalList = null;
+    List<TestClass> petShopList = null;
 
+    private Object mMyData1, mMyData2, mMyData3, mMyData4;
 
     //Activity에 데이터 전달 인터페이스
     /*OnMyListener*/
-    public interface OnMyListener{
+    public interface OnMyListener {
         void onReceivedData(Object data);
     }
     /*OnMyListener*/
@@ -109,11 +119,14 @@ public class MapFragment extends Fragment implements
     //플래그먼트가 액티비티에 붙을때 호출
     /*onAttach*************************************************************************************/
     @Override
-    public void onAttach(Context context){
+    public void onAttach(Context context) {
         super.onAttach(context);
-        if(getActivity()!=null&&getActivity()instanceof OnMyListener){
-            mOnMyListener =(OnMyListener)getActivity();
+
+        if (getActivity() != null && getActivity() instanceof OnMyListener) {
+            mOnMyListener = (OnMyListener) getActivity();
         }
+
+
     }
     /*onAttach*************************************************************************************/
 
@@ -130,10 +143,12 @@ public class MapFragment extends Fragment implements
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.map,container,false);
+        View layout = inflater.inflate(R.layout.map, container, false);
         previous_marker = new ArrayList<Marker>();
+        if(hospitalList==null)hospitalList = new ArrayList<TestClass>();
+        if(petShopList==null)petShopList = new ArrayList<TestClass>();
 
-        Log.d(TAG,"onCreateView");
+        Log.d(TAG, "onCreateView");
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -141,10 +156,18 @@ public class MapFragment extends Fragment implements
                 .build();
 
 
-
-        mapView =(MapView)layout.findViewById(R.id.map);
+        mapView = (MapView) layout.findViewById(R.id.map);
         mapView.getMapAsync(this);
 
+        if (getActivity() != null && getActivity() instanceof TestActivity) {
+
+            mMyData1 = ((TestActivity) getActivity()).getData1();
+            Log.d(TAG, "map: " + mMyData1.toString().trim());
+
+            mMyData2 = ((TestActivity) getActivity()).getData2();
+            Log.d(TAG, "map: " + mMyData2.toString().trim());
+
+        }
         return layout;
     }
     /*onCreateView*********************************************************************************/
@@ -156,14 +179,13 @@ public class MapFragment extends Fragment implements
         super.onActivityCreated(savedInstanceState);
 
         //액티비티가 처음 생성될 때 실행되는 함수
-        if(mGoogleApiClient != null && mGoogleApiClient.isConnected() == false){
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected() == false) {
 
             Log.d(TAG, "onActivityCreated: mGoogleApiClient connect");
             mGoogleApiClient.connect();
         }
 
-        if(mapView != null)
-        {
+        if (mapView != null) {
             mapView.onCreate(savedInstanceState);
         }
     }
@@ -223,14 +245,14 @@ public class MapFragment extends Fragment implements
             stopLocationUpdates();
         }
 
-        if ( mGoogleApiClient.isConnected()) {
+        if (mGoogleApiClient.isConnected()) {
 
             Log.d(TAG, "onStop : mGoogleApiClient disconnect");
             mGoogleApiClient.disconnect();
         }
 
         mMoveMapByAPI = true;
-
+        currentPositionOn=true;
         super.onStop();
         mapView.onStop();
     }
@@ -250,6 +272,7 @@ public class MapFragment extends Fragment implements
     @Override
     public void onLowMemory() {
         mMoveMapByAPI = true;
+        currentPositionOn=true;
         super.onLowMemory();
         mapView.onLowMemory();
     }
@@ -259,17 +282,15 @@ public class MapFragment extends Fragment implements
     /*onDestroy************************************************************************************/
     @Override
     public void onDestroy() {
-        mMoveMapByAPI=true;
-
+        mMoveMapByAPI = true;
+        currentPositionOn=true;
         super.onDestroy();
         mapView.onLowMemory();
-        if(mOnMyListener !=null){
+        /*if(mOnMyListener !=null){
             mOnMyListener.onReceivedData("menu");
-        }
+        }*/
     }
     /*onDestroy************************************************************************************/
-
-
 
 
     //구글맵 사용이 가능할때 콜백하는 매서드
@@ -284,12 +305,12 @@ public class MapFragment extends Fragment implements
         setDefaultLocation();
         mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
         mGoogleMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-        mGoogleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener(){
+        mGoogleMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
 
             @Override
             public boolean onMyLocationButtonClick() {
 
-                Log.d( TAG, "onMyLocationButtonClick : 위치에 따른 카메라 이동 활성화");
+                Log.d(TAG, "onMyLocationButtonClick : 위치에 따른 카메라 이동 활성화");
                 mMoveMapByAPI = true;
                 return true;
             }
@@ -299,7 +320,7 @@ public class MapFragment extends Fragment implements
             @Override
             public void onMapClick(LatLng latLng) {
 
-                Log.d( TAG, "onMapClick :");
+                Log.d(TAG, "onMapClick :");
             }
         });
 
@@ -308,7 +329,7 @@ public class MapFragment extends Fragment implements
             @Override
             public void onCameraMoveStarted(int i) {
 
-                if (mMoveMapByUser == true && mRequestingLocationUpdates){
+                if (mMoveMapByUser == true && mRequestingLocationUpdates) {
 
                     Log.d(TAG, "onCameraMove : 위치에 따른 카메라 이동 비활성화");
                     mMoveMapByAPI = false;
@@ -335,7 +356,7 @@ public class MapFragment extends Fragment implements
     /*onConnected**********************************************************************************/
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if ( mRequestingLocationUpdates == false ) {
+        if (mRequestingLocationUpdates == false) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -356,7 +377,7 @@ public class MapFragment extends Fragment implements
                     mGoogleMap.setMyLocationEnabled(true);
                 }
 
-            }else{
+            } else {
 
                 Log.d(TAG, "onConnected : call startLocationUpdates");
                 startLocationUpdates();
@@ -398,18 +419,17 @@ public class MapFragment extends Fragment implements
         Log.d(TAG, "onLocationChanged : ");
 
 
-
         setCurrentLocation(location);
 
         mCurrentLocation = location;
 
         currentPosition
-                = new LatLng( location.getLatitude(), location.getLongitude());
-        if(currentPositionOn){
-            Log.d(TAG,"currentPostionOn : Uiprint");
-            showPlaceInformation(currentPosition);
-        }
-        currentPositionOn=false;
+                = new LatLng(location.getLatitude(), location.getLongitude());
+
+        if(hostpitalreday){showPlaceInformation(currentPosition);}
+        if(petstoreready){ showPlaceInformation(currentPosition);}
+        if(currentPositionOn){createMarker(); currentPositionOn=false;}
+
     }
     /*onLocationChanged****************************************************************************/
 
@@ -430,7 +450,7 @@ public class MapFragment extends Fragment implements
         if (!checkLocationServicesStatus()) {
             Log.d(TAG, "startLocationUpdates : call showDialogForLocationServiceSetting");
             showDialogForLocationServiceSetting();
-        }else {
+        } else {
 
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                     && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -440,7 +460,7 @@ public class MapFragment extends Fragment implements
             Log.d(TAG, "startLocationUpdates : call FusedLocationApi.requestLocationUpdates");
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, locationRequest, this);
             mRequestingLocationUpdates = true;
-            currentPositionOn=true;
+
         }
 
     }
@@ -450,7 +470,7 @@ public class MapFragment extends Fragment implements
     /*stopLocationUpdates**************************************************************************/
     private void stopLocationUpdates() {
 
-        Log.d(TAG,"stopLocationUpdates : LocationServices.FusedLocationApi.removeLocationUpdates");
+        Log.d(TAG, "stopLocationUpdates : LocationServices.FusedLocationApi.removeLocationUpdates");
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         mRequestingLocationUpdates = false;
     }
@@ -469,11 +489,10 @@ public class MapFragment extends Fragment implements
         LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
 
 
+        if (mMoveMapByAPI) {
 
-        if ( mMoveMapByAPI ) {
-
-            Log.d( TAG, "setCurrentLocation :  mGoogleMap moveCamera "
-                    + location.getLatitude() + " " + location.getLongitude() ) ;
+            Log.d(TAG, "setCurrentLocation :  mGoogleMap moveCamera "
+                    + location.getLatitude() + " " + location.getLongitude());
             // CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentLatLng, 15);
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng);
             mGoogleMap.moveCamera(cameraUpdate);
@@ -487,30 +506,17 @@ public class MapFragment extends Fragment implements
 
         mMoveMapByUser = false;
 
-
         //디폴트 위치, Seoul
         LatLng DEFAULT_LOCATION = new LatLng(37.56, 126.97);
-        String markerTitle = "위치정보 가져올 수 없음";
-        String markerSnippet = "위치 퍼미션과 GPS 활성 요부 확인하세요";
-
 
         if (currentMarker != null) currentMarker.remove();
 
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(DEFAULT_LOCATION);
-        markerOptions.title(markerTitle);
-        markerOptions.snippet(markerSnippet);
-        markerOptions.draggable(true);
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        currentMarker = mGoogleMap.addMarker(markerOptions);
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15);
         mGoogleMap.moveCamera(cameraUpdate);
 
     }
     /*setDefaultLocation***************************************************************************/
-
-
 
 
     //여기부터는 런타임 퍼미션 처리을 위한 메소드들
@@ -538,7 +544,7 @@ public class MapFragment extends Fragment implements
             Log.d(TAG, "checkPermissions : 퍼미션 가지고 있음");
 
 
-            if ( mGoogleApiClient.isConnected() == false) {
+            if (mGoogleApiClient.isConnected() == false) {
 
                 Log.d(TAG, "checkPermissions : 퍼미션 가지고 있음");
                 mGoogleApiClient.connect();
@@ -562,12 +568,11 @@ public class MapFragment extends Fragment implements
             if (permissionAccepted) {
 
 
-                if ( mGoogleApiClient.isConnected() == false) {
+                if (mGoogleApiClient.isConnected() == false) {
 
                     Log.d(TAG, "onRequestPermissionsResult : mGoogleApiClient connect");
                     mGoogleApiClient.connect();
                 }
-
 
 
             } else {
@@ -577,6 +582,7 @@ public class MapFragment extends Fragment implements
         }
     }
     /*onRequestPermissionsResult********************************************************************/
+
 
     //권한 체크시 띄우는 매서드
     /*showDialogForPermission***********************************************************************/
@@ -678,9 +684,9 @@ public class MapFragment extends Fragment implements
                         Log.d(TAG, "onActivityResult : 퍼미션 가지고 있음");
 
 
-                        if ( mGoogleApiClient.isConnected() == false ) {
+                        if (mGoogleApiClient.isConnected() == false) {
 
-                            Log.d( TAG, "onActivityResult : mGoogleApiClient connect ");
+                            Log.d(TAG, "onActivityResult : mGoogleApiClient connect ");
                             mGoogleApiClient.connect();
                         }
                         return;
@@ -693,56 +699,49 @@ public class MapFragment extends Fragment implements
     /*onActivityResult*****************************************************************************/
 
     //안쓰는 매서드
+
     /**********************************************************************************************/
     @Override
     public void onPlacesFailure(PlacesException e) {
 
     }
+
     @Override
     public void onPlacesStart() {
 
     }
-    @Override
-    public void onPlacesFinished() {
 
-    }
     /**********************************************************************************************/
 
     //구글맵에 장소들을 받아오는데 성공하면 실행 매서드
     /*onPlacesSuccess******************************************************************************/
     @Override
     public void onPlacesSuccess(final List<Place> places) {
-        try{
+        try {
 
 
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    int i = 0;
+                    int k=0;
+
                     for (noman.googleplaces.Place place : places) {
-
-                        LatLng latLng
-                                = new LatLng(place.getLatitude()
-                                , place.getLongitude());
-
-                        MarkerOptions markerOptions = new MarkerOptions();
-                        markerOptions.position(latLng);
-                        markerOptions.title(place.getName());
-                        markerOptions.snippet(place.getVicinity());
-                        Marker item = mGoogleMap.addMarker(markerOptions);
-                        previous_marker.add(item);
-
+                        if (hostpitalreday) {
+                            hospitalList.add(new TestClass(place.getName(), place.getLatitude(), place.getLongitude(), place.getVicinity()));
+                            Log.d(TAG, "orgArgList name : " + hospitalList.get(i).getName());
+                            i++;
+                        }
+                        if (petstoreready) {
+                            petShopList.add(new TestClass(place.getName(), place.getLatitude(), place.getLongitude(), place.getVicinity()));
+                            Log.d(TAG, "petShopList name : " + petShopList.get(k).getName());
+                            k++;
+                        }
                     }
-
-                    //중복 마커 제거
-                    HashSet<Marker> hashSet = new HashSet<Marker>();
-                    hashSet.addAll(previous_marker);
-                    previous_marker.clear();
-                    previous_marker.addAll(hashSet);
-
                 }
             });
 
-        }catch(RuntimeException e){
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
 
@@ -752,21 +751,89 @@ public class MapFragment extends Fragment implements
 
     //구글맵에 장소를 찍는 매서드
     /*showPlaceInformation**************************************************************************/
-    public void showPlaceInformation(LatLng location)
-    {
-        mGoogleMap.clear();//지도 클리어
+    public void showPlaceInformation(LatLng location) {
 
-        if (previous_marker != null)
-            previous_marker.clear();//지역정보 마커 클리어
+        if(petstoreready){
+            new NRPlaces.Builder()
+                    .listener(this)
+                    .key("AIzaSyCWZjDQSkXD5jzLn4QGOPBmBix9gztod68")
+                    .latlng(location.latitude, location.longitude)//현재 위치
+                    .radius(3000) //3K미터 내에서 검색
+                    .type(PlaceType.PET_STORE) //동물병원
+                    .build()
+                    .execute();
+            Log.d(TAG,"showPlaceInformation: petstore");
+        }
 
-        new NRPlaces.Builder()
-                .listener(this)
-                .key("AIzaSyCWZjDQSkXD5jzLn4QGOPBmBix9gztod68")
-                .latlng(location.latitude, location.longitude)//현재 위치
-                .radius(3000) //3K미터 내에서 검색
-                .type(PlaceType.VETERINARY_CARE) //동물병원
-                .build()
-                .execute();
+        if (hostpitalreday) {
+            new NRPlaces.Builder()
+                    .listener(this)
+                    .key("AIzaSyCWZjDQSkXD5jzLn4QGOPBmBix9gztod68")
+                    .latlng(location.latitude, location.longitude)//현재 위치
+                    .radius(3000) //3K미터 내에서 검색
+                    .type(PlaceType.VETERINARY_CARE) //동물병원
+                    .build()
+                    .execute();
+            Log.d(TAG,"showPlaceInformation: hostpital");
+        }
+
     }
     /*showPlaceInformation**************************************************************************/
+
+    /*onPlacesFinished**************************************************************************/
+    @Override
+    public void onPlacesFinished() {
+        if(hostpitalreday&&hospitalList!=null){
+            hostpitalreday=false;
+            Log.d(TAG,"onPlacesFinhished-orgArgListSize : "+hospitalList.size());
+            petstoreready =true;
+
+        }
+        if(petstoreready&&petShopList.size()>0){
+            Log.d(TAG,"onPlacesFinhished-orgArgListSize : "+petShopList.size());
+            petstoreready =false;
+        }
+    }
+    /*onPlacesFinished**************************************************************************/
+
+    /*createMarker**************************************************************************/
+    public void createMarker() {
+        mGoogleMap.clear();
+        Log.d(TAG,"createMarker : hostpitalListsize : "+hospitalList.size());
+        Log.d(TAG,"createMarker : petShopList : "+petShopList.size());
+        Log.d(TAG, String.valueOf(hostpitalreday));
+        Log.d(TAG, String.valueOf(petstoreready));
+        if (hospitalList.size()>0&& mMyData1.toString().trim().equals("hospitalOn") ) {
+            Log.d(TAG,"orgArgListCreatMarker");
+            Log.d(TAG, "orgArgListsize : " + hospitalList.size());
+            for (int i = 0; i < hospitalList.size(); i++) {
+                LatLng latLng
+                        = new LatLng(hospitalList.get(i).getLatitude()
+                        , hospitalList.get(i).getLongtitude());
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title(hospitalList.get(i).getName());
+                markerOptions.snippet(hospitalList.get(i).getsinpat());
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                mGoogleMap.addMarker(markerOptions);
+            }
+        }
+        if (petShopList.size()>0&&mMyData2.toString().trim().equals("shopOn")) {
+            Log.d(TAG,"petShopListCreateMarker");
+            Log.d(TAG, "petShopList :" + petShopList.size());
+            for (int i = 0; i < petShopList.size(); i++) {
+                LatLng latLng
+                        = new LatLng(petShopList.get(i).getLatitude()
+                        , petShopList.get(i).getLongtitude());
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title(petShopList.get(i).getName());
+                markerOptions.snippet(petShopList.get(i).getsinpat());
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                mGoogleMap.addMarker(markerOptions);
+            }
+        }
+    }
+    /*createMarker**************************************************************************/
 }
