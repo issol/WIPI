@@ -40,29 +40,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
+
+
                 <LinearLayout
-                    android:gravity="left|center_vertical"
-                    android:layout_weight="2"
+                    android:gravity="right|center_vertical"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent">
-
-                    <ImageView
-                        android:background="@drawable/click_effect_01"
-                        android:layout_marginLeft="@dimen/toolbar_icon_margin_side"
-                        android:layout_marginRight="@dimen/toolbar_icon_margin_right"
-                        android:id="@+id/zoomIn"
-                        android:src="@drawable/plus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <ImageView
-                        android:background="@drawable/click_effect_01"
-                        android:layout_marginRight="@dimen/toolbar_icon_margin_right"
-                        android:id="@+id/zoomOut"
-                        android:src="@drawable/minus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
                     <ImageView
                         android:background="@drawable/click_effect_01"
                         android:layout_marginRight="@dimen/toolbar_icon_margin_right"
@@ -70,29 +54,6 @@
                         android:src="@drawable/save_as"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-
-                    <ImageView
-                        android:background="@drawable/click_effect_01"
-                        android:layout_marginRight="@dimen/toolbar_icon_margin_right"
-                        android:id="@+id/speechOutButton"
-                        android:src="@drawable/assistant"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <ImageView
-                        android:background="@drawable/click_effect_01"
-                        android:id="@+id/postCard"
-                        android:src="@drawable/picture"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:gravity="right|center_vertical"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent">
 
                     <ImageView
                         android:background="@drawable/click_effect_01"
@@ -104,7 +65,10 @@
 
                 </LinearLayout>
 
+
             </LinearLayout>
+
+
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/container"
@@ -112,7 +76,9 @@
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+
         </LinearLayout>
+
 
     </LinearLayout>
 

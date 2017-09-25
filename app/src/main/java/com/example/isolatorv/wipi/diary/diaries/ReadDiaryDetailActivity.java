@@ -62,7 +62,6 @@ import butterknife.OnClick;
 
 public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
-    private TextToSpeech mTextToSpeech;
     private long mCurrentTimeMillis;
 
     @BindView(R.id.container)
@@ -71,11 +70,6 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
     @BindView(R.id.edit)
     ImageView mEdit;
 
-    @BindView(R.id.speechOutButton)
-    ImageView mSpeechOutButton;
-
-    @BindView(R.id.postCard)
-    ImageView mPostCard;
 
     @BindView(R.id.delete)
     ImageView mDelete;
@@ -148,136 +142,12 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             }
         });
 
-        initShowcase();
-    }
-
-    private int showcaseIndex = 2;
-    ShowcaseView mShowcaseView;
-
-    private void initShowcase() {
-        int margin = ((Number) (getResources().getDisplayMetrics().density * 12)).intValue();
-
-        final RelativeLayout.LayoutParams centerParams =
-                new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        centerParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        centerParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        centerParams.setMargins(0, 0, 0, margin);
-
-        View.OnClickListener showcaseViewOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (showcaseIndex) {
-                    case 2:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mEdit), true);
-                        mShowcaseView.setContentTitle(getString(R.string.read_diary_detail_showcase_title_2));
-                        mShowcaseView.setContentText(getString(R.string.read_diary_detail_showcase_message_2));
-                        break;
-                    case 3:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mSpeechOutButton), true);
-                        mShowcaseView.setContentTitle(getString(R.string.read_diary_detail_showcase_title_3));
-                        mShowcaseView.setContentText(getString(R.string.read_diary_detail_showcase_message_3));
-                        break;
-                    case 4:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mPostCard), true);
-                        mShowcaseView.setContentTitle(getString(R.string.read_diary_detail_showcase_title_4));
-                        mShowcaseView.setContentText(getString(R.string.read_diary_detail_showcase_message_4));
-                        break;
-                    case 5:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mDelete), true);
-                        mShowcaseView.setContentTitle(getString(R.string.read_diary_detail_showcase_title_5));
-                        mShowcaseView.setContentText(getString(R.string.read_diary_detail_showcase_message_5));
-                        mShowcaseView.setButtonText(getString(R.string.read_diary_detail_showcase_button_2));
-                        break;
-                    case 6:
-                        mShowcaseView.hide();
-                        break;
-                }
-                showcaseIndex++;
-            }
-        };
-
-        mShowcaseView = new ShowcaseView.Builder(this)
-                .withMaterialShowcase()
-                .setTarget(new ViewTarget(mViewPager))
-                .setContentTitle(getString(R.string.read_diary_detail_showcase_title_1))
-                .setContentText(getString(R.string.read_diary_detail_showcase_message_1))
-                .setStyle(R.style.ShowcaseTheme)
-                .singleShot(DiaryConstants.SHOWCASE_SINGLE_SHOT_READ_DIARY_DETAIL_NUMBER)
-                .setOnClickListener(showcaseViewOnClickListener)
-                .build();
-        mShowcaseView.setButtonText(getString(R.string.read_diary_detail_showcase_button_1));
-        mShowcaseView.setButtonPosition(centerParams);
-    }
-
-    private void initModule() {
-        mTextToSpeech = new TextToSpeech(ReadDiaryDetailActivity.this, new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    mTextToSpeech.setLanguage(Locale.getDefault());
-                    mTextToSpeech.setPitch(1.3f);
-                    mTextToSpeech.setSpeechRate(1f);
-                }
-            }
-        });
-    }
-
-    private void destroyModule() {
-        if (mTextToSpeech != null) {
-            mTextToSpeech.stop();
-            mTextToSpeech.shutdown();
-            mTextToSpeech = null;
-        }
-    }
-
-    private void textToSpeech(String text) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ttsGreater21(String.valueOf(text));
-        } else {
-            ttsUnder20(String.valueOf(text));
-        }
-    }
-
-    @SuppressWarnings("deprecation")
-    private void ttsUnder20(String text) {
-        HashMap<String, String> map = new HashMap<>();
-        map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "MessageId");
-
-        mTextToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-            @Override
-            public void onStart(String utteranceId) {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void onError(String utteranceId) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onDone(String utteranceId) {
-                // TODO Auto-generated method stub
-            }
-        });
-
-        mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, map);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void ttsGreater21(String text) {
-        String utteranceId = this.hashCode() + "";
-        mTextToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        destroyModule();
+
     }
 
     @Override
@@ -290,10 +160,9 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        initModule();
     }
 
-    @OnClick({R.id.zoomIn, R.id.zoomOut, R.id.delete, R.id.edit, R.id.speechOutButton, R.id.postCard})
+    @OnClick({R.id.delete, R.id.edit})
     public void onClick(View view) {
 
 //        ViewGroup viewPagerRootView = (ViewGroup) mViewPager.getChildAt(0);
@@ -303,14 +172,6 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
         float fontSize = fragment.mTitle.getTextSize();
 
         switch(view.getId()) {
-            case R.id.zoomIn:
-                CommonUtils.saveFloatPreference(ReadDiaryDetailActivity.this, "font_size", fontSize + 5);
-                fragment.setDiaryFontSize();
-                break;
-            case R.id.zoomOut:
-                CommonUtils.saveFloatPreference(ReadDiaryDetailActivity.this, "font_size", fontSize - 5);
-                fragment.setDiaryFontSize();
-                break;
             case R.id.delete:
                 DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
                     @Override
@@ -332,14 +193,12 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
                 startActivity(updateDiaryIntent);
                 finish();
                 break;
-            case R.id.speechOutButton:
-                textToSpeech(fragment.mContents.getText().toString());
-                break;
-            case R.id.postCard:
+
+           /* case R.id.postCard:
                 Intent postCardIntent = new Intent(ReadDiaryDetailActivity.this, PostCardActivity.class);
                 postCardIntent.putExtra("sequence", fragment.mSequence);
                 startActivityForResult(postCardIntent, DiaryConstants.REQUEST_CODE_BACKGROUND_COLOR_PICKER);
-                break;
+                break;*/
         }
     }
 

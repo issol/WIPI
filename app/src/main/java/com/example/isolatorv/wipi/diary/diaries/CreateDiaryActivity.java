@@ -68,7 +68,6 @@ import io.realm.RealmList;
 public class CreateDiaryActivity extends EasyDiaryActivity {
 
     private final int REQUEST_CODE_SPEECH_INPUT = 100;
-    private Intent mRecognizerIntent;
     private long mCurrentTimeMillis;
     private int mCurrentCursor = 0;
     private RealmList<PhotoUriDto> mPhotoUris;
@@ -80,29 +79,11 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     @BindView(R.id.title)
     EditText mTitle;
 
-    @BindView(R.id.toggleSwitch)
-    Switch mToggleSwitch;
-
-    @BindView(R.id.toggleMicOn)
-    ImageView mToggleMicOn;
-
-    @BindView(R.id.toggleMicOff)
-    ImageView mToggleMicOff;
-
     @BindView(R.id.weatherSpinner)
     Spinner mWeatherSpinner;
 
     @BindView(R.id.photoContainer)
     ViewGroup mPhotoContainer;
-
-    @BindView(R.id.speechButton)
-    FloatingActionButton mSpeechButton;
-
-    @BindView(R.id.zoomIn)
-    ImageView mZoomIn;
-
-    @BindView(R.id.zoomOut)
-    ImageView mZoomOut;
 
     @BindView(R.id.saveContents)
     ImageView mSaveContents;
@@ -126,9 +107,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         setDateTime();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        mRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        mRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
         FontUtils.setToolbarTypeface(toolbar, Typeface.DEFAULT);
 
@@ -136,94 +114,10 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         bindEvent();
         initSpinner();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        initShowcase();
+
     }
 
-    private int showcaseIndex = 2;
-    ShowcaseView mShowcaseView;
 
-    private void initShowcase() {
-        int margin = ((Number) (getResources().getDisplayMetrics().density * 12)).intValue();
-
-        final RelativeLayout.LayoutParams centerParams =
-                new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        centerParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        centerParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        centerParams.setMargins(0, 0, 0, margin);
-
-        View.OnClickListener showcaseViewOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (showcaseIndex) {
-                    case 2:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mTitle), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_2));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_2));
-                        break;
-                    case 3:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mContents), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_3));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_3));
-                        break;
-                    case 4:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mPhotoView), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_4));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_4));
-                        break;
-                    case 5:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mZoomIn), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_5));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_5));
-                        break;
-                    case 6:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mZoomOut), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_6));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_6));
-                        break;
-                    case 7:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mDatePicker), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_7));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_7));
-                        break;
-                    case 8:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mTimePicker), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_8));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_8));
-                        break;
-                    case 9:
-                        mShowcaseView.setButtonPosition(centerParams);
-                        mShowcaseView.setShowcase(new ViewTarget(mSaveContents), true);
-                        mShowcaseView.setContentTitle(getString(R.string.create_diary_showcase_title_9));
-                        mShowcaseView.setContentText(getString(R.string.create_diary_showcase_message_9));
-                        mShowcaseView.setButtonText(getString(R.string.create_diary_showcase_button_2));
-                        break;
-                    case 10:
-                        mShowcaseView.hide();
-                        break;
-                }
-                showcaseIndex++;
-            }
-        };
-
-        mShowcaseView = new ShowcaseView.Builder(this)
-                .withMaterialShowcase()
-                .setTarget(new ViewTarget(mWeatherSpinner))
-                .setContentTitle(getString(R.string.create_diary_showcase_title_1))
-                .setContentText(getString(R.string.create_diary_showcase_message_1))
-                .setStyle(R.style.ShowcaseTheme)
-                .singleShot(DiaryConstants.SHOWCASE_SINGLE_SHOT_CREATE_DIARY_NUMBER)
-                .setOnClickListener(showcaseViewOnClickListener)
-                .build();
-        mShowcaseView.setButtonText(getString(R.string.create_diary_showcase_button_1));
-        mShowcaseView.setButtonPosition(centerParams);
-    }
 
     public void initSpinner() {
         String[]  weatherArr = getResources().getStringArray(R.array.weather_item_array);
@@ -257,16 +151,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
 //            }
 //        });
 
-        mToggleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    enableRecognizer();
-                } else {
-                    disableRecognizer();
-                }
-            }
-        });
+
 
         mTitle.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -281,20 +166,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 mCurrentCursor = 1;
                 return false;
-            }
-        });
-
-        mToggleMicOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                disableRecognizer();
-            }
-        });
-
-        mToggleMicOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                enableRecognizer();
             }
         });
     }
@@ -317,36 +188,14 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         );
     }
 
-    private void enableRecognizer() {
-        mToggleMicOff.setVisibility(View.GONE);
-        mToggleMicOn.setVisibility(View.VISIBLE);
-        mSpeechButton.setVisibility(View.VISIBLE);
-        mToggleSwitch.setChecked(true);
-    }
 
-    private void disableRecognizer() {
-        mToggleMicOn.setVisibility(View.GONE);
-        mToggleMicOff.setVisibility(View.VISIBLE);
-        mSpeechButton.setVisibility(View.GONE);
-        mToggleSwitch.setChecked(false);
-    }
 
-    @OnClick({R.id.speechButton, R.id.zoomIn, R.id.zoomOut, R.id.saveContents, R.id.photoView, R.id.datePicker, R.id.timePicker})
+    @OnClick({ R.id.saveContents, R.id.photoView, R.id.datePicker, R.id.timePicker})
     public void onClick(View view) {
         float fontSize = mContents.getTextSize();
 
         switch(view.getId()) {
-            case R.id.speechButton:
-                showSpeechDialog();
-                break;
-            case R.id.zoomIn:
-                CommonUtils.saveFloatPreference(CreateDiaryActivity.this, "font_size", fontSize + 5);
-                setDiaryFontSize();
-                break;
-            case R.id.zoomOut:
-                CommonUtils.saveFloatPreference(CreateDiaryActivity.this, "font_size", fontSize - 5);
-                setDiaryFontSize();
-                break;
+
             case R.id.saveContents:
                 if (StringUtils.isEmpty(mContents.getText())) {
                     mContents.requestFocus();
@@ -459,18 +308,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         }
     }
 
-    private void showSpeechDialog() {
-        try {
-            startActivityForResult(mRecognizerIntent, REQUEST_CODE_SPEECH_INPUT);
-        } catch (ActivityNotFoundException e) {
-            DialogUtils.showAlertDialog(this, getString(R.string.recognizer_intent_not_found_message), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-        }
-    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

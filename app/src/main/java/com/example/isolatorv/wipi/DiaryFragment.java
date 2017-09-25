@@ -33,6 +33,7 @@ import android.support.v4.app.Fragment;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 
+import com.example.isolatorv.wipi.Base.BaseFragment;
 import com.example.isolatorv.wipi.diary.CommonUtils;
 import com.example.isolatorv.wipi.diary.DateUtils;
 import com.example.isolatorv.wipi.diary.DialogUtils;
@@ -66,16 +67,11 @@ import io.realm.Realm;
  * Created by tlsdm on 2017-09-11.
  */
 
-public class DiaryFragment extends Fragment {
+public class DiaryFragment extends BaseFragment {
 
-   /* @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.diary,container,false);
-        return layout;
-    }*/
+    public DiaryFragment(){
 
-    private final int REQUEST_CODE_SPEECH_INPUT = 100;
+    }
 
     private long mCurrentTimeMills;
     private DiaryCardArrayAdapter mDiaryCardArrayAdapter;
@@ -83,12 +79,7 @@ public class DiaryFragment extends Fragment {
 
     ListView mDiaryListView;
 
-    EditText mQuery;
-
     FloatingActionButton mInsertDiaryButton;
-
-    private int showcaseIndex = 0;
-    ShowcaseView mShowcaseView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstancesState){
@@ -108,21 +99,15 @@ public class DiaryFragment extends Fragment {
         }
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         mCurrentTimeMills = System.currentTimeMillis();
-        /*Toolbar toolbar = (Toolbar)layout.findViewById(R.id.toolbar);
-        activity.setSupportActionBar(toolbar);
-        activity.setTitle("Search");*/
 
         mDiaryList = DiaryDao.readDiary(null);
         mDiaryCardArrayAdapter = new DiaryCardArrayAdapter(getActivity(), R.layout.list_item_diary_card_array_adapter, this.mDiaryList);
         mDiaryListView.setAdapter(mDiaryCardArrayAdapter);
 
-       // FontUtils.setToolbarTypeface(toolbar, Typeface.DEFAULT);
-
 
         mInsertDiaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("ddd", "Clicked");
                 Intent createDiary = new Intent(getActivity(), CreateDiaryActivity.class);
                 startActivity(createDiary);
             }
@@ -130,7 +115,6 @@ public class DiaryFragment extends Fragment {
 
 
         bindEvent();
-      // initShowcase();
 
         return layout;
     }

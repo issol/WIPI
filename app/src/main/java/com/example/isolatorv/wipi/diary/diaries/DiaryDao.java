@@ -1,5 +1,7 @@
 package com.example.isolatorv.wipi.diary.diaries;
 
+import android.util.Log;
+
 import com.example.isolatorv.wipi.diary.helper.DiaryMigration;
 
 import org.apache.commons.lang3.StringUtils;
@@ -34,6 +36,7 @@ public class DiaryDao {
 
         }
         final Realm diaryRealm = Realm.getInstance(diaryConfig);
+
         return diaryRealm;
     }
 
@@ -114,4 +117,5 @@ public class DiaryDao {
             realm.commitTransaction();
         }
     }
+
 }

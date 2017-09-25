@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,26 +28,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDvDAfdZ-W5f9DhkijRSOAVATV-RcTrRck" />
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
 
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity
-            android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -56,30 +38,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
-            android:name=".diary.IntroActivity"
-            android:label="@string/app_name">
-
-        </activity>
 
 
-        <activity android:name=".diary.setting.SettingsActivity" android:label="" android:theme="@style/AppTheme" />
-        <activity android:name=".diary.setting.LicensesActivity" android:label="Licenses" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TestActivity" android:theme="@style/AppTheme.FullScreen"/>
         <activity android:name=".diary.diaries.CreateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".diary.diaries.ReadDiaryDetailActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".diary.diaries.UpdateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".diary.diaries.ReadDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".diary.googledrive.GoogleDriveUploader" />
-        <activity android:name=".diary.googledrive.GoogleDriveDownloader" />
-        <activity android:name=".diary.chart.BarChartActivity" android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".diary.calendar.CalendarActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".diary.diaries.LockDiaryActivity" />
-        <activity android:name=".diary.setting.LockSettingActivity" />
+
         <activity android:name=".diary.photo.PhotoViewPagerActivity" android:theme="@style/AppTheme.NoActionBar" android:hardwareAccelerated="false" />
-        <activity android:name=".diary.diaries.PostCardActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".diary.colorpicker.ColorPickerActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".diary.timeline.TimelineActivity" android:theme="@style/AppTheme.NoActionBar" />
+
 
 
 </application>

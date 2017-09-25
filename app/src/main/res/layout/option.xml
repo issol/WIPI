@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:text="옵션"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff00ff">
+    <Switch
+        android:id="@+id/hospital_Switch"
+        android:text="동물 병원 표시"
+        android:textOff="Off"
+        android:textOn="On"
+        android:textSize="20dp"
+        android:checked="false"
+        android:background="#ffffffff"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ff0f00"/>
+        android:layout_height="40dp" />
+    <Switch
+        android:id="@+id/dogShop_Switch"
+        android:text="동물 가게 표시"
+        android:textSize="20dp"
+        android:textOff="Off"
+        android:textOn="On"
+        android:checked="false"
+        android:background="#ffffffff"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
 </LinearLayout>
