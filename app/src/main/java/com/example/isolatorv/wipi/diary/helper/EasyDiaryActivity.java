@@ -1,16 +1,9 @@
 package com.example.isolatorv.wipi.diary.helper;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.isolatorv.wipi.diary.CommonUtils;
-import com.example.isolatorv.wipi.diary.DiaryConstants;
+import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
 
-
-
-/**
- * Created by hanjoong on 2017-05-03.
- */
 
 public class EasyDiaryActivity extends AppCompatActivity {
 

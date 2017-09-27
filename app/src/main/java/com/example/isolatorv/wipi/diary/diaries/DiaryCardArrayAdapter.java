@@ -11,18 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.diary.CommonUtils;
-import com.example.isolatorv.wipi.diary.DateUtils;
-import com.example.isolatorv.wipi.diary.EasyDiaryUtils;
-import com.example.isolatorv.wipi.diary.FontUtils;
+import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
+import com.example.isolatorv.wipi.diary.Utils.DateUtils;
+import com.example.isolatorv.wipi.diary.Utils.EasyDiaryUtils;
+import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
-/**
- * Created by CHO HANJOONG on 2017-03-16.
- */
 
 public class DiaryCardArrayAdapter extends ArrayAdapter<DiaryDto> {
     private final Context context;
@@ -71,15 +68,16 @@ public class DiaryCardArrayAdapter extends ArrayAdapter<DiaryDto> {
         }
 
         DiaryDto diaryDto = (DiaryDto)this.list.get(position);
+
         if (StringUtils.isEmpty(diaryDto.getTitle())) {
             holder.textView1.setVisibility(View.GONE);
         } else {
             holder.textView1.setVisibility(View.VISIBLE);
         }
+
         holder.textView1.setText(diaryDto.getTitle());
         holder.textView2.setText(diaryDto.getContents());
 
-        // highlight current query
         if (StringUtils.isNotEmpty(query)) {
             EasyDiaryUtils.highlightString(holder.textView1, query);
             EasyDiaryUtils.highlightString(holder.textView2, query);

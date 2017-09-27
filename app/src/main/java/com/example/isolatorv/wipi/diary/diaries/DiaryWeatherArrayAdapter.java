@@ -11,15 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.diary.CommonUtils;
-import com.example.isolatorv.wipi.diary.EasyDiaryUtils;
-import com.example.isolatorv.wipi.diary.FontUtils;
+import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
+import com.example.isolatorv.wipi.diary.Utils.EasyDiaryUtils;
+import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 
 import java.util.List;
 
-/**
- * Created by CHO HANJOONG on 2017-03-16.
- */
 
 public class DiaryWeatherArrayAdapter extends ArrayAdapter<String> {
     private final Context context;

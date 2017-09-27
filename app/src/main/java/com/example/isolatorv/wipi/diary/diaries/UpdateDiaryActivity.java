@@ -7,40 +7,32 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TimePicker;
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.diary.BitmapUtils;
-import com.example.isolatorv.wipi.diary.CommonUtils;
-import com.example.isolatorv.wipi.diary.DateUtils;
-import com.example.isolatorv.wipi.diary.DialogUtils;
-import com.example.isolatorv.wipi.diary.DiaryConstants;
-import com.example.isolatorv.wipi.diary.FontUtils;
-import com.example.isolatorv.wipi.diary.PermissionUtils;
+import com.example.isolatorv.wipi.diary.Utils.BitmapUtils;
+import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
+import com.example.isolatorv.wipi.diary.Utils.DateUtils;
+import com.example.isolatorv.wipi.diary.Utils.DialogUtils;
+import com.example.isolatorv.wipi.diary.Utils.FontUtils;
+import com.example.isolatorv.wipi.diary.Utils.PermissionUtils;
+import com.example.isolatorv.wipi.diary.helper.DiaryConstants;
 import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
-
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -53,22 +45,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.RealmList;
 
-
-/**
- * Created by CHO HANJOONG on 2017-03-16.
- */
-
 public class UpdateDiaryActivity extends EasyDiaryActivity {
 
-    private final int REQUEST_CODE_SPEECH_INPUT = 100;
-    private Intent mRecognizerIntent;
     private long mCurrentTimeMillis;
     private int mSequence;
     private int mWeather;
@@ -85,29 +69,14 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
     @BindView(R.id.saveContents)
     ImageView mSaveContents;
 
-    @BindView(R.id.toggleSwitch)
-    Switch mToggleSwitch;
-
-    @BindView(R.id.toggleMicOn)
-    ImageView mToggleMicOn;
-
-    @BindView(R.id.toggleMicOff)
-    ImageView mToggleMicOff;
-
     @BindView(R.id.weatherSpinner)
     Spinner mWeatherSpinner;
 
     @BindView(R.id.photoContainer)
     ViewGroup mPhotoContainer;
 
-//    @BindView(R.id.subToolbar)
-//    ViewGroup mSubToolbar;
-
     @BindView(R.id.photoContainerScrollView)
     HorizontalScrollView mHorizontalScrollView;
-
-    @BindView(R.id.speechButton)
-    FloatingActionButton mSpeechButton;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,11 +87,6 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
         getSupportActionBar().setTitle(getString(R.string.update_diary_title));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        mRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        mRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
-
-        FontUtils.setToolbarTypeface(toolbar, Typeface.DEFAULT);
         FontUtils.setTypeface(this, getAssets(), this.mContents);
         FontUtils.setTypeface(this, getAssets(), this.mTitle);
 
@@ -154,7 +118,6 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
         mCurrentTimeMillis = diaryDto.getCurrentTimeMillis();
         mContents.requestFocus();
 
-        // TODO fixme elegance
         mPhotoUris = new RealmList<>();
         mPhotoUris.addAll(diaryDto.getPhotoUris());
         if (mPhotoUris != null && mPhotoUris.size() > 0) {
@@ -217,17 +180,6 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
 
     private void bindEvent() {
 
-        mToggleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    enableRecognizer();
-                } else {
-                    disableRecognizer();
-                }
-            }
-        });
-
         mTitle.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -244,51 +196,15 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
             }
         });
 
-        mToggleMicOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                disableRecognizer();
-            }
-        });
 
-        mToggleMicOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                enableRecognizer();
-            }
-        });
     }
 
-    private void enableRecognizer() {
-        mToggleMicOff.setVisibility(View.GONE);
-        mToggleMicOn.setVisibility(View.VISIBLE);
-        mSpeechButton.setVisibility(View.VISIBLE);
-        mToggleSwitch.setChecked(true);
-    }
 
-    private void disableRecognizer() {
-        mToggleMicOn.setVisibility(View.GONE);
-        mToggleMicOff.setVisibility(View.VISIBLE);
-        mSpeechButton.setVisibility(View.GONE);
-        mToggleSwitch.setChecked(false);
-    }
-
-    @OnClick({R.id.speechButton, R.id.zoomIn, R.id.zoomOut, R.id.saveContents, R.id.photoView, R.id.datePicker, R.id.timePicker})
+    @OnClick({R.id.saveContents, R.id.photoView, R.id.datePicker, R.id.timePicker})
     public void onClick(View view) {
         float fontSize = mContents.getTextSize();
 
         switch(view.getId()) {
-            case R.id.speechButton:
-                showSpeechDialog();
-                break;
-            case R.id.zoomIn:
-                CommonUtils.saveFloatPreference(UpdateDiaryActivity.this, "font_size", fontSize + 5);
-                setDiaryFontSize();
-                break;
-            case R.id.zoomOut:
-                CommonUtils.saveFloatPreference(UpdateDiaryActivity.this, "font_size", fontSize - 5);
-                setDiaryFontSize();
-                break;
             case R.id.saveContents:
                 if (StringUtils.isEmpty(mContents.getText())) {
                     mContents.requestFocus();
@@ -407,43 +323,11 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
         }
     }
 
-    private void showSpeechDialog() {
-        try {
-            startActivityForResult(mRecognizerIntent, REQUEST_CODE_SPEECH_INPUT);
-        } catch (ActivityNotFoundException e) {
-            DialogUtils.showAlertDialog(this, getString(R.string.recognizer_intent_not_found_message), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-        }
-    }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         CommonUtils.saveLongPreference(UpdateDiaryActivity.this, DiaryConstants.PAUSE_MILLIS, System.currentTimeMillis()); // clear screen lock policy
         switch (requestCode) {
-            case REQUEST_CODE_SPEECH_INPUT:
-                if ((resultCode == RESULT_OK) && (data != null)) {
-                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    if (mCurrentCursor == 0) { // edit title
-                        String title = String.valueOf(mTitle.getText());
-                        StringBuilder sb = new StringBuilder(title);
-                        sb.insert(mTitle.getSelectionStart(), result.get(0));
-                        int cursorPosition = mTitle.getSelectionStart() + result.get(0).length();
-                        mTitle.setText(sb.toString());
-                        mTitle.setSelection(cursorPosition);
-                    } else {                   // edit contents
-                        String contents = String.valueOf(mContents.getText());
-                        StringBuilder sb = new StringBuilder(contents);
-                        sb.insert(mContents.getSelectionStart(), result.get(0));
-                        int cursorPosition = mContents.getSelectionStart() + result.get(0).length();
-                        mContents.setText(sb.toString());
-                        mContents.setSelection(cursorPosition);
-                    }
-                }
-                break;
+
             case DiaryConstants.REQUEST_CODE_IMAGE_PICKER:
                 try {
                     if (resultCode == RESULT_OK && (data != null)) {
@@ -489,29 +373,6 @@ public class UpdateDiaryActivity extends EasyDiaryActivity {
             default:
                 break;
         }
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-//                this.overridePendingTransition(R.anim.anim_left_to_center, R.anim.anim_center_to_right);
-                break;
-
-//            case R.id.toolbarToggle:
-//                if (mSubToolbar.getVisibility() == View.GONE) {
-//                    mSubToolbar.setVisibility(View.VISIBLE);
-//                } else if (mSubToolbar.getVisibility() == View.VISIBLE) {
-//                    mSubToolbar.setVisibility(View.GONE);
-//                }
-//                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

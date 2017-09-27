@@ -24,10 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.TestActivity;
-
-
-import junit.framework.Test;
+import com.example.isolatorv.wipi.MainActivity;
 
 
 /**
@@ -152,7 +149,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         ft.commit();
     }
     private void goToMain(){
-        Intent intent = new Intent(getActivity(), TestActivity.class);
+        Intent intent = new Intent(getActivity(), MainActivity.class);
 
         startActivity(intent);
 
