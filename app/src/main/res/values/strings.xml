@@ -139,9 +139,11 @@
     <string name="post_card_showcase_message_3">만들어진 포스트카드는 이미지 파일로 저장 할 수 있습니다.</string>
     <string name="post_card_showcase_message_4">만들어진 포스트카드는 친구들과 공유 할 수 있습니다. 이메일, 문자, 메신저등을 이용해 포스트카드를 공유해 보세요.</string>
     <string name="post_card_showcase_message_5">포스트카드 편집화면을 종료하고 이전 화면으로 돌아갑니다.</string>
-
+    <string name="blank_fragment">Blank fragment</string>
     <!--TimelineActivity-->
     <string name="timeline_title">타임라인</string>
+    <string name="menu_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
 
     <!--CaldroidCustomAdapter-->
     <string name="diary_count">건</string>

@@ -1,4 +1,4 @@
-package com.example.qiudengjiao.tablayout.view;
+package com.example.isolatorv.wipi;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

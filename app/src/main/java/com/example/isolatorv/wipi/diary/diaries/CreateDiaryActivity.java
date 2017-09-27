@@ -10,6 +10,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -30,7 +32,9 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TimePicker;
 
+import com.example.isolatorv.wipi.DiaryFragment;
 import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.TestActivity;
 import com.example.isolatorv.wipi.diary.BitmapUtils;
 import com.example.isolatorv.wipi.diary.CommonUtils;
 import com.example.isolatorv.wipi.diary.DateUtils;
@@ -212,6 +216,9 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                     diaryDto.setPhotoUris(mPhotoUris);
                     DiaryDao.createDiary(diaryDto);
                     CommonUtils.saveIntPreference(CreateDiaryActivity.this, DiaryConstants.PREVIOUS_ACTIVITY, DiaryConstants.PREVIOUS_ACTIVITY_CREATE);
+                    //Intent intent = new Intent(this, DiaryFragment.class);
+                    //startActivity(intent);
+
                     finish();
                 }
                 break;

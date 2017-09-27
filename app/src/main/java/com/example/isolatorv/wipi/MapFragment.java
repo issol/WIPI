@@ -31,6 +31,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.example.isolatorv.wipi.Base.BaseFragment;
+import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.TestActivity;
+import com.example.isolatorv.wipi.TestClass;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -109,6 +113,8 @@ public class MapFragment extends Fragment implements
 
     private Object mMyData1, mMyData2, mMyData3, mMyData4;
 
+    private OnFragmentInteractionListener listener;
+
     //Activity에 데이터 전달 인터페이스
     /*OnMyListener*/
     public interface OnMyListener {
@@ -126,7 +132,16 @@ public class MapFragment extends Fragment implements
             mOnMyListener = (OnMyListener) getActivity();
         }
 
+        if (context instanceof FeedFragment.OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
 
+
+    }
+    public static MapFragment newInstance() {
+        return new MapFragment();
     }
     /*onAttach*************************************************************************************/
 
@@ -136,6 +151,19 @@ public class MapFragment extends Fragment implements
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+    public interface OnFragmentInteractionListener {
+
+        void onClicked();
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
     /*onCreate*************************************************************************************/
 
     //onCreate와 같은 매서드
@@ -836,4 +864,22 @@ public class MapFragment extends Fragment implements
         }
     }
     /*createMarker**************************************************************************/
+   /* @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        if(isVisibleToUser)
+        {
+            this.onResume();
+        }
+        else
+        {
+            if(getContext() != null){
+                this.onStop();
+            }
+
+        }
+        super.setUserVisibleHint(isVisibleToUser);
+    }*/
+
+
 }

@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -62,16 +63,22 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
+import retrofit2.http.POST;
 
 /**
  * Created by tlsdm on 2017-09-11.
  */
 
-public class DiaryFragment extends BaseFragment {
+public class DiaryFragment extends Fragment {
 
     public DiaryFragment(){
 
     }
+    public static DiaryFragment newInstance() {
+
+        return new DiaryFragment();
+    }
+
 
     private long mCurrentTimeMills;
     private DiaryCardArrayAdapter mDiaryCardArrayAdapter;
@@ -114,9 +121,17 @@ public class DiaryFragment extends BaseFragment {
         });
 
 
+
         bindEvent();
 
         return layout;
+    }
+
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+
     }
 
     private void bindEvent(){
@@ -140,19 +155,20 @@ public class DiaryFragment extends BaseFragment {
     @Override
     public void onResume(){
         super.onResume();
+        mDiaryList =  DiaryDao.readDiary(null);
+        mDiaryCardArrayAdapter = new DiaryCardArrayAdapter(getActivity(), R.layout.list_item_diary_card_array_adapter, this.mDiaryList);
+        mDiaryListView.setAdapter(mDiaryCardArrayAdapter);
         AppCompatActivity appActivity = (AppCompatActivity) getActivity();
         appActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-
         int previousActivity = CommonUtils.loadIntPreference(getActivity(), DiaryConstants.PREVIOUS_ACTIVITY, -1);
         if(previousActivity == DiaryConstants.PREVIOUS_ACTIVITY_CREATE){
             mDiaryListView.smoothScrollToPosition(0);
             CommonUtils.saveIntPreference(getActivity(), DiaryConstants.PREVIOUS_ACTIVITY, -1);
 
         }
+
+
     }
-
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -171,9 +187,6 @@ public class DiaryFragment extends BaseFragment {
         getActivity().getMenuInflater().inflate(R.menu.read_diary, menu);
         return true;
     }
-
-
-
 }
 
 
