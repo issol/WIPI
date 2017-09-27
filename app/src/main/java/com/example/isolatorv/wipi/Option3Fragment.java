@@ -16,7 +16,11 @@ public class Option3Fragment extends BaseFragment {
     public Option3Fragment(){
 
     }
+    public static Option3Fragment create() {
+        Option3Fragment fragment = new Option3Fragment();
 
+        return fragment;
+    }
     //onCreate와 같은 매서드
     /*onCreateView*********************************************************************************/
     @Nullable

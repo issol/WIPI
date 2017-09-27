@@ -1,8 +1,10 @@
 package com.example.isolatorv.wipi;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -15,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.isolatorv.wipi.Base.BaseFragment;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -31,13 +33,40 @@ import java.net.UnknownHostException;
  * Created by tlsdm on 2017-09-11.
  */
 
-public class FeedFragment extends BaseFragment {
+public class FeedFragment extends Fragment {
+
+    private OnFragmentInteractionListener listener;
 
     public FeedFragment(){
 
     }
-    //onCreate와 같은 매서드
-    /*onCreateView*********************************************************************************/
+    public static FeedFragment newInstance(){
+        return new FeedFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstance){
+        super.onCreate(savedInstance);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+    }
 
     private TextView mConnectionStatus;
     private EditText mInputEditText;
@@ -52,17 +81,16 @@ public class FeedFragment extends BaseFragment {
     private BufferedReader mIn;
     private Thread mReceiverThread = null;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.dogrice,container,false);
+        View layout = inflater.inflate(R.layout.dogrice, container, false);
 
-        mConnectionStatus = (TextView)layout.findViewById(R.id.connection_status_textview);
-        mInputEditText = (EditText)layout.findViewById(R.id.input_string_edittext);
+        mConnectionStatus = (TextView) layout.findViewById(R.id.connection_status_textview);
+        mInputEditText = (EditText) layout.findViewById(R.id.input_string_edittext);
         ListView mMessageListview = (ListView) layout.findViewById(R.id.message_listview);
-        Button sendButton = (Button)layout.findViewById(R.id.send_button);
+        Button sendButton = (Button) layout.findViewById(R.id.send_button);
 
-        sendButton.setOnClickListener(new View.OnClickListener(){
+        /*sendButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 String sendMessage = mInputEditText.getText().toString();
@@ -168,7 +196,6 @@ public class FeedFragment extends BaseFragment {
         }
     }
 
-
     private class SenderThread implements Runnable {
 
         private String msg;
@@ -192,7 +219,6 @@ public class FeedFragment extends BaseFragment {
             });
         }
     }
-
 
     private class ReceiverThread implements Runnable {
 
@@ -250,8 +276,6 @@ public class FeedFragment extends BaseFragment {
 
     }
 
-
-
     public void showErrorDialog(String message)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -266,10 +290,9 @@ public class FeedFragment extends BaseFragment {
             }
         });
         builder.create().show();
+    }*/
+        return layout;
     }
-
-
-
 
 
 }

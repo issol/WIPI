@@ -22,7 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import com.example.isolatorv.wipi.MainActivity;
+
 import com.example.isolatorv.wipi.R;
 import com.example.isolatorv.wipi.TestActivity;
 

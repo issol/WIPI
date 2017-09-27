@@ -12,6 +12,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 
+import com.example.isolatorv.wipi.Base.BaseFragment;
+
 
 /**
  * Created by tlsdm on 2017-09-06.
@@ -40,7 +42,9 @@ public class OptionFragment extends Fragment {
         }
     }
     /*onAttach*************************************************************************************/
-
+    public static OptionFragment newInstance() {
+        return new OptionFragment();
+    }
     //onCreate와 같은 매서드
     /*onCreateView*********************************************************************************/
     @Nullable
@@ -90,5 +94,6 @@ public class OptionFragment extends Fragment {
         return layout;
     }
     /*onCreateView*********************************************************************************/
+
 
 }

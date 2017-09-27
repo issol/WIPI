@@ -18,6 +18,14 @@ public class Option2Fragment extends BaseFragment {
 
     }
 
+    public static Option2Fragment create(int pageNumber) {
+        Option2Fragment fragment = new Option2Fragment();
+        Bundle args = new Bundle();
+        args.putInt("page", pageNumber);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     //onCreate와 같은 매서드
     /*onCreateView*********************************************************************************/
     @Nullable

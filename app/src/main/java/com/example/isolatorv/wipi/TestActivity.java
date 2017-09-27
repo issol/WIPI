@@ -5,6 +5,7 @@ package com.example.isolatorv.wipi;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
@@ -22,11 +24,17 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.isolatorv.wipi.Adapter.MainTabAdapter;
+
+import com.example.isolatorv.wipi.Adapter.BottomBarHolderActivity;
+import com.example.isolatorv.wipi.Adapter.MainNavigateTabBar;
+import com.example.isolatorv.wipi.Adapter.NavigationPage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 import devlight.io.library.ntb.NavigationTabBar;
@@ -35,179 +43,56 @@ import devlight.io.library.ntb.NavigationTabBar;
  * Created by isolatorv on 2017. 9. 21..
  */
 
-public class TestActivity extends AppCompatActivity implements OptionFragment.OnMyListener{
 
-    private int mSelectedPosition;
-    private Fragment FeedFragment;
-    private Fragment MapFragment;
-    private Fragment DiaryFragment;
-    private Fragment OptionFragment;
 
-    private Fragment mFragment;
+public class TestActivity extends BottomBarHolderActivity implements OptionFragment.OnMyListener, FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener{
 
    // static ViewPager viewPager;
-    private FragmentPagerAdapter mAdapter;
+
 
     private static final String TAG = "main_example";
 
     private Object obj1,obj2,obj3,obj4;
 
+    private FeedFragment feedFragment;
+    private MapFragment mapFragment;
+    private DiaryFragment diaryFragment;
+    private OptionFragment optionFragment;
+    private Option3Fragment option3Fragment;
+    List<NavigationPage> navigationPages = new ArrayList<>();
+
+
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.testlayout);
-        initUI();
+
+
+        NavigationPage page1 = new NavigationPage("Home", ContextCompat.getDrawable(this, R.drawable.ic_home_black_24dp), FeedFragment.newInstance());
+        NavigationPage page2 = new NavigationPage("Support", ContextCompat.getDrawable(this, R.drawable.ic_mail_black_24dp), MapFragment.newInstance());
+        NavigationPage page3 = new NavigationPage("Billing", ContextCompat.getDrawable(this, R.drawable.ic_assessment_black_24dp), DiaryFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_person_black_24dp), OptionFragment.newInstance());
+
+
+        navigationPages.add(page1);
+        navigationPages.add(page2);
+        navigationPages.add(page3);
+        navigationPages.add(page4);
+
+        super.setupBottomBarHolderActivity(navigationPages);
     }
 
-    private void initUI() {
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_horizontal_ntb);
-
-
-        FeedFragment = new FeedFragment();
-        MapFragment = new DiaryFragment();
-        DiaryFragment = new MapFragment();
-        OptionFragment = new OptionFragment();
-
-        mAdapter = new MainTabAdapter(this);
-        viewPager.setAdapter(mAdapter);
-        viewPager.setOffscreenPageLimit(4);
-
-        // myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
-
-       /* viewPager.setAdapter(new PagerAdapter() {
-
-            @Override
-            public int getCount() {
-                return 5;
-            }
-
-
-
-            @Override
-            public boolean isViewFromObject(final View view, final Object object) {
-                return view.equals(object);
-            }
-
-            @Override
-            public void destroyItem(final View container, final int position, final Object object) {
-                ((ViewPager) container).removeView((View) object);
-            }
-
-
-            @Override
-            public Object instantiateItem(final ViewGroup container, final int position) {
-                final View view = LayoutInflater.from(
-                        getBaseContext()).inflate(R.layout.item_vp, null, false);
-
-                final TextView txtPage = (TextView) view.findViewById(R.id.txt_vp_item_page);
-                txtPage.setText(String.format("Page #%d", position));
-
-                container.addView(view);
-                return view;
-            }
-        });*/
-
-        final String[] colors = getResources().getStringArray(R.array.default_preview);
-
-        final NavigationTabBar navigationTabBar = (NavigationTabBar) findViewById(R.id.ntb_horizontal);
-        final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.image_feed),
-                        Color.parseColor(colors[0]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_sixth))
-                        .title("Feed")
-                        .badgeTitle("food")
-                        .build()
-        );
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.image_map),
-                        Color.parseColor(colors[1]))
-//                        .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
-                        .title("Map")
-                        .badgeTitle("Follow")
-                        .build()
-        );
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.image_diary),
-                        Color.parseColor(colors[2]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_seventh))
-                        .title("Diary")
-                        .badgeTitle("Write")
-                        .build()
-        );
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.image_setting),
-                        Color.parseColor(colors[3]))
-//                        .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
-                        .title("Setting")
-                        .badgeTitle("Fuck")
-                        .build()
-        );
-        models.add(
-                new NavigationTabBar.Model.Builder(
-                        getResources().getDrawable(R.drawable.image_mypage),
-                        Color.parseColor(colors[4]))
-                        .selectedIcon(getResources().getDrawable(R.drawable.ic_eighth))
-                        .title("MyPage")
-                        .badgeTitle("You")
-                        .build()
-        );
-
-        navigationTabBar.setModels(models);
-        navigationTabBar.setViewPager(viewPager, 2);
-        navigationTabBar.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(final int position) {
-                navigationTabBar.getModels().get(position).hideBadge();
-                mSelectedPosition = position;
-
-                switch (position){
-                  /*  case 0:
-                        switchFragment(FeedFragment);
-                        break;
-                    case 1:
-                        switchFragment(MapFragment);
-                        break;
-                    case 2:
-                        switchFragment(DiaryFragment);
-                        break;
-                    case 3:
-                        switchFragment(OptionFragment);
-                        break;*/
-                }
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(final int state) {
-
-            }
-        });
-
-        navigationTabBar.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < navigationTabBar.getModels().size(); i++) {
-                    final NavigationTabBar.Model model = navigationTabBar.getModels().get(i);
-                    navigationTabBar.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            model.showBadge();
-                        }
-                    }, i * 100);
-                }
-            }
-        }, 500);
+    @Override
+    public void onClicked() {
+        Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+    }
+
     @Override
     public void onReceivedData(Object data) {
         switch (data.toString().trim()) {
@@ -251,9 +136,5 @@ public class TestActivity extends AppCompatActivity implements OptionFragment.On
             return obj2;
         }
     }
-
-
-
-
 
 }

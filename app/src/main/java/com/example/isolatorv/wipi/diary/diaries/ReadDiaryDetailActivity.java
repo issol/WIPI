@@ -31,6 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.TestActivity;
 import com.example.isolatorv.wipi.diary.BitmapUtils;
 import com.example.isolatorv.wipi.diary.CommonUtils;
 import com.example.isolatorv.wipi.diary.DateUtils;
@@ -177,6 +178,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DiaryDao.deleteDiary(fragment.mSequence);
+
                         finish();
                     }
                 };

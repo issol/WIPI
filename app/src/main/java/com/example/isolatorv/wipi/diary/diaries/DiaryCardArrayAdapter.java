@@ -26,7 +26,7 @@ import java.util.List;
 
 public class DiaryCardArrayAdapter extends ArrayAdapter<DiaryDto> {
     private final Context context;
-    private final List<DiaryDto> list;
+    private List<DiaryDto> list;
     private final int layoutResourceId;
     private String query;
 
@@ -44,6 +44,7 @@ public class DiaryCardArrayAdapter extends ArrayAdapter<DiaryDto> {
         this.list = list;
         this.layoutResourceId = layoutResourceId;
     }
+
 
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -100,5 +101,10 @@ public class DiaryCardArrayAdapter extends ArrayAdapter<DiaryDto> {
         TextView textView2;
         TextView textView3;
         ImageView imageView;
+    }
+
+    public void updateItemList(List<DiaryDto> list){
+        this.list = list;
+        notifyDataSetChanged();
     }
 }

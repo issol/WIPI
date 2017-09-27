@@ -2,7 +2,7 @@ package com.example.isolatorv.wipi.Base;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
 /**
  * Created by qiudengjiao on 2017/5/8.
