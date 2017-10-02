@@ -1,7 +1,5 @@
 package com.example.isolatorv.wipi.diary.diaries;
 
-import android.util.Log;
-
 import com.example.isolatorv.wipi.diary.helper.DiaryMigration;
 
 import org.apache.commons.lang3.StringUtils;
@@ -13,11 +11,6 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import io.realm.Sort;
-
-
-/**
- * Created by CHO HANJOONG on 2017-03-16.
- */
 
 public class DiaryDao {
     private static RealmConfiguration diaryConfig;

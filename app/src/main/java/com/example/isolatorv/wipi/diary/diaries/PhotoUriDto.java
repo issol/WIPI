@@ -1,11 +1,6 @@
 package com.example.isolatorv.wipi.diary.diaries;
 
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-
-/**
- * Created by hanjoong on 2017-06-08.
- */
 
 public class PhotoUriDto extends RealmObject {
 

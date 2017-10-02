@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.diary.CommonUtils;
-import com.example.isolatorv.wipi.diary.FontUtils;
+import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
+import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 import com.example.isolatorv.wipi.diary.diaries.DiaryDao;
 import com.example.isolatorv.wipi.diary.diaries.DiaryDto;
 import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;

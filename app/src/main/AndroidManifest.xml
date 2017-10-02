@@ -40,7 +40,7 @@
         </activity>
 
 
-        <activity android:name=".TestActivity" android:theme="@style/AppTheme.FullScreen"/>
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.FullScreen"/>
         <activity android:name=".diary.diaries.CreateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".diary.diaries.ReadDiaryDetailActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".diary.diaries.UpdateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />

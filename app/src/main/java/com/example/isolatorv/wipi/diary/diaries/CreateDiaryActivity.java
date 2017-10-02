@@ -8,10 +8,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -21,31 +17,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
+
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TimePicker;
 
-import com.example.isolatorv.wipi.DiaryFragment;
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.TestActivity;
-import com.example.isolatorv.wipi.diary.BitmapUtils;
-import com.example.isolatorv.wipi.diary.CommonUtils;
-import com.example.isolatorv.wipi.diary.DateUtils;
-import com.example.isolatorv.wipi.diary.DialogUtils;
-import com.example.isolatorv.wipi.diary.DiaryConstants;
-import com.example.isolatorv.wipi.diary.FontUtils;
-import com.example.isolatorv.wipi.diary.PermissionUtils;
-import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.example.isolatorv.wipi.diary.Utils.BitmapUtils;
+import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
+import com.example.isolatorv.wipi.diary.Utils.DateUtils;
+import com.example.isolatorv.wipi.diary.Utils.DialogUtils;
+import com.example.isolatorv.wipi.diary.Utils.FontUtils;
+import com.example.isolatorv.wipi.diary.Utils.PermissionUtils;
+import com.example.isolatorv.wipi.diary.helper.DiaryConstants;
+import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -57,17 +47,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.RealmList;
-
-
-/**
- * Created by CHO HANJOONG on 2017-03-16.
- */
 
 public class CreateDiaryActivity extends EasyDiaryActivity {
 
@@ -111,7 +95,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         setDateTime();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         FontUtils.setToolbarTypeface(toolbar, Typeface.DEFAULT);
 
         bindView();
@@ -121,41 +104,17 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
 
     }
 
-
-
     public void initSpinner() {
+
         String[]  weatherArr = getResources().getStringArray(R.array.weather_item_array);
         ArrayAdapter arrayAdapter = new DiaryWeatherArrayAdapter(CreateDiaryActivity.this, R.layout.spinner_item_diary_weather_array_adapter, Arrays.asList(weatherArr));
         mWeatherSpinner.setAdapter(arrayAdapter);
+
     }
 
     private void bindView() {}
 
     private void bindEvent() {
-//        mInputMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-//                if (isChecked) {
-//                    mTitle.setEnabled(false);
-//                    mContents.setEnabled(false);
-//                    DialogUtils.makeSnackBar(findViewById(android.R.id.content), getString(R.string.input_mode_a));
-//                } else {
-//                    CreateDiaryActivity.this.mTitle.setEnabled(true);
-//                    CreateDiaryActivity.this.mContents.setEnabled(true);
-//                    InputMethodManager imm = (InputMethodManager)CreateDiaryActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    if (StringUtils.isEmpty(CreateDiaryActivity.this.mTitle.getText())) {
-//                        imm.showSoftInput(mTitle, InputMethodManager.HIDE_IMPLICIT_ONLY);
-//                        CreateDiaryActivity.this.mTitle.clearFocus();
-//                    } else  {
-//                        CreateDiaryActivity.this.mContents.requestFocus();
-//                        imm.showSoftInput(mContents, InputMethodManager.HIDE_IMPLICIT_ONLY);
-//                        CreateDiaryActivity.this.mContents.setSelection(CreateDiaryActivity.this.mContents.getText().length());
-//                    }
-//                    DialogUtils.makeSnackBar(findViewById(android.R.id.content), getString(R.string.input_mode_b));
-//                }
-//            }
-//        });
-
-
 
         mTitle.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -172,6 +131,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                 return false;
             }
         });
+
     }
 
     @Override
@@ -191,8 +151,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                 }
         );
     }
-
-
 
     @OnClick({ R.id.saveContents, R.id.photoView, R.id.datePicker, R.id.timePicker})
     public void onClick(View view) {
@@ -216,9 +174,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                     diaryDto.setPhotoUris(mPhotoUris);
                     DiaryDao.createDiary(diaryDto);
                     CommonUtils.saveIntPreference(CreateDiaryActivity.this, DiaryConstants.PREVIOUS_ACTIVITY, DiaryConstants.PREVIOUS_ACTIVITY_CREATE);
-                    //Intent intent = new Intent(this, DiaryFragment.class);
-                    //startActivity(intent);
-
                     finish();
                 }
                 break;
@@ -302,7 +257,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
 
     private void callImagePicker() {
         Intent pickImageIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                pickIntent.setType("image/*");
+
         try {
             startActivityForResult(pickImageIntent, DiaryConstants.REQUEST_CODE_IMAGE_PICKER);
         } catch (ActivityNotFoundException e) {
@@ -315,31 +270,10 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         }
     }
 
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         CommonUtils.saveLongPreference(CreateDiaryActivity.this, DiaryConstants.PAUSE_MILLIS, System.currentTimeMillis()); // clear screen lock policy
         switch (requestCode) {
-            case REQUEST_CODE_SPEECH_INPUT:
-                if ((resultCode == RESULT_OK) && (data != null)) {
-                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    if (mCurrentCursor == 0) { // edit title
-                        String title = String.valueOf(mTitle.getText());
-                        StringBuilder sb = new StringBuilder(title);
-                        sb.insert(mTitle.getSelectionStart(), result.get(0));
-                        int cursorPosition = mTitle.getSelectionStart() + result.get(0).length();
-                        mTitle.setText(sb.toString());
-                        mTitle.setSelection(cursorPosition);
-                    } else {                   // edit contents
-                        String contents = String.valueOf(mContents.getText());
-                        StringBuilder sb = new StringBuilder(contents);
-                        sb.insert(mContents.getSelectionStart(), result.get(0));
-                        int cursorPosition = mContents.getSelectionStart() + result.get(0).length();
-                        mContents.setText(sb.toString());
-                        mContents.setSelection(cursorPosition);
-                    }
-                }
-                break;
             case DiaryConstants.REQUEST_CODE_IMAGE_PICKER:
 //                String path = CommonUtils.uriToPath(getContentResolver(), data.getData());
                 try {
