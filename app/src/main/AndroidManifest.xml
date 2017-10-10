@@ -45,7 +45,7 @@
         <activity android:name=".diary.diaries.ReadDiaryDetailActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".diary.diaries.UpdateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".diary.calendar.CalendarActivity" android:theme="@style/AppTheme.NoActionBar" />
+
 
         <activity android:name=".diary.photo.PhotoViewPagerActivity" android:theme="@style/AppTheme.NoActionBar" android:hardwareAccelerated="false" />
 

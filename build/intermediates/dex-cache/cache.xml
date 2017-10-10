@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_c534a09896c2708287456dd145cdd291908bd341/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="7cbc5919667f98a3353d61d5b14ef833c4929b81">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2a7eeb749bde5bbf2a98f4784aee783406e30edc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/isolatorv/.android/build-cache/3da1fc79e0dca396829c4d687fb00be520e038f8/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.0"
+        sha1="02b91f8efa91dcdf5c555ee24b7f006f02cd0f8b">
+        <dex dex="/Users/isolatorv/Desktop/WIPI/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9894a13b74798c0443b2398894f0969437e24eea/classes.dex" />
+    </item>
+
+</items>
