@@ -117,6 +117,7 @@ public class MapFragment extends Fragment implements
     private boolean hospitalWeekendOn=false;
     private boolean coffieShopOn=false;
 
+
     private OnFragmentInteractionListener listener;
 
     //floatingActionButton 정의
@@ -357,6 +358,7 @@ public class MapFragment extends Fragment implements
 
         mMoveMapByAPI = true;
         currentPositionOn=true;
+        FAB_Status = false;
         super.onStop();
         mapView.onStop();
     }
@@ -388,6 +390,7 @@ public class MapFragment extends Fragment implements
     public void onDestroy() {
         mMoveMapByAPI = true;
         currentPositionOn=true;
+        FAB_Status = false;
         super.onDestroy();
         mapView.onLowMemory();
         /*if(mOnMyListener !=null){
