@@ -2,6 +2,7 @@ package com.example.isolatorv.wipi.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 
 import com.example.isolatorv.wipi.R;
@@ -101,23 +106,42 @@ public class MapFragment extends Fragment implements
             .setInterval(UPDATE_INTERVAL_MS)
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
 
-    private OnMyListener mOnMyListener;
 
     private boolean hostpitalreday = true;
     private boolean petstoreready = false;
     List<MapData> hospitalList = null;
     List<MapData> petShopList = null;
 
-    private Object mMyData1, mMyData2, mMyData3, mMyData4;
+    private boolean hospitalOn=false;
+    private boolean petstoreOn=false;
+    private boolean hospitalWeekendOn=false;
+    private boolean coffieShopOn=false;
 
     private OnFragmentInteractionListener listener;
 
-    //Activity에 데이터 전달 인터페이스
-    /*OnMyListener*/
-    public interface OnMyListener {
-        //void onReceivedData(Object data);
-    }
-    /*OnMyListener*/
+    //floatingActionButton 정의
+    FloatingActionButton fab;
+    FloatingActionButton fab1;
+    FloatingActionButton fab2;
+    FloatingActionButton fab3;
+    FloatingActionButton fab4;
+
+    //Save the FAB's active status
+    //false -> fab = close
+    //true -> fab = open
+    private boolean FAB_Status = false;
+
+    //Animations
+    Animation show_fab_1;
+    Animation hide_fab_1;
+    Animation show_fab_2;
+    Animation hide_fab_2;
+    Animation show_fab_3;
+    Animation hide_fab_3;
+    Animation show_fab_4;
+    Animation hide_fab_4;
+
+
 
     //플래그먼트가 액티비티에 붙을때 호출
     /*onAttach*************************************************************************************/
@@ -125,9 +149,6 @@ public class MapFragment extends Fragment implements
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (getActivity() != null && getActivity() instanceof OnMyListener) {
-            mOnMyListener = (OnMyListener) getActivity();
-        }
 
         if (context instanceof FeedFragment.OnFragmentInteractionListener) {
             listener = (OnFragmentInteractionListener) context;
@@ -183,7 +204,74 @@ public class MapFragment extends Fragment implements
 
         mapView = (MapView) layout.findViewById(R.id.map);
         mapView.getMapAsync(this);
-        
+
+        //Floating Action Buttons
+        fab = (FloatingActionButton) layout.findViewById(R.id.fab);
+        fab1 = (FloatingActionButton) layout.findViewById(R.id.fab_1);
+        fab2 = (FloatingActionButton) layout.findViewById(R.id.fab_2);
+        fab3 = (FloatingActionButton) layout.findViewById(R.id.fab_3);
+        fab4 = (FloatingActionButton) layout.findViewById(R.id.fab_4);
+
+        //Animations
+        show_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_show);
+        hide_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_hide);
+        show_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_show);
+        hide_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_hide);
+        show_fab_3 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab3_show);
+        hide_fab_3 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab3_hide);
+        show_fab_4 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab4_show);
+        hide_fab_4 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab4_hide);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "병원 찾기", Toast.LENGTH_SHORT).show();
+                hospitalOn=!hospitalOn;
+                createMarker();
+            }
+        });
+
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "용품샵 찾기", Toast.LENGTH_SHORT).show();
+                petstoreOn =!petstoreOn;
+                createMarker();
+            }
+        });
+
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "주말에 오픈 하는 병원 찾기", Toast.LENGTH_SHORT).show();
+                hospitalWeekendOn = !hospitalWeekendOn;
+            }
+        });
+
+        fab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "주말에 분만 하는 병원 찾기", Toast.LENGTH_SHORT).show();
+                coffieShopOn = !coffieShopOn;
+            }
+        });
+
         return layout;
     }
     /*onCreateView*********************************************************************************/
@@ -721,7 +809,6 @@ public class MapFragment extends Fragment implements
     public void onPlacesFailure(PlacesException e) {
 
     }
-
     @Override
     public void onPlacesStart() {
 
@@ -819,7 +906,7 @@ public class MapFragment extends Fragment implements
         Log.d(TAG,"createMarker : petShopList : "+petShopList.size());
         Log.d(TAG, String.valueOf(hostpitalreday));
         Log.d(TAG, String.valueOf(petstoreready));
-        if (hospitalList.size()>0&& mMyData1.toString().trim().equals("hospitalOn") ) {
+        if (hospitalList.size()>0&& hospitalOn ) {
             Log.d(TAG,"orgArgListCreatMarker");
             Log.d(TAG, "orgArgListsize : " + hospitalList.size());
             for (int i = 0; i < hospitalList.size(); i++) {
@@ -834,7 +921,7 @@ public class MapFragment extends Fragment implements
                 mGoogleMap.addMarker(markerOptions);
             }
         }
-        if (petShopList.size()>0&&mMyData2.toString().trim().equals("shopOn")) {
+        if (petShopList.size()>0&& petstoreOn) {
             Log.d(TAG,"petShopListCreateMarker");
             Log.d(TAG, "petShopList :" + petShopList.size());
             for (int i = 0; i < petShopList.size(); i++) {
@@ -853,5 +940,74 @@ public class MapFragment extends Fragment implements
     }
     /*createMarker**************************************************************************/
 
+    private void expandFAB() {
 
+        //Floating Action Button 1
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
+        layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
+        layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.02);
+        fab1.setLayoutParams(layoutParams);
+        fab1.startAnimation(show_fab_1);
+        fab1.setClickable(true);
+
+        //Floating Action Button 2
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
+        layoutParams2.rightMargin += (int) (fab2.getWidth() * 1.3);
+        layoutParams2.bottomMargin += (int) (fab2.getHeight() * 1.0);
+        fab2.setLayoutParams(layoutParams2);
+        fab2.startAnimation(show_fab_2);
+        fab2.setClickable(true);
+
+        //Floating Action Button 3
+        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
+        layoutParams3.rightMargin += (int) (fab3.getWidth() * 0.32);
+        layoutParams3.bottomMargin += (int) (fab3.getHeight() * 1.5);
+        fab3.setLayoutParams(layoutParams3);
+        fab3.startAnimation(show_fab_3);
+        fab3.setClickable(true);
+
+        //Floating Action Button 4
+        FrameLayout.LayoutParams layoutParams4 = (FrameLayout.LayoutParams) fab4.getLayoutParams();
+        layoutParams4.rightMargin -= (int) (fab4.getWidth() * 0.8);
+        layoutParams4.bottomMargin += (int) (fab4.getHeight() * 1.6);
+        fab4.setLayoutParams(layoutParams4);
+        fab4.startAnimation(show_fab_4);
+        fab4.setClickable(true);
+    }
+
+
+    private void hideFAB() {
+
+        //Floating Action Button 1
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
+        layoutParams.rightMargin -= (int) (fab1.getWidth() * 1.7);
+        layoutParams.bottomMargin -= (int) (fab1.getHeight() * 0.02);
+        fab1.setLayoutParams(layoutParams);
+        fab1.startAnimation(hide_fab_1);
+        fab1.setClickable(false);
+
+        //Floating Action Button 2
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
+        layoutParams2.rightMargin -= (int) (fab2.getWidth() * 1.3);
+        layoutParams2.bottomMargin -= (int) (fab2.getHeight() * 1.0);
+        fab2.setLayoutParams(layoutParams2);
+        fab2.startAnimation(hide_fab_2);
+        fab2.setClickable(false);
+
+        //Floating Action Button 3
+        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
+        layoutParams3.rightMargin -= (int) (fab3.getWidth() * 0.32);
+        layoutParams3.bottomMargin -= (int) (fab3.getHeight() * 1.5);
+        fab3.setLayoutParams(layoutParams3);
+        fab3.startAnimation(hide_fab_3);
+        fab3.setClickable(false);
+
+        //Floating Action Button 4
+        FrameLayout.LayoutParams layoutParams4 = (FrameLayout.LayoutParams) fab4.getLayoutParams();
+        layoutParams4.rightMargin += (int) (fab4.getWidth() * 0.8);
+        layoutParams4.bottomMargin -= (int) (fab4.getHeight() * 1.6);
+        fab4.setLayoutParams(layoutParams4);
+        fab4.startAnimation(hide_fab_4);
+        fab4.setClickable(false);
+    }
 }
