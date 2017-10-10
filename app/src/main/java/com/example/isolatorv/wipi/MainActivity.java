@@ -26,7 +26,7 @@ import java.util.List;
 
 
 
-public class MainActivity extends BottomBarHolderActivity implements OptionFragment.OnMyListener, FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener{
+public class MainActivity extends BottomBarHolderActivity implements FeedFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener{
 
     private static final String TAG = "main_example";
 
@@ -64,45 +64,5 @@ public class MainActivity extends BottomBarHolderActivity implements OptionFragm
 
     }
 
-    @Override
-    public void onReceivedData(Object data) {
-        switch (data.toString().trim()) {
-            case "hospitalOn":
-            case "hospitalOFF":
-                obj1 = data;
-                Log.d(TAG, "main: receive " + obj1.toString().trim());
-                break;
-            case "shopOn":
-            case "shopOFF":
-                obj2 = data;
-                Log.d(TAG, "main: receive " + obj2.toString().trim());
-                break;
-            default:
-                break;
-        }
-    }
-
-    public Object getData1(){
-        if(obj1==null){
-            obj1="nodata";
-            Log.d(TAG,"main: send"+obj1.toString().trim());
-            return obj1;
-        }else
-        {
-            Log.d(TAG,"main: send"+obj1.toString().trim());
-            return obj1;
-        }
-
-    }
-    public Object getData2(){
-        if(obj2==null){
-            obj2="nodata";
-            Log.d(TAG,"main: send"+obj2.toString().trim());
-            return obj2;
-        }else{
-            Log.d(TAG,"main: send"+obj2.toString().trim());
-            return obj2;
-        }
-    }
 
 }

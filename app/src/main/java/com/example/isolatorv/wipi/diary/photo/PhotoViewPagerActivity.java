@@ -1,12 +1,12 @@
 package com.example.isolatorv.wipi.diary.photo;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +18,6 @@ import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 import com.example.isolatorv.wipi.diary.diaries.DiaryDao;
 import com.example.isolatorv.wipi.diary.diaries.DiaryDto;
 import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
-import com.example.isolatorv.wipi.diary.photo.HackyViewPager;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.ButterKnife;

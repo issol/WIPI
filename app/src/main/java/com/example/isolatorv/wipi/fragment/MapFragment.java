@@ -115,7 +115,7 @@ public class MapFragment extends Fragment implements
     //Activity에 데이터 전달 인터페이스
     /*OnMyListener*/
     public interface OnMyListener {
-        void onReceivedData(Object data);
+        //void onReceivedData(Object data);
     }
     /*OnMyListener*/
 
@@ -183,16 +183,7 @@ public class MapFragment extends Fragment implements
 
         mapView = (MapView) layout.findViewById(R.id.map);
         mapView.getMapAsync(this);
-
-        if (getActivity() != null && getActivity() instanceof MainActivity) {
-
-            mMyData1 = ((MainActivity) getActivity()).getData1();
-            Log.d(TAG, "map: " + mMyData1.toString().trim());
-
-            mMyData2 = ((MainActivity) getActivity()).getData2();
-            Log.d(TAG, "map: " + mMyData2.toString().trim());
-
-        }
+        
         return layout;
     }
     /*onCreateView*********************************************************************************/

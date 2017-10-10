@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.isolatorv.wipi.diary.Utils.CommonUtils;
 
-
 public class EasyDiaryActivity extends AppCompatActivity {
 
     @Override
