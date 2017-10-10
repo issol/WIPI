@@ -730,7 +730,6 @@ public class MapFragment extends Fragment implements
     public void onPlacesFailure(PlacesException e) {
 
     }
-
     @Override
     public void onPlacesStart() {
 
