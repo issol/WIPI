@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import com.example.isolatorv.wipi.MainActivity;
 import com.example.isolatorv.wipi.R;
 
 import org.json.JSONException;
@@ -138,7 +139,9 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
                     editor.putString(Constants.NAME,resp.getUser().getName());
                     editor.putString(Constants.UNIQUE_ID,resp.getUser().getUnique_id());
                     editor.apply();
-                    goToProfile();
+                    Intent intent =  new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
 
                 }
                 progress.setVisibility(View.INVISIBLE);
