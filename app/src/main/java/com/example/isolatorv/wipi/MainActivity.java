@@ -64,7 +64,6 @@ public class MainActivity extends BottomBarHolderActivity implements OptionFragm
     @Override
     public void onResume(){
         super.onResume();
-
     }
 
     @Override
