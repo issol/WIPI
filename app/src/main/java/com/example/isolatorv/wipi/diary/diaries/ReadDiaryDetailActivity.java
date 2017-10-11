@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
@@ -31,7 +30,7 @@ import com.example.isolatorv.wipi.diary.Utils.DateUtils;
 import com.example.isolatorv.wipi.diary.Utils.DialogUtils;
 import com.example.isolatorv.wipi.diary.Utils.EasyDiaryUtils;
 import com.example.isolatorv.wipi.diary.Utils.FontUtils;
-
+import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
 import com.example.isolatorv.wipi.diary.photo.PhotoViewPagerActivity;
 
 import org.apache.commons.lang3.StringUtils;
@@ -45,7 +44,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class ReadDiaryDetailActivity extends AppCompatActivity {
+public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
     private long mCurrentTimeMillis;
 

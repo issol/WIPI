@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -33,7 +32,7 @@ import com.example.isolatorv.wipi.diary.Utils.DialogUtils;
 import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 import com.example.isolatorv.wipi.diary.Utils.PermissionUtils;
 import com.example.isolatorv.wipi.diary.helper.DiaryConstants;
-
+import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -52,7 +51,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.RealmList;
 
-public class UpdateDiaryActivity extends AppCompatActivity {
+public class UpdateDiaryActivity extends EasyDiaryActivity {
 
     private long mCurrentTimeMillis;
     private int mSequence;

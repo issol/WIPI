@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -36,7 +35,7 @@ import com.example.isolatorv.wipi.diary.Utils.DialogUtils;
 import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 import com.example.isolatorv.wipi.diary.Utils.PermissionUtils;
 import com.example.isolatorv.wipi.diary.helper.DiaryConstants;
-
+import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -54,7 +53,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.RealmList;
 
-public class CreateDiaryActivity extends AppCompatActivity {
+public class CreateDiaryActivity extends EasyDiaryActivity {
 
     private final int REQUEST_CODE_SPEECH_INPUT = 100;
     private long mCurrentTimeMillis;
