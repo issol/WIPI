@@ -33,7 +33,7 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
 
     private static final String TAG = "main_example";
 
-    private Object obj1,obj2;
+
 
     List<NavigationPage> navigationPages = new ArrayList<>();
 

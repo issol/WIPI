@@ -1,5 +1,7 @@
 package com.example.isolatorv.wipi.fragment;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -54,6 +56,15 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,8 +120,10 @@ public class MapFragment extends Fragment implements
 
     private boolean hostpitalreday = true;
     private boolean petstoreready = false;
+
     List<MapData> hospitalList = null;
     List<MapData> petShopList = null;
+    List<MapData> hostpitalholiday=null;
 
     private boolean hospitalOn=false;
     private boolean petstoreOn=false;
@@ -142,8 +155,14 @@ public class MapFragment extends Fragment implements
     Animation show_fab_4;
     Animation hide_fab_4;
 
+    private static final String TAG_JSON="result";
+    private static final String TAG_RATITUDE = "Lat";
+    private static final String TAG_RONGTITUDE = "Long";
+    private static final String TAG_ADDRESS ="Address";
+    private static final String TAG_POST = "Post";
+    private static final String TAG_NAME = "Name";
 
-
+    String mJsonString;
     //플래그먼트가 액티비티에 붙을때 호출
     /*onAttach*************************************************************************************/
     @Override
@@ -194,7 +213,7 @@ public class MapFragment extends Fragment implements
         previous_marker = new ArrayList<Marker>();
         if(hospitalList==null)hospitalList = new ArrayList<MapData>();
         if(petShopList==null)petShopList = new ArrayList<MapData>();
-
+        if(hostpitalholiday==null)hostpitalholiday = new ArrayList<MapData>();
         Log.d(TAG, "onCreateView");
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
@@ -206,14 +225,14 @@ public class MapFragment extends Fragment implements
         mapView = (MapView) layout.findViewById(R.id.map);
         mapView.getMapAsync(this);
 
-        //Floating Action Buttons
+        //하단 큰버튼 작은 버튼 정의
         fab = (FloatingActionButton) layout.findViewById(R.id.fab);
         fab1 = (FloatingActionButton) layout.findViewById(R.id.fab_1);
         fab2 = (FloatingActionButton) layout.findViewById(R.id.fab_2);
         fab3 = (FloatingActionButton) layout.findViewById(R.id.fab_3);
         fab4 = (FloatingActionButton) layout.findViewById(R.id.fab_4);
 
-        //Animations
+        //애니메이션 정의
         show_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_show);
         hide_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_hide);
         show_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_show);
@@ -239,6 +258,8 @@ public class MapFragment extends Fragment implements
             }
         });
 
+        //하단 버튼 이벤트
+        /*fab event*******************************************************************************/
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,6 +283,7 @@ public class MapFragment extends Fragment implements
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "주말에 오픈 하는 병원 찾기", Toast.LENGTH_SHORT).show();
                 hospitalWeekendOn = !hospitalWeekendOn;
+                createMarker();
             }
         });
 
@@ -272,6 +294,9 @@ public class MapFragment extends Fragment implements
                 coffieShopOn = !coffieShopOn;
             }
         });
+
+        GetData task = new GetData();
+        task.execute("http://13.229.34.115/PHPTEST1.php");
 
         return layout;
     }
@@ -835,12 +860,10 @@ public class MapFragment extends Fragment implements
                     for (noman.googleplaces.Place place : places) {
                         if (hostpitalreday) {
                             hospitalList.add(new MapData(place.getName(), place.getLatitude(), place.getLongitude(), place.getVicinity()));
-                            Log.d(TAG, "orgArgList name : " + hospitalList.get(i).getName());
                             i++;
                         }
                         if (petstoreready) {
                             petShopList.add(new MapData(place.getName(), place.getLatitude(), place.getLongitude(), place.getVicinity()));
-                            Log.d(TAG, "petShopList name : " + petShopList.get(k).getName());
                             k++;
                         }
                     }
@@ -865,7 +888,7 @@ public class MapFragment extends Fragment implements
                     .key("AIzaSyCWZjDQSkXD5jzLn4QGOPBmBix9gztod68")
                     .latlng(location.latitude, location.longitude)//현재 위치
                     .radius(3000) //3K미터 내에서 검색
-                    .type(PlaceType.PET_STORE) //동물병원
+                    .type(PlaceType.PET_STORE) //펫샵
                     .build()
                     .execute();
             Log.d(TAG,"showPlaceInformation: petstore");
@@ -886,6 +909,7 @@ public class MapFragment extends Fragment implements
     }
     /*showPlaceInformation**************************************************************************/
 
+    //구글 장소가 끝난뒤
     /*onPlacesFinished**************************************************************************/
     @Override
     public void onPlacesFinished() {
@@ -902,6 +926,7 @@ public class MapFragment extends Fragment implements
     }
     /*onPlacesFinished**************************************************************************/
 
+    //마크 찍기
     /*createMarker**************************************************************************/
     public void createMarker() {
         mGoogleMap.clear();
@@ -910,8 +935,8 @@ public class MapFragment extends Fragment implements
         Log.d(TAG, String.valueOf(hostpitalreday));
         Log.d(TAG, String.valueOf(petstoreready));
         if (hospitalList.size()>0&& hospitalOn ) {
-            Log.d(TAG,"orgArgListCreatMarker");
-            Log.d(TAG, "orgArgListsize : " + hospitalList.size());
+            Log.d(TAG,"hospitalListMarker");
+            Log.d(TAG, "hospitalListListsize : " + hospitalList.size());
             for (int i = 0; i < hospitalList.size(); i++) {
                 LatLng latLng
                         = new LatLng(hospitalList.get(i).getLatitude()
@@ -940,9 +965,28 @@ public class MapFragment extends Fragment implements
                 mGoogleMap.addMarker(markerOptions);
             }
         }
-    }
-    /*createMarker**************************************************************************/
 
+        if (hostpitalholiday.size() > 0&&hospitalWeekendOn) {
+            Log.d(TAG, "hostpitalholidayCreateMarker");
+            Log.d(TAG, "hostpitalholiday :" + petShopList.size());
+            for (int i = 0; i < hostpitalholiday.size(); i++) {
+                LatLng latLng
+                        = new LatLng(hostpitalholiday.get(i).getLatitude()
+                        , hostpitalholiday.get(i).getLongtitude());
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title(hostpitalholiday.get(i).getName());
+                markerOptions.snippet(hostpitalholiday.get(i).getsinpat());
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+                mGoogleMap.addMarker(markerOptions);
+            }
+        }
+    }
+    /*createMarker*********************************************************************************/
+
+    //맵 하단 오른쪽 버튼 나타내기 매서드
+    /*expandFAB************************************************************************************/
     private void expandFAB() {
 
         //Floating Action Button 1
@@ -977,8 +1021,10 @@ public class MapFragment extends Fragment implements
         fab4.startAnimation(show_fab_4);
         fab4.setClickable(true);
     }
+    /*expandFAB************************************************************************************/
 
-
+    //맵 하단 오른쪽 버튼 숨기기 매서드
+    /*hideFAB***************************************************************************************/
     private void hideFAB() {
 
         //Floating Action Button 1
@@ -1012,5 +1058,125 @@ public class MapFragment extends Fragment implements
         fab4.setLayoutParams(layoutParams4);
         fab4.startAnimation(hide_fab_4);
         fab4.setClickable(false);
+    }
+    /*hideFAB***************************************************************************************/
+
+    private class GetData extends AsyncTask<String,Void,String> {
+        ProgressDialog progressDialog;
+        String errorString =null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(getActivity(),"Please Wait",null,true,true);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+
+            Log.d(TAG, "response  - " + result);
+
+            if (result == null){
+
+                Log.d(TAG,errorString);
+            }
+            else {
+
+                mJsonString = result;
+                showResult();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.connect();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+
+                bufferedReader.close();
+
+
+                return sb.toString().trim();
+
+
+            } catch (Exception e) {
+
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
+
+    }
+    private void showResult() {
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString);
+            JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject item = jsonArray.getJSONObject(i);
+
+
+                String name = item.getString(TAG_NAME);
+                String latitude = item.getString(TAG_RATITUDE);
+                String longtitude = item.getString(TAG_RONGTITUDE);
+                String address = item.getString(TAG_ADDRESS);
+                String post = item.getString(TAG_POST);
+
+                Log.d(TAG,"DB_name"+name);
+                Log.d(TAG,"DB_lati"+latitude);
+                Log.d(TAG,"DB_longti"+longtitude);
+                Log.d(TAG,"DB_address"+address);
+                Log.d(TAG,"DB_post"+post);
+
+                double latitude_d =Double.parseDouble(latitude);
+                double logntitude_d=Double.parseDouble(longtitude);
+                int post_i = Integer.parseInt(post);
+                hostpitalholiday.add(new MapData(name, latitude_d, logntitude_d, address,post_i));
+            }
+        } catch (JSONException e) {
+
+            Log.d(TAG, "showResult : ", e);
+        }
     }
 }
