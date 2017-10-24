@@ -79,7 +79,7 @@ import static android.content.Context.LOCATION_SERVICE;
 
 /* 작성자 : 나신의
  * 최초 작성일자 :17/08/14
- * 마지막 수정일자 : 17/08/21
+ * 마지막 수정일자 : 17/10/24
  * 플래그 먼트 클래스 맵을 띄우고 동물병원을 찾아 맵에 찍음
  */
 
@@ -124,6 +124,7 @@ public class MapFragment extends Fragment implements
     List<MapData> hospitalList = null;
     List<MapData> petShopList = null;
     List<MapData> hostpitalholiday=null;
+    List<MapData> cafeList = null;
 
     private boolean hospitalOn=false;
     private boolean petstoreOn=false;
@@ -156,13 +157,17 @@ public class MapFragment extends Fragment implements
     Animation hide_fab_4;
 
     private static final String TAG_JSON="result";
+    private static final String TAG_INDEX="Index";
     private static final String TAG_RATITUDE = "Lat";
     private static final String TAG_RONGTITUDE = "Long";
     private static final String TAG_ADDRESS ="Address";
     private static final String TAG_POST = "Post";
     private static final String TAG_NAME = "Name";
 
+
+
     String mJsonString;
+
     //플래그먼트가 액티비티에 붙을때 호출
     /*onAttach*************************************************************************************/
     @Override
@@ -214,6 +219,8 @@ public class MapFragment extends Fragment implements
         if(hospitalList==null)hospitalList = new ArrayList<MapData>();
         if(petShopList==null)petShopList = new ArrayList<MapData>();
         if(hostpitalholiday==null)hostpitalholiday = new ArrayList<MapData>();
+        if(cafeList==null)cafeList = new ArrayList<MapData>();
+
         Log.d(TAG, "onCreateView");
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
@@ -292,12 +299,12 @@ public class MapFragment extends Fragment implements
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "주말에 분만 하는 병원 찾기", Toast.LENGTH_SHORT).show();
                 coffieShopOn = !coffieShopOn;
+                createMarker();
             }
         });
 
         GetData task = new GetData();
         task.execute("http://13.229.34.115/PHPTEST1.php");
-
         return layout;
     }
     /*onCreateView*********************************************************************************/
@@ -362,6 +369,7 @@ public class MapFragment extends Fragment implements
     public void onPause() {
         super.onPause();
         mapView.onPause();
+        FAB_Status = false;
     }
     /*onPause**************************************************************************************/
 
@@ -404,6 +412,8 @@ public class MapFragment extends Fragment implements
     public void onLowMemory() {
         mMoveMapByAPI = true;
         currentPositionOn=true;
+        FAB_Status = false;
+
         super.onLowMemory();
         mapView.onLowMemory();
     }
@@ -854,17 +864,14 @@ public class MapFragment extends Fragment implements
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    int i = 0;
-                    int k=0;
+
 
                     for (noman.googleplaces.Place place : places) {
                         if (hostpitalreday) {
                             hospitalList.add(new MapData(place.getName(), place.getLatitude(), place.getLongitude(), place.getVicinity()));
-                            i++;
                         }
                         if (petstoreready) {
                             petShopList.add(new MapData(place.getName(), place.getLatitude(), place.getLongitude(), place.getVicinity()));
-                            k++;
                         }
                     }
                 }
@@ -879,7 +886,7 @@ public class MapFragment extends Fragment implements
     /*onPlacesSuccess******************************************************************************/
 
     //구글맵에 장소를 찍는 매서드
-    /*showPlaceInformation**************************************************************************/
+    /*showPlaceInformation*************************************************************************/
     public void showPlaceInformation(LatLng location) {
 
         if(petstoreready){
@@ -907,33 +914,34 @@ public class MapFragment extends Fragment implements
         }
 
     }
-    /*showPlaceInformation**************************************************************************/
+    /*showPlaceInformation*************************************************************************/
 
     //구글 장소가 끝난뒤
-    /*onPlacesFinished**************************************************************************/
+    /*onPlacesFinished*****************************************************************************/
     @Override
     public void onPlacesFinished() {
         if(hostpitalreday&&hospitalList!=null){
             hostpitalreday=false;
-            Log.d(TAG,"onPlacesFinhished-orgArgListSize : "+hospitalList.size());
+            Log.d(TAG,"onPlacesFinhished-hospitalListSize : "+hospitalList.size());
             petstoreready =true;
 
         }
         if(petstoreready&&petShopList.size()>0){
-            Log.d(TAG,"onPlacesFinhished-orgArgListSize : "+petShopList.size());
+            Log.d(TAG,"onPlacesFinhished-petShopListSize : "+petShopList.size());
             petstoreready =false;
         }
+        Log.d(TAG,"onPlacesFinhished-hostpitalholidayListSize : "+hostpitalholiday.size());
+        Log.d(TAG,"onPlacesFinhished-CafeListSize : "+cafeList.size());
     }
-    /*onPlacesFinished**************************************************************************/
+    /*onPlacesFinished*****************************************************************************/
 
     //마크 찍기
-    /*createMarker**************************************************************************/
+    /*createMarker*********************************************************************************/
     public void createMarker() {
         mGoogleMap.clear();
         Log.d(TAG,"createMarker : hostpitalListsize : "+hospitalList.size());
-        Log.d(TAG,"createMarker : petShopList : "+petShopList.size());
-        Log.d(TAG, String.valueOf(hostpitalreday));
-        Log.d(TAG, String.valueOf(petstoreready));
+        Log.d(TAG,"createMarker : petShopListsize : "+petShopList.size());
+        Log.d(TAG,"createMarker : hostpitalholidayListsize : "+hostpitalholiday.size());
         if (hospitalList.size()>0&& hospitalOn ) {
             Log.d(TAG,"hospitalListMarker");
             Log.d(TAG, "hospitalListListsize : " + hospitalList.size());
@@ -979,6 +987,23 @@ public class MapFragment extends Fragment implements
                 markerOptions.title(hostpitalholiday.get(i).getName());
                 markerOptions.snippet(hostpitalholiday.get(i).getsinpat());
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
+                mGoogleMap.addMarker(markerOptions);
+            }
+        }
+
+        if (cafeList.size() > 0&& coffieShopOn) {
+            Log.d(TAG, "cafeListCreateMarker");
+            Log.d(TAG, " cafeList :" + cafeList.size());
+            for (int i = 0; i < cafeList.size(); i++) {
+                LatLng latLng
+                        = new LatLng(cafeList.get(i).getLatitude()
+                        , cafeList.get(i).getLongtitude());
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title(cafeList.get(i).getName());
+                markerOptions.snippet(cafeList.get(i).getsinpat());
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 mGoogleMap.addMarker(markerOptions);
             }
         }
@@ -1061,6 +1086,8 @@ public class MapFragment extends Fragment implements
     }
     /*hideFAB***************************************************************************************/
 
+    //PHP접속하는 이너 클래스
+    /*GetData***************************************************************************************/
     private class GetData extends AsyncTask<String,Void,String> {
         ProgressDialog progressDialog;
         String errorString =null;
@@ -1087,6 +1114,7 @@ public class MapFragment extends Fragment implements
 
                 mJsonString = result;
                 showResult();
+
             }
         }
 
@@ -1151,32 +1179,30 @@ public class MapFragment extends Fragment implements
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
-
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject item = jsonArray.getJSONObject(i);
 
-
+                String index = item.getString(TAG_INDEX);
                 String name = item.getString(TAG_NAME);
-                String latitude = item.getString(TAG_RATITUDE);
-                String longtitude = item.getString(TAG_RONGTITUDE);
+                String latitude1 = item.getString(TAG_RATITUDE);
+                String longtitude1 = item.getString(TAG_RONGTITUDE);
                 String address = item.getString(TAG_ADDRESS);
-                String post = item.getString(TAG_POST);
+                String post1 = item.getString(TAG_POST);
 
-                Log.d(TAG,"DB_name"+name);
-                Log.d(TAG,"DB_lati"+latitude);
-                Log.d(TAG,"DB_longti"+longtitude);
-                Log.d(TAG,"DB_address"+address);
-                Log.d(TAG,"DB_post"+post);
+                int index_i = Integer.parseInt(index);
+                double latitude_d = Double.parseDouble(latitude1);
+                double logntitude_d = Double.parseDouble(longtitude1);
+                int post_i = Integer.parseInt(post1);
 
-                double latitude_d =Double.parseDouble(latitude);
-                double logntitude_d=Double.parseDouble(longtitude);
-                int post_i = Integer.parseInt(post);
-                hostpitalholiday.add(new MapData(name, latitude_d, logntitude_d, address,post_i));
+                if(index_i==1) hostpitalholiday.add(new MapData(name, latitude_d, logntitude_d, address, post_i));
+                else if(index_i==2) cafeList.add(new MapData(name,latitude_d,logntitude_d,address,post_i));
             }
         } catch (JSONException e) {
 
             Log.d(TAG, "showResult : ", e);
         }
     }
+    /*GetData***************************************************************************************/
+
 }

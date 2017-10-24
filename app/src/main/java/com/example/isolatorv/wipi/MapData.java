@@ -5,6 +5,7 @@ package com.example.isolatorv.wipi;
  */
 
 public class MapData {
+
     private String name = null;
     private double Latitude = 0.0;
     private double Longtitude = 0.0;

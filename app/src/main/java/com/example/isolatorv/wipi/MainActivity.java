@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import android.support.v4.content.ContextCompat;
 
-import android.util.Log;
 import android.widget.Toast;
 
 
@@ -42,10 +41,10 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
         super.onCreate(savedInstanceState);
 
 
-        NavigationPage page1 = new NavigationPage("Home", ContextCompat.getDrawable(this, R.drawable.ic_feed_black_18dp), FeedFragment.newInstance());
-        NavigationPage page2 = new NavigationPage("Support", ContextCompat.getDrawable(this, R.drawable.ic_location_black_18dp), MapFragment.newInstance());
-        NavigationPage page3 = new NavigationPage("Billing", ContextCompat.getDrawable(this, R.drawable.ic_diary_black_18dp), DiaryFragment.newInstance());
-        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_settings_black_18dp), OptionFragment.newInstance());
+        NavigationPage page1 = new NavigationPage("Feed", ContextCompat.getDrawable(this, R.drawable.ic_pet_food), FeedFragment.newInstance());
+        NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.ic_map_location), MapFragment.newInstance());
+        NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.ic_diary_2), DiaryFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_users), OptionFragment.newInstance());
 
 
         navigationPages.add(page1);
