@@ -91,7 +91,7 @@ public class FeedFragment extends Fragment {
         ListView mMessageListview = (ListView) layout.findViewById(R.id.message_listview);
         Button sendButton = (Button) layout.findViewById(R.id.send_button);
 
-        /*sendButton.setOnClickListener(new View.OnClickListener(){
+        sendButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 String sendMessage = mInputEditText.getText().toString();
@@ -110,7 +110,7 @@ public class FeedFragment extends Fragment {
         mConversationArrayAdapter = new ArrayAdapter<>( getActivity(), android.R.layout.simple_list_item_1 );
         mMessageListview.setAdapter(mConversationArrayAdapter);
 
-        new Thread(new ConnectThread("192.168.0.9", 80)).start();
+        new Thread(new ConnectThread("192.168.0.2", 80)).start();
 
         return layout;
     }
@@ -291,9 +291,9 @@ public class FeedFragment extends Fragment {
             }
         });
         builder.create().show();
-    }*/
-        return layout;
     }
 
-
 }
+
+
+

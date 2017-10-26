@@ -6,8 +6,11 @@ import android.os.Bundle;
 
 import android.support.v4.content.ContextCompat;
 
+<<<<<<< HEAD
 
 import android.util.Log;
+=======
+>>>>>>> 68146f5a93bad4c8665d3ef33a3be65af55a1466
 import android.widget.Toast;
 
 
@@ -34,6 +37,7 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
 
     private static final String TAG = "main_example";
 
+<<<<<<< HEAD
     private Object obj1,obj2;
     private String userName;
     private String userEmail;
@@ -42,6 +46,8 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
     private String petAge;
     private int sno;
     private String unique_id;
+=======
+>>>>>>> 68146f5a93bad4c8665d3ef33a3be65af55a1466
 
 
     List<NavigationPage> navigationPages = new ArrayList<>();
