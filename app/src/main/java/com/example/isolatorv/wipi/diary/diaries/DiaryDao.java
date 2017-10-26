@@ -5,12 +5,19 @@ import com.example.isolatorv.wipi.diary.helper.DiaryMigration;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 import io.realm.Sort;
+
+
+/**
+ * Created by CHO HANJOONG on 2017-03-16.
+ */
 
 public class DiaryDao {
     private static RealmConfiguration diaryConfig;
@@ -29,10 +36,8 @@ public class DiaryDao {
 
         }
         final Realm diaryRealm = Realm.getInstance(diaryConfig);
-
         return diaryRealm;
     }
-
 
     public static void createDiary(final long currentTimeMillis, final String title, final String contents) {
         getRealmInstance().executeTransaction(new Realm.Transaction() {
@@ -110,5 +115,4 @@ public class DiaryDao {
             realm.commitTransaction();
         }
     }
-
 }

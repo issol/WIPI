@@ -10,6 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,6 +24,7 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
+
 
 
         <LinearLayout
@@ -62,19 +64,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <LinearLayout
-                        android:id="@+id/photoContainer"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-                                <ImageView
-                                android:id="@+id/photoView"
-                                android:background="@drawable/bg_card_01"
+
+                        <ImageView
+                                android:id="@+id/photoPicker"
+                                android:background="@drawable/click_effect_01"
                                 android:src="@drawable/image_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
-                        </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -135,6 +132,20 @@
                 </LinearLayout>
 
             </ScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <LinearLayout
+                    android:id="@+id/photoContainer"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
 
         </LinearLayout>
 

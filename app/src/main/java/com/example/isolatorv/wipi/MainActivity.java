@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import android.support.v4.content.ContextCompat;
 
+
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,7 +16,7 @@ import com.example.isolatorv.wipi.adapter.NavigationPage;
 import com.example.isolatorv.wipi.fragment.DiaryFragment;
 import com.example.isolatorv.wipi.fragment.FeedFragment;
 import com.example.isolatorv.wipi.fragment.MapFragment;
-import com.example.isolatorv.wipi.fragment.OptionFragment;
+import com.example.isolatorv.wipi.fragment.MyProfileFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,18 +35,36 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
     private static final String TAG = "main_example";
 
     private Object obj1,obj2;
+    private String userName;
+    private String userEmail;
+    private String petName;
+    private String petType;
+    private String petAge;
+    private int sno;
+    private String unique_id;
+
 
     List<NavigationPage> navigationPages = new ArrayList<>();
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+        ProfileData profile = extras.getParcelable("userInfo");
+        sno = profile.getSno();
+        userName= profile.getUserName();
+        userEmail = profile.getUserEmail();
+        unique_id = profile.getUniqueID();
+        petName = profile.getP_name();
+        petType = profile.getP_type();
+        petAge = profile.getP_age();
+
 
 
         NavigationPage page1 = new NavigationPage("Feed", ContextCompat.getDrawable(this, R.drawable.ic_pet_food), FeedFragment.newInstance());
         NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.ic_map_location), MapFragment.newInstance());
         NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.ic_diary_2), DiaryFragment.newInstance());
-        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_users), OptionFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_users), MyProfileFragment.newInstance());
 
 
         navigationPages.add(page1);
@@ -53,7 +72,7 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
         navigationPages.add(page3);
         navigationPages.add(page4);
 
-        super.setUpBottomBarHolderActivity(navigationPages);
+        super.setUpBottomBarHolderActivity(navigationPages, sno, userName, userEmail,unique_id );
     }
 
     @Override
@@ -65,6 +84,8 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
     public void onResume(){
         super.onResume();
     }
+
+
 
 
 }

@@ -2,10 +2,18 @@ package com.example.isolatorv.wipi.diary.diaries;
 
 import com.example.isolatorv.wipi.diary.Utils.DateUtils;
 
+import java.util.Date;
+import java.util.List;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
+
+
+/**
+ * Created by CHO HANJOONG on 2017-03-16.
+ */
 
 public class DiaryDto extends RealmObject {
 
