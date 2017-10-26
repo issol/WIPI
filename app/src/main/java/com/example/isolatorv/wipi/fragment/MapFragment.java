@@ -164,10 +164,16 @@ public class MapFragment extends Fragment implements
     private static final String TAG_POST = "Post";
     private static final String TAG_NAME = "Name";
 
-
+    private static final String TAG_JSON2="result2";
+    private static final String TAG_INDEX2="EX";
+    private static final String TAG_RATITUDE2 = "Lat";
+    private static final String TAG_RONGTITUDE2 = "Long";
+    private static final String TAG_ADDRESS2 ="Address";
+    private static final String TAG_POST2 = "Post";
+    private static final String TAG_NAME2 = "Name";
 
     String mJsonString;
-
+    String mJsonString2;
     //플래그먼트가 액티비티에 붙을때 호출
     /*onAttach*************************************************************************************/
     @Override
@@ -304,7 +310,10 @@ public class MapFragment extends Fragment implements
         });
 
         GetData task = new GetData();
-        task.execute("http://13.229.34.115/PHPTEST1.php");
+        task.execute("http://13.229.34.115/AndroidPHP.php");
+
+        GetData2 task2 = new GetData2();
+        task2.execute("http://13.229.34.115/ArduinoPHP.php");
         return layout;
     }
     /*onCreateView*********************************************************************************/
@@ -1087,6 +1096,7 @@ public class MapFragment extends Fragment implements
     /*hideFAB***************************************************************************************/
 
     //PHP접속하는 이너 클래스
+    //24시 동물병원,동물을데리고 들어갈수 있는 커피숍을 가져온다
     /*GetData***************************************************************************************/
     private class GetData extends AsyncTask<String,Void,String> {
         ProgressDialog progressDialog;
@@ -1205,4 +1215,113 @@ public class MapFragment extends Fragment implements
     }
     /*GetData***************************************************************************************/
 
+    //PHP접속하는 이너 클래스
+    //동물의 위치를 가져온다.
+    /*GetData2***************************************************************************************/
+    private class GetData2 extends AsyncTask<String,Void,String> {
+        ProgressDialog progressDialog;
+        String errorString =null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(getActivity(),"Please Wait",null,true,true);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+
+            Log.d(TAG, "response  - " + result);
+
+            if (result == null){
+
+                Log.d(TAG,errorString);
+            }
+            else {
+
+                mJsonString2 = result;
+                showResult2();
+
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.connect();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+
+                bufferedReader.close();
+
+
+                return sb.toString().trim();
+
+
+            } catch (Exception e) {
+
+                Log.d(TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
+
+    }
+    private void showResult2() {
+        try {
+            JSONObject jsonObject = new JSONObject(mJsonString2);
+            JSONArray jsonArray2 = jsonObject.getJSONArray(TAG_JSON2);
+            for (int i = 0; i < jsonArray2.length(); i++) {
+
+                JSONObject item = jsonArray2.getJSONObject(i);
+
+                String index = item.getString(TAG_INDEX2);
+
+                Log.d(TAG,"showResult2 : "+index);
+
+            }
+        } catch (JSONException e) {
+
+            Log.d(TAG, "showResult2 : ", e);
+        }
+    }
+    /*GetData2***************************************************************************************/
 }
