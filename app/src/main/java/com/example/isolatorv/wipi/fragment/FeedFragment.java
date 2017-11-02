@@ -110,7 +110,7 @@ public class FeedFragment extends Fragment {
         mConversationArrayAdapter = new ArrayAdapter<>( getActivity(), android.R.layout.simple_list_item_1 );
         mMessageListview.setAdapter(mConversationArrayAdapter);
 
-        new Thread(new ConnectThread("192.168.0.7", 80)).start();
+        new Thread(new ConnectThread("192.168.0.13", 80)).start();
 
         return layout;
     }

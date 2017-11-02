@@ -8,18 +8,21 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.isolatorv.wipi.CircleImageView;
 import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.adapter.ListViewAdapter;
 import com.example.isolatorv.wipi.login.Constants;
 import com.example.isolatorv.wipi.login.JoinActivity;
 import com.example.isolatorv.wipi.login.RegisterPet;
@@ -59,6 +62,8 @@ public class MyProfileFragment extends Fragment {
     private String petImage;
     private int sno;
     private String unique_id;
+    private ListView listView;
+    private ListViewAdapter adapter;
     ImageView viewPetImage;
     private Button logoutBtn;
 
@@ -90,20 +95,15 @@ public class MyProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_my_profile,container,false);
 
-        viewName = (TextView)layout.findViewById(R.id.my_name);
-        viewEmail = (TextView)layout.findViewById(R.id.my_email);
-        viewSno = (TextView) layout.findViewById(R.id.sno);
-
-        viewPetName = (TextView)layout.findViewById(R.id.pp_name);
-        viewPetType = (TextView)layout.findViewById(R.id.pp_type);
-        viewPetAge = (TextView)layout.findViewById(R.id.pp_age);
 
         logoutBtn = (Button) layout.findViewById(R.id.logoutBtn);
 
         viewPetImage = (ImageView) layout.findViewById(R.id.pet_image);
-        viewName.setText(userName);
-        viewEmail.setText(userEmail);
-        viewSno.setText(String.valueOf(sno));
+
+
+
+        listView = (ListView)layout.findViewById(R.id.listview1);
+
 
         pref= getActivity().getSharedPreferences("WIPI",0);
 
@@ -214,37 +214,18 @@ public class MyProfileFragment extends Fragment {
                         petAge = item.getString("pet_age");
                         petImage = item.getString("pet_image");
 
+                        adapter = new ListViewAdapter(getActivity());
+
+
+                        adapter.addItem(petImage,petName, petType,"male",petAge, "small");
+                        listView.setAdapter(adapter);
                         Log.d("TAG", petName);
                         Log.d("TAG", petType);
                         Log.d("TAG", petAge);
-                        viewPetName.setText(petName);
-                        viewPetType.setText(petType);
-                        viewPetAge.setText(petAge);
 
-                        if(pref.getBoolean(Constants.IS_LOGGED_IN, false)){
-                            Glide.with(getActivity())
-                                    .load(petImage)
-                                    .centerCrop()
-                                    .crossFade()
-                                    .bitmapTransform(new CropCircleTransformation(getActivity()))
-                                    .override(90,90)
-                                    .placeholder(R.drawable.edit)
-                                    .into(viewPetImage);
 
-                        }
-                        else{
-                            Glide.with(getActivity())
-                                    .load(petImage)
-                                    .centerCrop()
-                                    .crossFade()
-                                    .bitmapTransform(new CropCircleTransformation(getActivity()))
-                                    .override(90,90)
-                                    .placeholder(R.drawable.edit)
-                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                    .skipMemoryCache(true)
-                                    .into(viewPetImage);
 
-                        }
+
 
 
                         break;

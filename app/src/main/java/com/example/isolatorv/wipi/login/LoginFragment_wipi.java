@@ -201,6 +201,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
                         intent.putExtra("userInfo", profile);
 
                         startActivity(intent);
+                        getActivity().finish();
 
                     }else if(isLogined == 0){
                         ProfileData profile = new ProfileData(resp.getUser().getName(),resp.getUser().getEmail(),resp.getUser().getUnique_id());
@@ -208,6 +209,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
                         intent.putExtra("userInfo", profile);
 
                         startActivity(intent);
+                        getActivity().finish();
                     }
 
 
