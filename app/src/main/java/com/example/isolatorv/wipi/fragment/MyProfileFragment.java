@@ -105,6 +105,8 @@ public class MyProfileFragment extends Fragment {
         viewEmail.setText(userEmail);
         viewSno.setText(String.valueOf(sno));
 
+        pref= getActivity().getSharedPreferences("WIPI",0);
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -219,16 +221,31 @@ public class MyProfileFragment extends Fragment {
                         viewPetType.setText(petType);
                         viewPetAge.setText(petAge);
 
-                        Glide.with(getActivity())
-                                .load(petImage)
-                                .centerCrop()
-                                .crossFade()
-                                .bitmapTransform(new CropCircleTransformation(getActivity()))
-                                .override(90,90)
-                                .placeholder(R.drawable.edit)
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .skipMemoryCache(true)
-                                .into(viewPetImage);
+                        if(pref.getBoolean(Constants.IS_LOGGED_IN, false)){
+                            Glide.with(getActivity())
+                                    .load(petImage)
+                                    .centerCrop()
+                                    .crossFade()
+                                    .bitmapTransform(new CropCircleTransformation(getActivity()))
+                                    .override(90,90)
+                                    .placeholder(R.drawable.edit)
+                                    .into(viewPetImage);
+
+                        }
+                        else{
+                            Glide.with(getActivity())
+                                    .load(petImage)
+                                    .centerCrop()
+                                    .crossFade()
+                                    .bitmapTransform(new CropCircleTransformation(getActivity()))
+                                    .override(90,90)
+                                    .placeholder(R.drawable.edit)
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                    .skipMemoryCache(true)
+                                    .into(viewPetImage);
+
+                        }
+
 
                         break;
                     }
@@ -243,6 +260,7 @@ public class MyProfileFragment extends Fragment {
 
     }
     private void logout() {
+
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean(Constants.IS_LOGGED_IN,false);
         editor.putString(Constants.EMAIL,"");
@@ -252,7 +270,7 @@ public class MyProfileFragment extends Fragment {
         Intent intent = new Intent(getActivity(), JoinActivity.class);
         startActivity(intent);
         getActivity().finish();
-        //intent putextra boolean 값 넘기
+
     }
 
 }

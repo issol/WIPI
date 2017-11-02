@@ -56,7 +56,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         progress = (ProgressBar)view.findViewById(R.id.progress);
 
         btn_register.setOnClickListener(this);
-        tv_login.setOnClickListener(this);
+
     }
 
     @Override
