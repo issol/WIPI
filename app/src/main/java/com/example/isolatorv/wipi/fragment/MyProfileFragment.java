@@ -2,6 +2,8 @@ package com.example.isolatorv.wipi.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.isolatorv.wipi.CircleImageView;
 import com.example.isolatorv.wipi.R;
 import com.example.isolatorv.wipi.login.Constants;
+import com.example.isolatorv.wipi.login.JoinActivity;
 import com.example.isolatorv.wipi.login.RegisterPet;
 
 import org.json.JSONArray;
@@ -39,7 +43,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class MyProfileFragment extends Fragment {
 
-
+    private SharedPreferences pref;
     private static final String TAG = "option_example";
     TextView viewName;
     TextView viewEmail;
@@ -56,6 +60,7 @@ public class MyProfileFragment extends Fragment {
     private int sno;
     private String unique_id;
     ImageView viewPetImage;
+    private Button logoutBtn;
 
     String mJsonString;
     //플래그먼트가 액티비티에 붙을때 호출
@@ -68,6 +73,7 @@ public class MyProfileFragment extends Fragment {
         userEmail = extra.getString("email");
         unique_id = extra.getString("unique_id");
         sno = extra.getInt("sno");
+
 
         GetData task = new GetData();
         task.execute("http://13.229.34.115/getPetInfo.php");
@@ -92,14 +98,24 @@ public class MyProfileFragment extends Fragment {
         viewPetType = (TextView)layout.findViewById(R.id.pp_type);
         viewPetAge = (TextView)layout.findViewById(R.id.pp_age);
 
+        logoutBtn = (Button) layout.findViewById(R.id.logoutBtn);
+
         viewPetImage = (ImageView) layout.findViewById(R.id.pet_image);
         viewName.setText(userName);
         viewEmail.setText(userEmail);
         viewSno.setText(String.valueOf(sno));
 
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logout();
+            }
+        });
+
 
         return layout;
     }
+
     /*onCreateView*********************************************************************************/
     private class GetData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
@@ -208,7 +224,7 @@ public class MyProfileFragment extends Fragment {
                                 .centerCrop()
                                 .crossFade()
                                 .bitmapTransform(new CropCircleTransformation(getActivity()))
-                                .override(100,100)
+                                .override(90,90)
                                 .placeholder(R.drawable.edit)
                                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                                 .skipMemoryCache(true)
@@ -226,6 +242,17 @@ public class MyProfileFragment extends Fragment {
 
 
     }
-
+    private void logout() {
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(Constants.IS_LOGGED_IN,false);
+        editor.putString(Constants.EMAIL,"");
+        editor.putString(Constants.NAME,"");
+        editor.putString(Constants.UNIQUE_ID,"");
+        editor.apply();
+        Intent intent = new Intent(getActivity(), JoinActivity.class);
+        startActivity(intent);
+        getActivity().finish();
+        //intent putextra boolean 값 넘기
+    }
 
 }

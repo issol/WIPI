@@ -71,6 +71,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
     private int id;
     private String p_name, p_type, p_age;
     private String u_name, u_email;
+    private int isLogined;
 
     private Bitmap bitmap;
     private Bitmap thumbImages;
@@ -79,7 +80,13 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
     String mJsonString;
 
+    public int getIsLogined() {
+        return isLogined;
+    }
 
+    public void setIsLogined(int isLogined) {
+        this.isLogined = isLogined;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,6 +182,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
                 String uploadImage = getStringImage(bitmap);
 
                 HashMap<String,String> data = new HashMap<>();
+
 
                 data.put(UPLOAD_KEY, uploadImage);
                 String result = rh.sendPostRequest(UPLOAD_URL,data, sno, p_name, p_type, p_age);
@@ -313,8 +321,10 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
                     if(item.getString("unique_id").equals(unique_id)){
                         sno = item.getInt("sno");
-
+                        isLogined = item.getInt("user_logined");
                         Log.d("TAG", String.valueOf(sno));
+                        Log.d("TAG", String.valueOf(isLogined));
+
 
                         break;
                     }

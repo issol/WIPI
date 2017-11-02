@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.isolatorv.wipi.MainActivity;
+import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
 
 import org.json.JSONException;
@@ -62,6 +64,9 @@ public class JoinActivity extends Activity {
 
 
         pref = getPreferences(0);
+        Log.d("TAG1234", String.valueOf(pref.getBoolean(Constants.IS_LOGGED_IN,false)));
+        Log.d("TAG1234", String.valueOf(pref.getBoolean(Constants.IS_LOGGED_IN,true)));
+
         initFragment();
 
 
@@ -70,20 +75,25 @@ public class JoinActivity extends Activity {
     private void initFragment(){
 
         Fragment fragment;
-        Intent intent;
+
 
 
         if(pref.getBoolean(Constants.IS_LOGGED_IN, false)){
-            fragment = new ProfileFragment();
+            ProfileData profile = new ProfileData(pref.getInt(Constants.SNO,0),pref.getString(Constants.NAME,""),pref.getString(Constants.EMAIL,""),pref.getString(Constants.UNIQUE_ID,""));
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("userInfo", profile);
+
+            startActivity(intent);
 
         }
         else {
             fragment = new LoginFragment_wipi();
+            FragmentTransaction ft =  getFragmentManager().beginTransaction();
+            ft.replace(R.id.fragment_frame, fragment);
+            ft.commit();
         }
 
-        FragmentTransaction ft =  getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_frame, fragment);
-        ft.commit();
+
 
     }
 

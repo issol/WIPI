@@ -64,10 +64,10 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
 
 
 
-        NavigationPage page1 = new NavigationPage("Feed", ContextCompat.getDrawable(this, R.drawable.ic_pet_food), FeedFragment.newInstance());
-        NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.ic_map_location), MapFragment.newInstance());
-        NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.ic_diary_2), DiaryFragment.newInstance());
-        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_users), MyProfileFragment.newInstance());
+        NavigationPage page1 = new NavigationPage("Feed", getResources().getDrawable(R.drawable.wipi_feed), FeedFragment.newInstance());
+        NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.wipi_map), MapFragment.newInstance());
+        NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.wipi_diary), DiaryFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.wipi_profile), MyProfileFragment.newInstance());
 
 
         navigationPages.add(page1);

@@ -55,7 +55,8 @@ public function __construct() {
 
         $user["name"] = $data -> name;
         $user["email"] = $data -> email;
-        $user["unique_id"] = $data -> unique_id;
+	$user["unique_id"] = $data -> unique_id;
+	$user["user_logined"] = $data -> user_logined;
         return $user;
 
     } else {

@@ -12,6 +12,7 @@ public class ProfileData implements Parcelable{
     private String userEmail;
     private String uniqueID;
     private int sno;
+
     public String p_name, p_type, p_age;
 
     public ProfileData(){
@@ -29,6 +30,7 @@ public class ProfileData implements Parcelable{
         this.uniqueID = uniqueID;
 
     }
+
 
     public ProfileData(int sno,String userName, String userEmail, String uniqueID) {
         this.sno = sno;
@@ -107,10 +109,13 @@ public class ProfileData implements Parcelable{
         this.p_age = p_age;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
     }
+
+
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {

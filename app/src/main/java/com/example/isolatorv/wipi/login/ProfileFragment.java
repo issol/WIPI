@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -55,6 +56,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private AlertDialog dialog;
     private ProgressBar progress;
 
+
     private static final String TAG_JSON="result";
     String mJsonString;
 
@@ -63,6 +65,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile,container,false);
+
         GetData task = new GetData();
         task.execute("http://13.229.34.115/getSno.php");
         initViews(view);
@@ -76,12 +79,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         tv_name.setText("Welcome : "+pref.getString(Constants.NAME,""));
 
 
+
     }
 
     private void initViews(View view){
 
         tv_name = (TextView)view.findViewById(R.id.tv_name);
-        tv_email = (TextView)view.findViewById(R.id.tv_email);
+
         btn_change_password = (AppCompatButton)view.findViewById(R.id.btn_chg_password);
         btn_logout = (AppCompatButton)view.findViewById(R.id.btn_logout);
         btn_change_password.setOnClickListener(this);
