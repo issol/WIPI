@@ -6,11 +6,10 @@ import android.os.Bundle;
 
 import android.support.v4.content.ContextCompat;
 
-<<<<<<< HEAD
+
 
 import android.util.Log;
-=======
->>>>>>> 68146f5a93bad4c8665d3ef33a3be65af55a1466
+
 import android.widget.Toast;
 
 
@@ -37,7 +36,7 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
 
     private static final String TAG = "main_example";
 
-<<<<<<< HEAD
+
     private Object obj1,obj2;
     private String userName;
     private String userEmail;
@@ -46,8 +45,6 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
     private String petAge;
     private int sno;
     private String unique_id;
-=======
->>>>>>> 68146f5a93bad4c8665d3ef33a3be65af55a1466
 
 
     List<NavigationPage> navigationPages = new ArrayList<>();
@@ -67,10 +64,10 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
 
 
 
-        NavigationPage page1 = new NavigationPage("Feed", ContextCompat.getDrawable(this, R.drawable.ic_pet_food), FeedFragment.newInstance());
-        NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.ic_map_location), MapFragment.newInstance());
-        NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.ic_diary_2), DiaryFragment.newInstance());
-        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.ic_users), MyProfileFragment.newInstance());
+        NavigationPage page1 = new NavigationPage("Feed", getResources().getDrawable(R.drawable.wipi_feed), FeedFragment.newInstance());
+        NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.wipi_map), MapFragment.newInstance());
+        NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.wipi_diary), DiaryFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.wipi_profile), MyProfileFragment.newInstance());
 
 
         navigationPages.add(page1);

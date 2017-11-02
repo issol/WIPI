@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@mipmap/login_image3"
     tools:context="com.example.isolatorv.wipi.login.JoinActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

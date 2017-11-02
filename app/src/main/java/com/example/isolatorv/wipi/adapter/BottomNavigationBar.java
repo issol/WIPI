@@ -61,10 +61,11 @@ public class BottomNavigationBar implements View.OnClickListener{
         this.mImageViewBar4 = (AppCompatImageView) mActivity.findViewById(R.id.imageViewBar4);
 
         // setting the icons
-        this.mImageViewBar1.setImageDrawable(mNavigationPageList.get(0).getIcon());
-        this.mImageViewBar2.setImageDrawable(mNavigationPageList.get(1).getIcon());
-        this.mImageViewBar3.setImageDrawable(mNavigationPageList.get(2).getIcon());
-        this.mImageViewBar4.setImageDrawable(mNavigationPageList.get(3).getIcon());
+       // this.mImageViewBar1.setImageDrawable(mNavigationPageList.get(0).getIcon());
+       // this.mImageViewBar2.setImageDrawable(mNavigationPageList.get(1).getIcon());
+       // this.mImageViewBar3.setImageDrawable(mNavigationPageList.get(2).getIcon());
+       // this.mImageViewBar4.setImageDrawable(mNavigationPageList.get(3).getIcon());
+        //this.mImageViewBar1.setImageResource(R.drawable.wipi_feed);
 
         // getting reference to bar titles
         this.mTextViewBar1 = (AppCompatTextView) mActivity.findViewById(R.id.textViewBar1);

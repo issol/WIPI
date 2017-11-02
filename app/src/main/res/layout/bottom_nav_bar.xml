@@ -33,10 +33,12 @@
                 android:background="@color/colorNavAccentSelected" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginTop="6dp"
                 android:id="@+id/imageViewBar1"
+                android:src="@drawable/wipi_feed"
+                android:scaleType="centerInside"
                 android:tint="@color/colorNavAccentSelected"/>
 
             <android.support.v7.widget.AppCompatTextView
@@ -66,9 +68,11 @@
                 android:visibility="invisible"/>
 
             <android.support.v7.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginTop="6dp"
+                android:src="@drawable/wipi_map"
+                android:scaleType="centerInside"
                 android:id="@+id/imageViewBar2"
                 android:tint="@color/colorNavAccentUnselected"/>
 
@@ -99,9 +103,11 @@
                 android:visibility="invisible"/>
 
             <android.support.v7.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginTop="6dp"
+                android:src="@drawable/wipi_diary"
+                android:scaleType="centerInside"
                 android:id="@+id/imageViewBar3"
                 android:tint="@color/colorNavAccentUnselected"/>
 
@@ -132,9 +138,11 @@
                 android:visibility="invisible"/>
 
             <android.support.v7.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginTop="6dp"
+                android:src="@drawable/wipi_profile"
+                android:scaleType="centerInside"
                 android:id="@+id/imageViewBar4"
                 android:tint="@color/colorNavAccentUnselected"/>
 

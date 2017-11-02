@@ -3,9 +3,12 @@ package com.example.isolatorv.wipi.login;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -20,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,14 +33,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import com.example.isolatorv.wipi.MainActivity;
 import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.RequestHandler;
+import com.example.isolatorv.wipi.SetLoginHandler;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -52,13 +66,38 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
     private ProgressBar progress;
     private SharedPreferences pref;
 
+    public static final String UPLOAD_URL = "http://13.229.34.115/setLogined.php";
 
+    private String unique_id;
 
+    private int isLogined;
+    private int sno;
+    private String test;
+
+    String mJsonString;
+
+    public String getUnique_id() {
+        return unique_id;
+    }
+
+    public void setUnique_id(String unique_id) {
+        this.unique_id = unique_id;
+    }
+
+    public int getIsLogined() {
+        return isLogined;
+    }
+
+    public void setIsLogined(int isLogined) {
+        this.isLogined = isLogined;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_login,container,false);
+
+
         initViews(view);
         return view;
 
@@ -101,7 +140,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
                     hideKeyboard();
 
                     loginProcess(email,password);
-
+                    Log.d("TAGDDFEDD", String.valueOf(isLogined));
 
                 } else {
 
@@ -125,6 +164,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
+
         ServerRequest request = new ServerRequest();
         request.setOperation(Constants.LOGIN_OPERATION);
         request.setUser(user);
@@ -139,19 +179,36 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
                     SharedPreferences.Editor editor = pref.edit();
-                   // editor.putBoolean(Constants.IS_LOGGED_IN,true);
+                    editor.putBoolean(Constants.IS_LOGGED_IN,true);
                     editor.putString(Constants.EMAIL,resp.getUser().getEmail());
                     editor.putString(Constants.NAME,resp.getUser().getName());
                     editor.putString(Constants.UNIQUE_ID,resp.getUser().getUnique_id());
-                    if(!pref.getBoolean(Constants.IS_LOGGED_IN, true)){
+
+                    unique_id = resp.getUser().getUnique_id();
+
+
+                    setLogin(unique_id);
+
+                    getData(unique_id);
+
+                    Log.d("TTTTTAAAAG", String.valueOf(isLogined));
+                    Log.d("TTTTTAAAA@", String.valueOf(sno));
+                    editor.putInt(Constants.SNO, sno);
+                    editor.apply();
+                    if(isLogined == 1){
+                        ProfileData profile = new ProfileData(sno,resp.getUser().getName(),resp.getUser().getEmail(),resp.getUser().getUnique_id());
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        intent.putExtra("userInfo", profile);
+
+                        startActivity(intent);
+
+                    }else if(isLogined == 0){
                         ProfileData profile = new ProfileData(resp.getUser().getName(),resp.getUser().getEmail(),resp.getUser().getUnique_id());
                         Intent intent = new Intent(getActivity(), RegisterPet.class);
                         intent.putExtra("userInfo", profile);
-                        editor.putBoolean(Constants.IS_LOGGED_IN,true);
-                        editor.apply();
+
                         startActivity(intent);
                     }
-
 
 
                 }
@@ -191,6 +248,170 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
         imm.hideSoftInputFromWindow(et_email.getWindowToken(), 0);
         imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);
 
+    }
+
+    private void setLogin(final String unique_id){
+        String uniq = unique_id;
+        class SetLogin extends AsyncTask<String,Void,String> {
+
+            ProgressDialog loading;
+            SetLoginHandler rh = new SetLoginHandler();
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(getActivity(), "Uploading...", null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                //Toast.makeText(getActivity(),s,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                String uniqueId = params[0];
+                Log.d("TAG3", uniqueId);
+                String result = rh.sendPostRequest(UPLOAD_URL,uniqueId);
+
+                return result;
+            }
+        }
+
+        SetLogin ui = new SetLogin();
+        ui.execute(uniq);
+    }
+
+    private void getData(String unique_id) {
+
+        String uniq = unique_id;
+
+        class GetData extends AsyncTask<String, Void, Integer> {
+            ProgressDialog progressDialog;
+            String errorString = null;
+            String uniq;
+            int userLogined;
+            int sno;
+
+            public int getSno() {
+                return sno;
+            }
+
+            public int getUserLogined() {
+                return this.userLogined;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressDialog = ProgressDialog.show(getActivity(), "Please Wait", null, true, true);
+            }
+
+            @Override
+            protected void onPostExecute(Integer result) {
+                super.onPostExecute(result);
+
+                progressDialog.dismiss();
+
+                Log.d(Constants.TAG, "response  - " + result);
+
+                if (result == null) {
+
+                    Log.d(Constants.TAG, errorString);
+                } else {
+                   // mJsonString = result;
+                  //  showResult();
+
+
+                }
+            }
+
+            @Override
+            protected Integer doInBackground(String... params) {
+
+                String serverURL = params[0];
+                uniq = params[1];
+
+                try {
+
+                    URL url = new URL(serverURL);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                    httpURLConnection.setReadTimeout(5000);
+                    httpURLConnection.setConnectTimeout(5000);
+                    httpURLConnection.connect();
+
+
+                    int responseStatusCode = httpURLConnection.getResponseCode();
+                    Log.d(Constants.TAG, "response code - " + responseStatusCode);
+
+                    InputStream inputStream;
+                    if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                        inputStream = httpURLConnection.getInputStream();
+                    } else {
+                        inputStream = httpURLConnection.getErrorStream();
+                    }
+
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line);
+                    }
+
+                    bufferedReader.close();
+
+                    try {
+                        JSONObject jsonobject = new JSONObject(sb.toString().trim());
+                        JSONArray jsonarray = jsonobject.getJSONArray("result");
+
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            JSONObject item = jsonarray.getJSONObject(i);
+                            if (item.getString("unique_id").equals(uniq)) {
+                                userLogined = item.getInt("user_logined");
+                                sno = item.getInt("sno");
+
+
+
+                            }
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    return userLogined;
+
+
+                } catch (Exception e) {
+                    Log.d(Constants.TAG, "InsertData: Error ", e);
+                    errorString = e.toString();
+
+                    return null;
+                }
+
+            }
+
+
+        }
+        GetData ui = new GetData();
+        ui.execute("http://13.229.34.115/getSno.php",uniq);
+        try {
+            isLogined= ui.get();
+            sno = ui.getSno();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
 

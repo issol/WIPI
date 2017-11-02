@@ -17,7 +17,7 @@
 
 
     <color name="colorBackground">#F8F8F8</color>
-    <color name="colorNavAccentSelected">#9D0E15</color>
+    <color name="colorNavAccentSelected">#FF5722</color>
     <color name="colorNavAccentUnselected">#727272</color>
 
     <!--Showcase Color-->

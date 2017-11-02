@@ -11,6 +11,7 @@ public class User {
     private String password;
     private String old_password;
     private String new_password;
+    private Boolean is_logined;
     private int sno;
 
     public int getSno() {
@@ -49,4 +50,11 @@ public class User {
         this.new_password = new_password;
     }
 
+    public Boolean getIs_logined() {
+        return is_logined;
+    }
+
+    public void setIs_logined(Boolean is_logined) {
+        this.is_logined = is_logined;
+    }
 }

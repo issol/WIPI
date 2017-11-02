@@ -2,15 +2,19 @@
 
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
-    <item name="android:windowBackground">@drawable/splash_background</item>
+    <item name="android:windowBackground">@drawable/splash_main</item>
+    </style>
+
+    <style name="LoginTheme" parent="Theme.AppCompat.NoActionBar">
+    <item  name = "android:windowBackground">@color/calendarBackground</item>
     </style>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorNavAccentSelected</item>
+        <item name="colorPrimaryDark">@color/colorNavAccentSelected</item>
+        <item name="colorAccent">@color/colorNavAccentSelected</item>
         <!--<item name="actionBarStyle">@style/AppTheme.ActionBar</item>-->
     </style>
 
