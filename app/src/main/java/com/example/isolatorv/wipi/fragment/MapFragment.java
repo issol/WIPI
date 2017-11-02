@@ -34,6 +34,8 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -146,6 +148,18 @@ public class MapFragment extends Fragment implements
     //true -> fab = open
     private boolean FAB_Status = false;
 
+    //LinearLayout
+    LinearLayout Llayout_1;
+    LinearLayout Llayout_2;
+    LinearLayout Llayout_3;
+    LinearLayout Llayout_4;
+
+    //TextView
+    TextView textView_1;
+    TextView textView_2;
+    TextView textView_3;
+    TextView textView_4;
+
     //Animations
     Animation show_fab_1;
     Animation hide_fab_1;
@@ -255,6 +269,18 @@ public class MapFragment extends Fragment implements
         show_fab_4 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab4_show);
         hide_fab_4 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab4_hide);
 
+        //LinearLayout
+        Llayout_1 = (LinearLayout)layout.findViewById(R.id.linearyLayout1);
+        Llayout_2 = (LinearLayout)layout.findViewById(R.id.linearyLayout2);
+        Llayout_3 = (LinearLayout)layout.findViewById(R.id.linearyLayout3);
+        Llayout_4 = (LinearLayout)layout.findViewById(R.id.linearyLayout4);
+
+        //TextView
+        textView_1 = (TextView)layout.findViewById(R.id.text_1);
+        textView_2 = (TextView)layout.findViewById(R.id.text_2);
+        textView_3 = (TextView)layout.findViewById(R.id.text_3);
+        textView_4 = (TextView)layout.findViewById(R.id.text_4);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -328,12 +354,12 @@ public class MapFragment extends Fragment implements
         if (mGoogleApiClient != null && mGoogleApiClient.isConnected() == false) {
 
             Log.d(TAG, "onActivityCreated: mGoogleApiClient connect");
-            mGoogleApiClient.connect();
-        }
+        mGoogleApiClient.connect();
+    }
 
         if (mapView != null) {
-            mapView.onCreate(savedInstanceState);
-        }
+        mapView.onCreate(savedInstanceState);
+    }
     }
     /*onActivityCreated****************************************************************************/
 
@@ -1024,36 +1050,41 @@ public class MapFragment extends Fragment implements
     private void expandFAB() {
 
         //Floating Action Button 1
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-        layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
-        layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.02);
-        fab1.setLayoutParams(layoutParams);
-        fab1.startAnimation(show_fab_1);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) Llayout_1.getLayoutParams();
+        layoutParams.rightMargin += (int)(Llayout_1.getWidth()*0.2);
+        layoutParams.bottomMargin += (int)(Llayout_1.getHeight()*1.5);
+        Llayout_1.setLayoutParams(layoutParams);
+        Llayout_1.startAnimation(show_fab_1);
         fab1.setClickable(true);
 
         //Floating Action Button 2
-        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
-        layoutParams2.rightMargin += (int) (fab2.getWidth() * 1.3);
-        layoutParams2.bottomMargin += (int) (fab2.getHeight() * 1.0);
-        fab2.setLayoutParams(layoutParams2);
-        fab2.startAnimation(show_fab_2);
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) Llayout_2.getLayoutParams();
+        layoutParams2.rightMargin += (int) (Llayout_2.getWidth() * 0.2);
+        layoutParams2.bottomMargin += (int) (Llayout_2.getHeight() * 2.7);
+        Llayout_2.setLayoutParams(layoutParams2);
+        Llayout_2.startAnimation(show_fab_2);
         fab2.setClickable(true);
 
         //Floating Action Button 3
-        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
-        layoutParams3.rightMargin += (int) (fab3.getWidth() * 0.32);
-        layoutParams3.bottomMargin += (int) (fab3.getHeight() * 1.5);
-        fab3.setLayoutParams(layoutParams3);
-        fab3.startAnimation(show_fab_3);
+        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) Llayout_3.getLayoutParams();
+        layoutParams3.rightMargin += (int) (Llayout_3.getWidth() * 0.2);
+        layoutParams3.bottomMargin += (int) (Llayout_3.getHeight() * 3.9);
+        Llayout_3.setLayoutParams(layoutParams3);
+        Llayout_3.startAnimation(show_fab_3);
         fab3.setClickable(true);
 
         //Floating Action Button 4
-        FrameLayout.LayoutParams layoutParams4 = (FrameLayout.LayoutParams) fab4.getLayoutParams();
-        layoutParams4.rightMargin -= (int) (fab4.getWidth() * 0.8);
-        layoutParams4.bottomMargin += (int) (fab4.getHeight() * 1.6);
-        fab4.setLayoutParams(layoutParams4);
-        fab4.startAnimation(show_fab_4);
+        FrameLayout.LayoutParams layoutParams4 = (FrameLayout.LayoutParams) Llayout_4.getLayoutParams();
+        layoutParams4.rightMargin += (int) (Llayout_4.getWidth() * 0.2);
+        layoutParams4.bottomMargin += (int) (Llayout_4.getHeight() * 5.1);
+        Llayout_4.setLayoutParams(layoutParams4);
+        Llayout_4.startAnimation(show_fab_4);
         fab4.setClickable(true);
+
+        textView_1.setVisibility(View.VISIBLE);
+        textView_2.setVisibility(View.VISIBLE);
+        textView_3.setVisibility(View.VISIBLE);
+        textView_4.setVisibility(View.VISIBLE);
     }
     /*expandFAB************************************************************************************/
 
@@ -1061,36 +1092,41 @@ public class MapFragment extends Fragment implements
     /*hideFAB***************************************************************************************/
     private void hideFAB() {
 
+        textView_1.setVisibility(View.INVISIBLE);
+        textView_2.setVisibility(View.INVISIBLE);
+        textView_3.setVisibility(View.INVISIBLE);
+        textView_4.setVisibility(View.INVISIBLE);
+
         //Floating Action Button 1
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-        layoutParams.rightMargin -= (int) (fab1.getWidth() * 1.7);
-        layoutParams.bottomMargin -= (int) (fab1.getHeight() * 0.02);
-        fab1.setLayoutParams(layoutParams);
-        fab1.startAnimation(hide_fab_1);
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) Llayout_1.getLayoutParams();
+        layoutParams.rightMargin -= (int)(Llayout_1.getWidth()*0.2);
+        layoutParams.bottomMargin -= (int)(Llayout_1.getHeight()*1.5);
+        Llayout_1.setLayoutParams(layoutParams);
+        Llayout_1.startAnimation(hide_fab_1);
         fab1.setClickable(false);
 
         //Floating Action Button 2
-        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
-        layoutParams2.rightMargin -= (int) (fab2.getWidth() * 1.3);
-        layoutParams2.bottomMargin -= (int) (fab2.getHeight() * 1.0);
-        fab2.setLayoutParams(layoutParams2);
-        fab2.startAnimation(hide_fab_2);
+        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) Llayout_2.getLayoutParams();
+        layoutParams2.rightMargin -= (int) (Llayout_2.getWidth() * 0.2);
+        layoutParams2.bottomMargin -= (int) (Llayout_2.getHeight() * 2.7);
+        Llayout_2.setLayoutParams(layoutParams2);
+        Llayout_2.startAnimation(hide_fab_2);
         fab2.setClickable(false);
 
         //Floating Action Button 3
-        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
-        layoutParams3.rightMargin -= (int) (fab3.getWidth() * 0.32);
-        layoutParams3.bottomMargin -= (int) (fab3.getHeight() * 1.5);
-        fab3.setLayoutParams(layoutParams3);
-        fab3.startAnimation(hide_fab_3);
+        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) Llayout_3.getLayoutParams();
+        layoutParams3.rightMargin -= (int) (Llayout_3.getWidth() * 0.2);
+        layoutParams3.bottomMargin -= (int) (Llayout_3.getHeight() * 3.9);
+        Llayout_3.setLayoutParams(layoutParams3);
+        Llayout_3.startAnimation(hide_fab_3);
         fab3.setClickable(false);
 
         //Floating Action Button 4
-        FrameLayout.LayoutParams layoutParams4 = (FrameLayout.LayoutParams) fab4.getLayoutParams();
-        layoutParams4.rightMargin += (int) (fab4.getWidth() * 0.8);
-        layoutParams4.bottomMargin -= (int) (fab4.getHeight() * 1.6);
-        fab4.setLayoutParams(layoutParams4);
-        fab4.startAnimation(hide_fab_4);
+        FrameLayout.LayoutParams layoutParams4 = (FrameLayout.LayoutParams) Llayout_4.getLayoutParams();
+        layoutParams4.rightMargin -= (int) (Llayout_4.getWidth() * 0.2);
+        layoutParams4.bottomMargin -= (int) (Llayout_4.getHeight() * 5.1);
+        Llayout_4.setLayoutParams(layoutParams4);
+        Llayout_4.startAnimation(hide_fab_4);
         fab4.setClickable(false);
     }
     /*hideFAB***************************************************************************************/

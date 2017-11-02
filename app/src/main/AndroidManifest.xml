@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS"/>
 
     <application
         tools:replace="android:allowBackup"
@@ -39,6 +40,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".login.RegisterPet" android:theme="@style/AppTheme.FullScreen"/>
 
         <activity android:name=".MainActivity" android:theme="@style/AppTheme.FullScreen"/>
         <activity android:name=".diary.diaries.CreateDiaryActivity" android:theme="@style/AppTheme.NoActionBar" />

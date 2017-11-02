@@ -1,13 +1,17 @@
 package com.example.isolatorv.wipi.diary.diaries;
 
+import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -16,11 +20,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.isolatorv.wipi.R;
@@ -32,21 +39,27 @@ import com.example.isolatorv.wipi.diary.Utils.EasyDiaryUtils;
 import com.example.isolatorv.wipi.diary.Utils.FontUtils;
 import com.example.isolatorv.wipi.diary.helper.EasyDiaryActivity;
 import com.example.isolatorv.wipi.diary.photo.PhotoViewPagerActivity;
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * Created by CHO HANJOONG on 2017-03-16.
+ */
 
 public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
-    private long mCurrentTimeMillis;
 
     @BindView(R.id.container)
     ViewPager mViewPager;
@@ -54,13 +67,16 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
     @BindView(R.id.edit)
     ImageView mEdit;
 
-
     @BindView(R.id.delete)
     ImageView mDelete;
+
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     public void onCreate(Bundle savedInstanceState) {
+        // fixme elegance start    =============================================================================
+        // activity destroy 시 저장된 savedInstance 값이 전달되면 갱신된 fragment 접근이 안됨
+        // super.onCreate(savedInstanceState);
         super.onCreate(null);
 
         final int startPageIndex;
@@ -71,6 +87,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
         } else {
             startPageIndex = mSectionsPagerAdapter.sequenceToPageIndex(savedInstanceState.getInt("sequence", -1));
         }
+        // fixme elegance end      =============================================================================
 
         setContentView(R.layout.activity_read_diary_detail);
         ButterKnife.bind(this);
@@ -81,6 +98,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
         FontUtils.setToolbarTypeface(toolbar, Typeface.DEFAULT);
 
+        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -92,7 +110,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             @Override
             public void onPageSelected(int position) {
                 PlaceholderFragment fragment = mSectionsPagerAdapter.getFragment(mViewPager.getCurrentItem());
-                Log.i("determine", String.valueOf(fragment.getActivity()));
+//                Log.i("determine", String.valueOf(fragment.getActivity()));
                 if (fragment.getActivity() != null) {
                     fragment.setDiaryTypeface();
                     fragment.setDiaryFontSize();
@@ -114,11 +132,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
 
-    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -130,6 +144,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
     }
 
     @OnClick({R.id.delete, R.id.edit})
@@ -142,12 +157,12 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
         float fontSize = fragment.mTitle.getTextSize();
 
         switch(view.getId()) {
+
             case R.id.delete:
                 DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DiaryDao.deleteDiary(fragment.mSequence);
-
                         finish();
                     }
                 };
@@ -167,6 +182,28 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
         }
     }
 
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+//                this.overridePendingTransition(R.anim.anim_left_to_center, R.anim.anim_center_to_right);
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -240,6 +277,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             int weather = diaryDto.getWeather();
             EasyDiaryUtils.initWeatherView(mWeather, weather);
 
+            // TODO fixme elegance
             if (diaryDto.getPhotoUris() != null && diaryDto.getPhotoUris().size() > 0) {
                 View.OnClickListener onClickListener = new View.OnClickListener() {
                     @Override
@@ -252,6 +290,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
                 for (PhotoUriDto dto : diaryDto.getPhotoUris()) {
                     Uri uri = Uri.parse(dto.getPhotoUri());
+
                     Bitmap bitmap = null;
                     try {
                         bitmap = BitmapUtils.decodeUri(getContext(), uri, CommonUtils.dpToPixel(getContext(), 70, 1), CommonUtils.dpToPixel(getContext(), 60, 1), CommonUtils.dpToPixel(getContext(), 40, 1));
@@ -299,6 +338,10 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
     }
 
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         private List<DiaryDto> mDiaryList;
@@ -314,6 +357,8 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
         @Override
         public Fragment getItem(int position) {
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
             return mFragmentList.get(position);
         }
 

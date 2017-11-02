@@ -82,8 +82,8 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     @BindView(R.id.timePicker)
     ImageView mTimePicker;
 
-    @BindView(R.id.photoView)
-    ImageView mPhotoView;
+    @BindView(R.id.photoPicker)
+    ImageView mPhotoPicker;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,7 +152,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         );
     }
 
-    @OnClick({ R.id.saveContents, R.id.photoView, R.id.datePicker, R.id.timePicker})
+    @OnClick({ R.id.saveContents, R.id.photoPicker, R.id.datePicker, R.id.timePicker})
     public void onClick(View view) {
         float fontSize = mContents.getTextSize();
 
@@ -177,7 +177,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                     finish();
                 }
                 break;
-            case R.id.photoView:
+            case R.id.photoPicker:
                 if (PermissionUtils.checkPermission(this, DiaryConstants.EXTERNAL_STORAGE_PERMISSIONS)) {
                     // API Level 22 이하이거나 API Level 23 이상이면서 권한취득 한경우
                     callImagePicker();

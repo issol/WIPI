@@ -11,6 +11,11 @@ public class User {
     private String password;
     private String old_password;
     private String new_password;
+    private int sno;
+
+    public int getSno() {
+        return sno;
+    }
 
     public String getName() {
         return name;

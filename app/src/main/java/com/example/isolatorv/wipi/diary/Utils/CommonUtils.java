@@ -8,6 +8,9 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.TypedValue;
 
+/**
+ * Created by CHO HANJOONG on 2017-03-16.
+ */
 
 public class CommonUtils {
 

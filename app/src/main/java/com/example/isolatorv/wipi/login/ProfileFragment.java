@@ -1,11 +1,15 @@
 package com.example.isolatorv.wipi.login;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
@@ -23,8 +27,19 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
+import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
 import com.example.isolatorv.wipi.MainActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 /**
@@ -40,10 +55,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private AlertDialog dialog;
     private ProgressBar progress;
 
+    private static final String TAG_JSON="result";
+    String mJsonString;
+
+    private int sno;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile,container,false);
+        GetData task = new GetData();
+        task.execute("http://13.229.34.115/getSno.php");
         initViews(view);
         return view;
     }
@@ -53,7 +74,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         pref = getActivity().getPreferences(0);
         tv_name.setText("Welcome : "+pref.getString(Constants.NAME,""));
-        tv_email.setText(pref.getString(Constants.EMAIL,""));
+
 
     }
 
@@ -149,11 +170,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         ft.commit();
     }
     private void goToMain(){
+        Log.d("TAG", String.valueOf(sno));
+        ProfileData profile = new ProfileData(sno,pref.getString(Constants.NAME,""), pref.getString(Constants.EMAIL,""), pref.getString(Constants.UNIQUE_ID, ""));
         Intent intent = new Intent(getActivity(), MainActivity.class);
-
+        intent.putExtra("userInfo", profile);
         startActivity(intent);
 
     }
+
+
 
     private void changePasswordProcess(String email,String old_password,String new_password){
 
@@ -203,4 +228,115 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
+
+    private class GetData extends AsyncTask<String, Void, String> {
+        ProgressDialog progressDialog;
+        String errorString =null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(getActivity(),"Please Wait",null,true,true);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+
+            Log.d(Constants.TAG, "response  - " +  result);
+
+            if (result == null){
+
+                Log.d(Constants.TAG,errorString);
+            }
+            else {
+                mJsonString = result;
+                showResult();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            String serverURL = params[0];
+
+
+            try {
+
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.connect();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(Constants.TAG, "response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                }
+                else{
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while((line = bufferedReader.readLine()) != null){
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+
+                return sb.toString().trim();
+
+
+            } catch (Exception e) {
+                Log.d(Constants.TAG, "InsertData: Error ", e);
+                errorString = e.toString();
+
+                return null;
+            }
+
+        }
+
+        private void showResult(){
+            try{
+                JSONObject jsonobject = new JSONObject(mJsonString);
+                JSONArray jsonarray = jsonobject.getJSONArray(TAG_JSON);
+
+                for(int i = 0; i <jsonarray.length(); i++){
+                    JSONObject item = jsonarray.getJSONObject(i);
+
+                    if(item.getString("unique_id").equals(pref.getString(Constants.UNIQUE_ID,""))){
+                        sno = item.getInt("sno");
+
+                        Log.d("TAG", String.valueOf(sno));
+
+                        break;
+                    }
+
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
+
+
+
 }

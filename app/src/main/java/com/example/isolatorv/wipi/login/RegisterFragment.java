@@ -2,6 +2,8 @@ package com.example.isolatorv.wipi.login;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatButton;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
 
 
@@ -32,12 +35,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     private TextView tv_login;
     private ProgressBar progress;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_register,container,false);
         initViews(view);
         return view;
+
     }
 
     private void initViews(View view){
@@ -106,6 +111,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
                 ServerResponse resp = response.body();
                 Snackbar.make(getView(), resp.getMessage(), Snackbar.LENGTH_LONG).show();
                 progress.setVisibility(View.INVISIBLE);
+
                 goToLogin();
             }
 
@@ -114,6 +120,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
                 progress.setVisibility(View.INVISIBLE);
                 Log.d(Constants.TAG,"failed");
+                Log.d(Constants.TAG, t.getLocalizedMessage());
                 Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 
             }

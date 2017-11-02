@@ -1,5 +1,6 @@
 package com.example.isolatorv.wipi.login;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -26,7 +27,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import com.example.isolatorv.wipi.MainActivity;
+import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -96,7 +99,9 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
                     progress.setVisibility(View.VISIBLE);
                     hideKeyboard();
+
                     loginProcess(email,password);
+
 
                 } else {
 
@@ -134,14 +139,20 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
                 if(resp.getResult().equals(Constants.SUCCESS)){
                     SharedPreferences.Editor editor = pref.edit();
-                    editor.putBoolean(Constants.IS_LOGGED_IN,true);
+                   // editor.putBoolean(Constants.IS_LOGGED_IN,true);
                     editor.putString(Constants.EMAIL,resp.getUser().getEmail());
                     editor.putString(Constants.NAME,resp.getUser().getName());
                     editor.putString(Constants.UNIQUE_ID,resp.getUser().getUnique_id());
-                    editor.apply();
-                    Intent intent =  new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    if(!pref.getBoolean(Constants.IS_LOGGED_IN, true)){
+                        ProfileData profile = new ProfileData(resp.getUser().getName(),resp.getUser().getEmail(),resp.getUser().getUnique_id());
+                        Intent intent = new Intent(getActivity(), RegisterPet.class);
+                        intent.putExtra("userInfo", profile);
+                        editor.putBoolean(Constants.IS_LOGGED_IN,true);
+                        editor.apply();
+                        startActivity(intent);
+                    }
+
+
 
                 }
                 progress.setVisibility(View.INVISIBLE);
@@ -152,6 +163,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
                 progress.setVisibility(View.INVISIBLE);
                 Log.d(Constants.TAG,"failed");
+                Log.d(Constants.TAG, t.getLocalizedMessage());
                 Snackbar.make(getView(), t.getLocalizedMessage(), Snackbar.LENGTH_LONG).show();
 
             }
@@ -179,17 +191,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
         imm.hideSoftInputFromWindow(et_email.getWindowToken(), 0);
         imm.hideSoftInputFromWindow(et_password.getWindowToken(), 0);
 
-
-
     }
-
-
-
-
-
-
-
-
 
 
 }

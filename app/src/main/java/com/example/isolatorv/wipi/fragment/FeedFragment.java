@@ -110,7 +110,7 @@ public class FeedFragment extends Fragment {
         mConversationArrayAdapter = new ArrayAdapter<>( getActivity(), android.R.layout.simple_list_item_1 );
         mMessageListview.setAdapter(mConversationArrayAdapter);
 
-        new Thread(new ConnectThread("192.168.0.2", 80)).start();
+        new Thread(new ConnectThread("192.168.0.7", 80)).start();
 
         return layout;
     }
@@ -211,14 +211,14 @@ public class FeedFragment extends Fragment {
             mOut.println(this.msg);
             mOut.flush();
 
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Log.d(TAG, "send message: " + msg);
-                    mConversationArrayAdapter.insert("Me - " + msg, 0);
-                }
-            });
+    getActivity().runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+            Log.d(TAG, "send message: " + msg);
+            mConversationArrayAdapter.insert("Me - " + msg, 0);
         }
+    });
+}
     }
 
     private class ReceiverThread implements Runnable {
