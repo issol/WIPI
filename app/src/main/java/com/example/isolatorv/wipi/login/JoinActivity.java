@@ -44,6 +44,7 @@ public class JoinActivity extends Activity {
     private Button mLoginBtn;
     private String str_id;
     private String str_passwd;
+    private int isLogged;
 
 
     //FaceBook
@@ -63,7 +64,7 @@ public class JoinActivity extends Activity {
         setContentView(R.layout.login);
 
 
-        pref = getPreferences(0);
+        pref = getSharedPreferences("WIPI",0);
         Log.d("TAG1234", String.valueOf(pref.getBoolean(Constants.IS_LOGGED_IN,false)));
         Log.d("TAG1234", String.valueOf(pref.getBoolean(Constants.IS_LOGGED_IN,true)));
 

@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
 apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.example.isolatorv.wipi"
@@ -14,6 +13,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
 
 
@@ -25,7 +30,7 @@ android {
                 variant.outputs.each { output ->
                     def date = new Date();
                     def formattedDate = date.format('yyyyMMddHHmmss')
-                    output.outputFile = new File(output.outputFile.parent,
+                    output.outputFileName = new File(output.outputFile.parent,
                             output.outputFile.name.replace("-release", "-easy_diary-" + formattedDate)
                             //for Debug use output.outputFile = new File(output.outputFile.parent,
                             //                             output.outputFile.name.replace("-debug", "-" + formattedDate)
@@ -74,7 +79,7 @@ dependencies {
     compile 'devlight.io:navigationtabbar:1.2.5'
 
     // Jake Wharton
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.jakewharton:butterknife:8.4.0'
     // Joda.org
     compile group: 'joda-time', name: 'joda-time', version: '2.1'

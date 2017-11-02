@@ -107,8 +107,8 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
     private void initViews(View view) {
 
-        pref = getActivity().getPreferences(0);
-
+        //pref = getActivity().getPreferences(0);
+        pref = getActivity().getSharedPreferences("WIPI",0);
 
         btn_login = (AppCompatButton) view.findViewById(R.id.btn_login);
         tv_register = (TextView) view.findViewById(R.id.tv_register);
