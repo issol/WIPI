@@ -65,8 +65,7 @@ public class JoinActivity extends Activity {
 
 
         pref = getSharedPreferences("WIPI",0);
-        Log.d("TAG1234", String.valueOf(pref.getBoolean(Constants.IS_LOGGED_IN,false)));
-        Log.d("TAG1234", String.valueOf(pref.getBoolean(Constants.IS_LOGGED_IN,true)));
+
 
         initFragment();
 
