@@ -9,14 +9,15 @@
         android:interpolator="@android:anim/linear_interpolator"
         android:pivotX="50%"
         android:pivotY="50%"
-        android:repeatCount="4"
-        android:repeatMode="reverse"
-        android:toDegrees="0"></rotate>
+        android:toDegrees="0">
+        <!--흔들기 android:repeatCount="4"-->
+        <!--흔들기 android:repeatMode="reverse"-->
+    </rotate>
 
     <!--Move-->
     <translate
-        android:duration="1000"
-        android:fromXDelta="130%"
+        android:duration="500"
+        android:fromXDelta="0%"
         android:fromYDelta="110%"
         android:interpolator="@android:anim/linear_interpolator"
         android:toXDelta="0%"

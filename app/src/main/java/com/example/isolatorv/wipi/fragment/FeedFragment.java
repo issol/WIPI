@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -86,6 +87,7 @@ public class FeedFragment extends Fragment {
         View layout = inflater.inflate(R.layout.dogrice, container, false);
 
 
+       
         adapter = new ListViewAdapter2(getActivity());
 
         listview = (ListView) layout.findViewById(R.id.feed_listView);
@@ -124,7 +126,9 @@ public class FeedFragment extends Fragment {
         });
 
 
+
         new Thread(new ConnectThread("192.168.0.13", 80)).start();
+        //new Thread(new ConnectThread("192.168.0.7", 80)).start();
 
         return layout;
     }
@@ -225,13 +229,21 @@ public class FeedFragment extends Fragment {
             mOut.println(this.msg);
             mOut.flush();
 
+
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Log.d(TAG, "send message: " + msg);
                 }
             });
+
+    getActivity().runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+            Log.d(TAG, "send message: " + msg);
         }
+    });
+}
     }
 
     private class ReceiverThread implements Runnable {
