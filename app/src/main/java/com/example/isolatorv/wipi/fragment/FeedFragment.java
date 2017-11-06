@@ -11,14 +11,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.adapter.ListViewAdapter2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -69,9 +67,8 @@ public class FeedFragment extends Fragment {
     public interface OnFragmentInteractionListener {
     }
 
-    private TextView mConnectionStatus;
-    private EditText mInputEditText;
-    private ArrayAdapter<String> mConversationArrayAdapter;
+
+
 
     private static final String TAG = "TcpClient";
     private boolean isConnected = false;
@@ -81,34 +78,51 @@ public class FeedFragment extends Fragment {
     private PrintWriter mOut;
     private BufferedReader mIn;
     private Thread mReceiverThread = null;
+    ListView listview;
+    ListViewAdapter2 adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.dogrice, container, false);
 
-        mConnectionStatus = (TextView) layout.findViewById(R.id.connection_status_textview);
-        mInputEditText = (EditText) layout.findViewById(R.id.input_string_edittext);
-        ListView mMessageListview = (ListView) layout.findViewById(R.id.message_listview);
-        Button sendButton = (Button) layout.findViewById(R.id.send_button);
+
+        adapter = new ListViewAdapter2(getActivity());
+
+        listview = (ListView) layout.findViewById(R.id.feed_listView);
+
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Sun","x");
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Mon","o");
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Tue","o");
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Wed","o");
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Thu","o");
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Fri","o");
+        // 첫 번째 아이템 추가.
+        adapter.addItem("Sat","o");
+
+        listview.setAdapter(adapter);
+        listview.setDivider(null);
+
+
+
+        Button sendButton = (Button) layout.findViewById(R.id.Feed_send_btn);
 
         sendButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                if (!isConnected) showErrorDialog("서버로 접속된후 다시 해보세요.");
+                else {
+                    new Thread(new SenderThread("aa")).start();
+                    //Log.d(TAG, mInputEditText.getText().toString());
 
-                String sendMessage = mInputEditText.getText().toString();
-                if ( sendMessage.length() > 0 ) {
-
-                    if (!isConnected) showErrorDialog("서버로 접속된후 다시 해보세요.");
-                    else {
-                        new Thread(new SenderThread(sendMessage)).start();
-                        //Log.d(TAG, mInputEditText.getText().toString());
-                        mInputEditText.setText(" ");
-                    }
                 }
             }
         });
 
-        mConversationArrayAdapter = new ArrayAdapter<>( getActivity(), android.R.layout.simple_list_item_1 );
-        mMessageListview.setAdapter(mConversationArrayAdapter);
 
         new Thread(new ConnectThread("192.168.0.13", 80)).start();
 
@@ -131,7 +145,7 @@ public class FeedFragment extends Fragment {
             serverIP = ip;
             serverPort = port;
 
-            mConnectionStatus.setText("connecting to " + serverIP + ".......");
+            Log.d(TAG,"connecting to "+serverIP+".......");
         }
 
         @Override
@@ -182,14 +196,14 @@ public class FeedFragment extends Fragment {
                     if (isConnected) {
 
                         Log.d(TAG, "connected to " + serverIP);
-                        mConnectionStatus.setText("connected to " + serverIP);
+
+
 
                         mReceiverThread = new Thread(new ReceiverThread());
                         mReceiverThread.start();
                     }else{
 
                         Log.d(TAG, "failed to connect to server " + serverIP);
-                        mConnectionStatus.setText("failed to connect to server "  + serverIP);
                     }
 
                 }
@@ -215,7 +229,6 @@ public class FeedFragment extends Fragment {
                 @Override
                 public void run() {
                     Log.d(TAG, "send message: " + msg);
-                    mConversationArrayAdapter.insert("Me - " + msg, 0);
                 }
             });
         }
@@ -246,7 +259,6 @@ public class FeedFragment extends Fragment {
                             public void run() {
 
                                 Log.d(TAG, "recv message: "+recvMessage);
-                                mConversationArrayAdapter.insert(mServerIP + " - " + recvMessage, 0);
                             }
                         });
                     }
