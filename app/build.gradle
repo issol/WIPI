@@ -27,15 +27,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def date = new Date();
-                    def formattedDate = date.format('yyyyMMddHHmmss')
-                    output.outputFileName = new File(output.outputFile.parent,
-                            output.outputFile.name.replace("-release", "-easy_diary-" + formattedDate)
-                            //for Debug use output.outputFile = new File(output.outputFile.parent,
-                            //                             output.outputFile.name.replace("-debug", "-" + formattedDate)
-                    )
+                variant.outputs.all {
+                    outputFileName = "${variant.name}-${variant.versionName}.apk"
                 }
+
             }
         }
     }

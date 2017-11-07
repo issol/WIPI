@@ -12,9 +12,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorNavAccentSelected</item>
-        <item name="colorPrimaryDark">@color/colorNavAccentSelected</item>
-        <item name="colorAccent">@color/colorNavAccentSelected</item>
+        <item name="colorPrimary">#fdbbbf</item>
+        <item name="colorPrimaryDark">#838383</item>
+        <item name="colorAccent">#fdbbbf</item>
         <!--<item name="actionBarStyle">@style/AppTheme.ActionBar</item>-->
     </style>
 
@@ -39,9 +39,9 @@
     </style>
 
     <style name="AppTheme.FullScreen">
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="windowActionBar">true</item>
+        <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 

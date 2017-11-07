@@ -9,7 +9,6 @@ import android.support.v4.content.ContextCompat;
 
 
 import android.util.Log;
-
 import android.widget.Toast;
 
 
@@ -45,6 +44,7 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
     private String petAge;
     private int sno;
     private String unique_id;
+
 
 
     List<NavigationPage> navigationPages = new ArrayList<>();

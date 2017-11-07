@@ -84,7 +84,10 @@ public class JoinActivity extends Activity {
             intent.putExtra("userInfo", profile);
 
             startActivity(intent);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7fe82e43e8742382269718a967ca60ac93161242
 
         }
         else {
@@ -92,7 +95,10 @@ public class JoinActivity extends Activity {
             FragmentTransaction ft =  getFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_frame, fragment);
             ft.commit();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7fe82e43e8742382269718a967ca60ac93161242
         }
 
 
