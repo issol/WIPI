@@ -17,11 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.adapter.ListViewAdapter2;
+import com.example.isolatorv.wipi.adapter.FeedListViewAdapter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -82,7 +81,7 @@ public class FeedFragment extends Fragment {
     private BufferedReader mIn;
     private Thread mReceiverThread = null;
     ListView listview;
-    ListViewAdapter2 adapter;
+    FeedListViewAdapter adapter;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -91,7 +90,7 @@ public class FeedFragment extends Fragment {
 
 
 
-        adapter = new ListViewAdapter2(getActivity());
+        adapter = new FeedListViewAdapter(getActivity());
 
         listview = (ListView) layout.findViewById(R.id.feed_listView);
 
@@ -120,6 +119,8 @@ public class FeedFragment extends Fragment {
 
         sendButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                new Thread(new ConnectThread("192.168.0.13", 80)).start();
+
                 if (!isConnected) showErrorDialog("서버로 접속된후 다시 해보세요.");
                 else {
                     new Thread(new SenderThread("aa")).start();
@@ -128,16 +129,6 @@ public class FeedFragment extends Fragment {
                 }
             }
         });
-
-
-
-        new Thread(new ConnectThread("192.168.0.13", 80)).start();
-        //new Thread(new ConnectThread("192.168.0.7", 80)).start();
-
-
-
-
-
 
 
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
@@ -324,7 +315,6 @@ public class FeedFragment extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                getActivity().finish();
             }
         });
         builder.create().show();
