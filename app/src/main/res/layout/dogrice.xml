@@ -7,9 +7,9 @@
 
     <LinearLayout
         android:layout_weight="10"
-        android:layout_marginLeft="90dp"
-        android:layout_marginRight="90dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="55dp"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -21,15 +21,15 @@
             android:src="@drawable/feedstandard2"
             android:id="@+id/feed_imageView"
             android:layout_width="wrap_content"
-            android:layout_marginRight="70dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginRight="64dp"
+            android:layout_marginLeft="64dp"
             android:layout_height="0dp" />
 
         <Button
             android:textStyle="bold"
             android:textAllCaps="false"
             android:textSize="18dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="0.8"
             android:text="Feed"
             android:textColor="#ffffffff"
@@ -38,9 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp" />
         <ListView
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
             android:id="@+id/feed_listView"
             android:layout_weight="8"
             android:layout_width="match_parent"

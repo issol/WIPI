@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +42,6 @@ import android.widget.Toast;
 
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.MainActivity;
 import com.example.isolatorv.wipi.MapData;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -337,6 +338,10 @@ public class MapFragment extends Fragment implements
 
         GetData task = new GetData();
         task.execute("http://13.229.34.115/AndroidPHP.php");
+
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.map_title);
 
         return layout;
     }

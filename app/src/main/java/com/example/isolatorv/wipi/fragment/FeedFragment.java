@@ -1,19 +1,23 @@
 package com.example.isolatorv.wipi.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import android.support.v4.app.Fragment;
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import com.example.isolatorv.wipi.R;
@@ -45,9 +49,7 @@ public class FeedFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstance){
-        super.onCreate(savedInstance);
-    }
+    public void onCreate(Bundle savedInstance){super.onCreate(savedInstance);}
 
     @Override
     public void onAttach(Context context) {
@@ -82,12 +84,13 @@ public class FeedFragment extends Fragment {
     ListView listview;
     ListViewAdapter2 adapter;
 
+    @SuppressLint("WrongConstant")
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.dogrice, container, false);
 
 
-       
+
         adapter = new ListViewAdapter2(getActivity());
 
         listview = (ListView) layout.findViewById(R.id.feed_listView);
@@ -112,6 +115,7 @@ public class FeedFragment extends Fragment {
 
 
 
+
         Button sendButton = (Button) layout.findViewById(R.id.Feed_send_btn);
 
         sendButton.setOnClickListener(new View.OnClickListener(){
@@ -130,6 +134,15 @@ public class FeedFragment extends Fragment {
         new Thread(new ConnectThread("192.168.0.13", 80)).start();
         //new Thread(new ConnectThread("192.168.0.7", 80)).start();
 
+
+
+
+
+
+
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.feed_title);
         return layout;
     }
 
@@ -150,12 +163,12 @@ public class FeedFragment extends Fragment {
             serverPort = port;
 
             Log.d(TAG,"connecting to "+serverIP+".......");
-        }
+            }
 
-        @Override
-        public void run() {
+            @Override
+            public void run() {
 
-            try {
+                try {
 
                 mSocket = new Socket(serverIP, serverPort);
                 //ReceiverThread: java.net.SocketTimeoutException: Read timed out 때문에 주석처리
