@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FrameLayout xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -19,6 +20,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="35dp"
+        app:backgroundTint="@color/colorFAB"
         android:src="@android:drawable/ic_menu_help"
        />
 

@@ -18,7 +18,7 @@
 
         <ImageView
             android:layout_weight="2"
-            android:src="@drawable/feedstandard2"
+            android:src="@drawable/testimage_2"
             android:id="@+id/feed_imageView"
             android:layout_width="wrap_content"
             android:layout_marginRight="64dp"

@@ -38,7 +38,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.isolatorv.wipi.R;
@@ -303,7 +302,6 @@ public class MapFragment extends Fragment implements
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "병원 찾기", Toast.LENGTH_SHORT).show();
                 hospitalOn=!hospitalOn;
                 createMarker();
             }
@@ -312,7 +310,6 @@ public class MapFragment extends Fragment implements
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "용품샵 찾기", Toast.LENGTH_SHORT).show();
                 petstoreOn =!petstoreOn;
                 createMarker();
             }
@@ -321,7 +318,6 @@ public class MapFragment extends Fragment implements
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "주말에 오픈 하는 병원 찾기", Toast.LENGTH_SHORT).show();
                 hospitalWeekendOn = !hospitalWeekendOn;
                 createMarker();
             }
@@ -330,7 +326,6 @@ public class MapFragment extends Fragment implements
         fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "커피숍 찾기", Toast.LENGTH_SHORT).show();
                 coffieShopOn = !coffieShopOn;
                 createMarker();
             }

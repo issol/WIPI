@@ -17,7 +17,7 @@
 
 
     <color name="colorBackground">#F8F8F8</color>
-    <color name="colorNavAccentSelected">#FF5722</color>
+    <color name="colorNavAccentSelected">#84b0ef</color>
     <color name="colorNavAccentUnselected">#727272</color>
 
     <!--Showcase Color-->
@@ -29,5 +29,6 @@
         <color name="sienna">#EB6460</color>
 
 
-    <color name="colorFAB">#2196F3</color>
+    <color name="colorFAB">#fff1ae</color>
+
 </resources>

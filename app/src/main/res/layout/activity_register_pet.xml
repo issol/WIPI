@@ -14,7 +14,7 @@
         android:layout_marginTop="110dp"
         android:layout_width="100dp"
         android:layout_height="120dp"
-        android:src="@drawable/wipi_login_image"
+        android:src="@drawable/testimage_3"
         android:clickable="true"
         app:civ_border_width="2dp"
         app:civ_border_color="#c8c8c8"/>

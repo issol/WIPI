@@ -19,7 +19,7 @@
         android:id="@+id/list_item2"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:textColor="#fdbbbf"
+        android:textColor="#84b0ef"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 </LinearLayout>

@@ -124,8 +124,8 @@ public class MyProfileFragment extends Fragment {
 
     /*onCreateView*********************************************************************************/
     private class GetData extends AsyncTask<String, Void, String> {
-        ProgressDialog progressDialog;
-        String errorString =null;
+            ProgressDialog progressDialog;
+            String errorString =null;
 
         @Override
         protected void onPreExecute() {
@@ -226,11 +226,6 @@ public class MyProfileFragment extends Fragment {
                         Log.d("TAG", petName);
                         Log.d("TAG", petType);
                         Log.d("TAG", petAge);
-
-
-
-
-
 
                         break;
                     }

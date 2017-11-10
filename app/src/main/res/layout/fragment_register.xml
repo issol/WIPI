@@ -9,7 +9,7 @@
     <ImageView
         android:layout_marginTop="110dp"
         android:layout_gravity="center"
-        android:src="@drawable/wipi_login_image"
+        android:src="@drawable/testimage_3"
         android:layout_marginBottom="20dp"
         android:layout_width="100dp"
         android:layout_height="120dp" />
