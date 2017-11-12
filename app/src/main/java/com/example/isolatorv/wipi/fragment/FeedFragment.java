@@ -40,34 +40,12 @@ public class FeedFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
 
-    public FeedFragment(){
 
-    }
     public static FeedFragment newInstance(){
         return new FeedFragment();
     }
 
-    @Override
-    public void onCreate(Bundle savedInstance){super.onCreate(savedInstance);}
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            listener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-    }
 
 
 
@@ -83,6 +61,8 @@ public class FeedFragment extends Fragment {
     ListView listview;
     FeedListViewAdapter adapter;
 
+    //onCreate와 같은 매서드
+    /*onCreateView*********************************************************************************/
     @SuppressLint("WrongConstant")
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -136,14 +116,58 @@ public class FeedFragment extends Fragment {
         actionBar.setCustomView(R.layout.feed_title);
         return layout;
     }
+    /*onCreateView*********************************************************************************/
 
+    //생성될때 초기화 UI는 안됨
+    /*onCreate*************************************************************************************/
+    @Override
+    public void onCreate(Bundle savedInstance){super.onCreate(savedInstance);}
+    /*onCreate*************************************************************************************/
+
+    //플래그먼트가 액티비티에 붙을때 호출
+    /*onAttach*************************************************************************************/
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+    /*onAttach*************************************************************************************/
+
+    //플래그먼트가 액티비티에 떨어질 때 호출
+    /*onDetach*************************************************************************************/
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+    /*onDetach*************************************************************************************/
+
+    public interface OnFragmentInteractionListener {
+    }
+
+    //기본생성자
+    /*FeedFragment*********************************************************************************/
+    public FeedFragment(){
+
+    }
+    /*FeedFragment*********************************************************************************/
+
+    //플래그먼트가 제거될때 호출
+    /*onDestroy************************************************************************************/
     @Override
     public void onDestroy() {
         super.onDestroy();
 
         isConnected = false;
     }
+    /*onDestroy************************************************************************************/
 
+    //하드웨어 연결 하는 메서드
+    /*ConnectThread********************************************************************************/
     private class ConnectThread implements Runnable {
 
         private String serverIP;
@@ -218,7 +242,10 @@ public class FeedFragment extends Fragment {
             });
         }
     }
+    /*ConnectThread********************************************************************************/
 
+    //하드웨어 데이터 보내는 메서드
+    /*SenderThread*********************************************************************************/
     private class SenderThread implements Runnable {
 
         private String msg;
@@ -249,7 +276,10 @@ public class FeedFragment extends Fragment {
     });
 }
     }
+    /*SenderThread*********************************************************************************/
 
+    //하드웨어 데이터 받는 메서드
+    /*ReceiverThread*******************************************************************************/
     private class ReceiverThread implements Runnable {
 
         @Override
@@ -304,7 +334,10 @@ public class FeedFragment extends Fragment {
         }
 
     }
+    /*ReceiverThread*******************************************************************************/
 
+    //하드웨어 연결 에러창
+    /*showErrorDialog******************************************************************************/
     public void showErrorDialog(String message)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -319,6 +352,7 @@ public class FeedFragment extends Fragment {
         });
         builder.create().show();
     }
+    /*showErrorDialog******************************************************************************/
 
 }
 

@@ -214,20 +214,22 @@ public class MapFragment extends Fragment implements
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    /*onCreate*************************************************************************************/
+
 
     public interface OnFragmentInteractionListener {
 
         void onClicked();
 
     }
-
+    //플래그먼트가 액티비티에 떨어질 때 호출
+    /*onDetach*************************************************************************************/
     @Override
     public void onDetach() {
         super.onDetach();
         listener = null;
     }
-
-    /*onCreate*************************************************************************************/
+    /*onDetach*************************************************************************************/
 
     //onCreate와 같은 매서드
     /*onCreateView*********************************************************************************/
