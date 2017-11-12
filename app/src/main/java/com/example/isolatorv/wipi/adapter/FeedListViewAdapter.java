@@ -5,6 +5,7 @@ package com.example.isolatorv.wipi.adapter;
  */
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,23 @@ import java.util.ArrayList;
  * Created by tlsdm on 2017-11-06.
  */
 
-public class FeedListViewAdapter extends BaseAdapter{
-    private ArrayList<FeedLisvtViewItem> listViewItems = new ArrayList<FeedLisvtViewItem>();
-    Context context;
 
-    public FeedListViewAdapter(Context context){
-        this.context = context;
+
+/**
+ * Created by tlsdm on 2017-11-06.
+ */
+
+
+
+/**
+ * Created by tlsdm on 2017-11-06.
+ */
+
+public class FeedListViewAdapter extends BaseAdapter{
+
+    private ArrayList<FeedLisvtViewItem> listViewItems = new ArrayList<FeedLisvtViewItem>();
+
+    public FeedListViewAdapter(FragmentActivity activity) {
     }
 
     @Override
@@ -70,4 +82,11 @@ public class FeedListViewAdapter extends BaseAdapter{
 
         listViewItems.add(item);
     }
+
+
+    public void remove(int i){
+        listViewItems.remove(i);
+    }
+
+
 }
