@@ -60,12 +60,12 @@ public class ListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.listview_item, viewGroup, false);
         }
 
-        ImageView pet_image= (ImageView) view.findViewById(R.id.pet_image1);
-        TextView pet_name = (TextView)view.findViewById(R.id.pet_name1);
-        TextView pet_type = (TextView)view.findViewById(R.id.pet_type1);
-        TextView pet_sex = (TextView)view.findViewById(R.id.pet_sex1);
-        TextView pet_age = (TextView)view.findViewById(R.id.pet_age1);
-        TextView pet_size = (TextView)view.findViewById(R.id.pet_size1);
+        ImageView pet_image= (ImageView) view.findViewById(R.id.petImage);
+        TextView pet_name = (TextView)view.findViewById(R.id.petName);
+        TextView pet_type = (TextView)view.findViewById(R.id.petType);
+
+        TextView pet_age = (TextView)view.findViewById(R.id.petAge);
+        TextView pet_weight = (TextView)view.findViewById(R.id.petWeight);
 
         ListViewItem listViewItem = listViewItemList.get(i);
 
@@ -80,20 +80,19 @@ public class ListViewAdapter extends BaseAdapter {
 
         pet_name.setText(listViewItem.getPet_name());
         pet_type.setText(listViewItem.getPet_type());
-        pet_sex.setText(listViewItem.getPet_sex());
+
         pet_age.setText(listViewItem.getPet_age());
-        pet_size.setText(listViewItem.getPet_size());
+        pet_weight.setText(listViewItem.getPet_size());
 
         return view;
     }
 
-    public void addItem(String pet_image, String pet_name, String pet_type, String pet_sex, String pet_age, String pet_size) {
+    public void addItem(String pet_image, String pet_name, String pet_type, String pet_age, String pet_size) {
         ListViewItem item = new ListViewItem();
 
         item.setPet_image(pet_image);
         item.setPet_name(pet_name);
         item.setPet_type(pet_type);
-        item.setPet_sex(pet_sex);
         item.setPet_age(pet_age);
         item.setPet_size(pet_size);
 

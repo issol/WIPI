@@ -286,6 +286,7 @@ public class FeedFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
+
     }
     /*onAttach*************************************************************************************/
 

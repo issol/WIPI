@@ -5,60 +5,85 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="150dp"
+        android:layout_height="150dp">
         <ImageView
-            android:id="@+id/pet_image1"
-            android:layout_gravity="center"
-            android:layout_width="80dp"
-            android:layout_weight="1"
-            android:layout_height="80dp" />
-        <TextView
-            android:id = "@+id/pet_name1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="choco"
-            />
+            android:layout_margin="30dp"
+            android:id="@+id/petImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
         
     </LinearLayout>
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="150dp">
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/pet_type1"
-                android:text="dog"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="이름"
+                />
             <TextView
-                android:id="@+id/pet_sex1"
-                android:text="male"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:textColor="#000000"
+                android:text="분류"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:textColor="#000000"
+                android:text="나이"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:textColor="#000000"
+                android:text="몸무게"
+                />
 
         </LinearLayout>
         <LinearLayout
-            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/pet_age1"
-                android:text="14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/pet_size1"
-                android:text="small"
+                android:id="@+id/petName"
+                android:textColor="#333333"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <TextView
+                android:id="@+id/petType"
+                android:textColor="#333333"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/petAge"
+                android:textColor="#333333"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/petWeight"
+                android:textColor="#333333"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-
 
 
     </LinearLayout>

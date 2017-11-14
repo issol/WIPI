@@ -26,6 +26,7 @@ import com.example.isolatorv.wipi.MainActivity;
 import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
 import com.example.isolatorv.wipi.RequestHandler;
+import com.example.isolatorv.wipi.SetLoginHandler;
 import com.example.isolatorv.wipi.UserData;
 import com.example.isolatorv.wipi.login.Constants;
 
@@ -102,7 +103,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
         //buttonChoose = (Button) findViewById(R.id.buttonChoose);
         buttonUpload = (AppCompatButton) findViewById(R.id.buttonUpload);
-       // buttonView = (Button) findViewById(R.id.buttonViewImage);
+        // buttonView = (Button) findViewById(R.id.buttonViewImage);
 
         //imageView = (ImageView) findViewById(R.id.imageView);
         imagView_profile = (CircleImageView) findViewById(R.id.profile_image);
@@ -115,7 +116,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
         //buttonChoose.setOnClickListener(this);
         buttonUpload.setOnClickListener(this);
-       // buttonView.setOnClickListener(this);
+        // buttonView.setOnClickListener(this);
         imagView_profile.setOnClickListener(this);
     }
 
@@ -201,11 +202,12 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
         if(v == buttonUpload){
 
-                uploadImage();
-                ProfileData userData = new ProfileData(sno,u_name, u_email,unique_id);
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("userInfo", userData);
-                startActivity(intent);
+            uploadImage();
+            setLogin(unique_id);
+            ProfileData userData = new ProfileData(sno,u_name, u_email,unique_id);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("userInfo", userData);
+            startActivity(intent);
 
 
         }
@@ -226,8 +228,40 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    private void viewImage() {
 
+    private void setLogin(String unique_id){
+        String uniq = unique_id;
+        class SetLogin extends AsyncTask<String,Void,String> {
+
+            ProgressDialog loading;
+            SetLoginHandler rh = new SetLoginHandler();
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(RegisterPet.this, "Uploading...", null,true,true);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                String uniqueId = params[0];
+                Log.d("TAG3", uniqueId);
+                String result = rh.sendPostRequest("http://13.229.34.115/setLogined.php",uniqueId);
+
+                return result;
+            }
+        }
+
+        SetLogin ui = new SetLogin();
+        ui.execute(uniq);
     }
 
     private class GetData extends AsyncTask<String, Void, String>{
