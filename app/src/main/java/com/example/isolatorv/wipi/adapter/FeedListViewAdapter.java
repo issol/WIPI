@@ -5,13 +5,14 @@ package com.example.isolatorv.wipi.adapter;
  */
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.Utils.LisvtViewItem2;
+import com.example.isolatorv.wipi.Utils.FeedLisvtViewItem;
 
 import java.util.ArrayList;
 
@@ -19,12 +20,23 @@ import java.util.ArrayList;
  * Created by tlsdm on 2017-11-06.
  */
 
-public class ListViewAdapter2 extends BaseAdapter{
-    private ArrayList<LisvtViewItem2> listViewItems = new ArrayList<LisvtViewItem2>();
-    Context context;
 
-    public ListViewAdapter2(Context context){
-        this.context = context;
+
+/**
+ * Created by tlsdm on 2017-11-06.
+ */
+
+
+
+/**
+ * Created by tlsdm on 2017-11-06.
+ */
+
+public class FeedListViewAdapter extends BaseAdapter{
+
+    private ArrayList<FeedLisvtViewItem> listViewItems = new ArrayList<FeedLisvtViewItem>();
+
+    public FeedListViewAdapter(FragmentActivity activity) {
     }
 
     @Override
@@ -49,13 +61,13 @@ public class ListViewAdapter2 extends BaseAdapter{
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.listview_item2,parent,false);
+            convertView = inflater.inflate(R.layout.feed_listview_item,parent,false);
         }
 
         TextView day = (TextView) convertView.findViewById(R.id.list_item1);
         TextView  Ox = (TextView) convertView.findViewById(R.id.list_item2);
 
-        LisvtViewItem2 listViewItem = listViewItems.get(position);
+        FeedLisvtViewItem listViewItem = listViewItems.get(position);
 
         day.setText(listViewItem.getDay());
         Ox.setText(listViewItem.getOx());
@@ -63,11 +75,18 @@ public class ListViewAdapter2 extends BaseAdapter{
     }
 
     public void addItem(String day,String ox){
-        LisvtViewItem2 item = new LisvtViewItem2();
+        FeedLisvtViewItem item = new FeedLisvtViewItem();
 
         item.setDay(day);
         item.setOx(ox);
 
         listViewItems.add(item);
     }
+
+
+    public void remove(int i){
+        listViewItems.remove(i);
+    }
+
+
 }

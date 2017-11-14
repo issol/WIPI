@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:id="@+id/viewBar1"
-                android:background="@color/colorNavAccentSelected" />
+                android:background="#84b0ef" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:layout_width="24dp"
@@ -39,7 +39,7 @@
                 android:id="@+id/imageViewBar1"
                 android:src="@drawable/wipi_feed"
                 android:scaleType="centerInside"
-                android:tint="@color/colorNavAccentSelected"/>
+                android:tint="@color/colorNavAccentUnselected"/>
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                 tools:text="HOME"
                 android:textSize="12sp"
                 android:id="@+id/textViewBar1"
-                android:textColor="@color/colorNavAccentSelected"/>
+                android:textColor="#84b0ef"/>
 
         </LinearLayout>
 
@@ -63,7 +63,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorNavAccentSelected"
+                android:background="#84b0ef"
                 android:id="@+id/viewBar2"
                 android:visibility="invisible"/>
 
@@ -98,7 +98,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorNavAccentSelected"
+                android:background="#84b0ef"
                 android:id="@+id/viewBar3"
                 android:visibility="invisible"/>
 
@@ -133,7 +133,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/colorNavAccentSelected"
+                android:background="#84b0ef"
                 android:id="@+id/viewBar4"
                 android:visibility="invisible"/>
 

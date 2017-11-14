@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -115,10 +117,13 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.profile_title);
         return layout;
     }
 
+<<<<<<< HEAD
     private void getData() {
         class GetData extends AsyncTask<String, Void, String> {
             ProgressDialog progressDialog;
@@ -127,6 +132,24 @@ public class MyProfileFragment extends Fragment {
             List<String> petTypeList = new ArrayList<String>();
             List<String> petAgeList = new ArrayList<String>();
             List<String> petImageList = new ArrayList<String>();
+=======
+    /*onCreateView*********************************************************************************/
+    private class GetData extends AsyncTask<String, Void, String> {
+            ProgressDialog progressDialog;
+            String errorString =null;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(getActivity(),"Please Wait",null,true,true);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            progressDialog.dismiss();
+>>>>>>> 7d06828d5ac385d6b8ef9258905461d5d187b669
 
             String petAge[];
             String petWeight[];
@@ -215,6 +238,7 @@ public class MyProfileFragment extends Fragment {
                     for (int i = 0; i < jsonarray.length(); i++) {
                         JSONObject item = jsonarray.getJSONObject(i);
 
+<<<<<<< HEAD
                         if (item.getInt("sno") == sno) {
                             petNameList.add(item.getString("pet_name"));
                             petTypeList.add(item.getString("pet_type"));
@@ -232,6 +256,9 @@ public class MyProfileFragment extends Fragment {
                         adapter.addItem(petImageList.get(i), petNameList.get(i), petTypeList.get(i), petAgeList.get(i), "small");
                        // adapter.addItem(petImageList.get(1), petNameList.get(1), petTypeList.get(1), petAgeList.get(1), "small");
 
+=======
+                        break;
+>>>>>>> 7d06828d5ac385d6b8ef9258905461d5d187b669
                     }
 
 

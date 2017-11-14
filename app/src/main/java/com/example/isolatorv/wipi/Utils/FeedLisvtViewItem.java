@@ -4,7 +4,7 @@ package com.example.isolatorv.wipi.Utils;
  * Created by tlsdm on 2017-11-06.
  */
 
-public class LisvtViewItem2 {
+public class FeedLisvtViewItem {
     private String day;
     private String Ox;
 

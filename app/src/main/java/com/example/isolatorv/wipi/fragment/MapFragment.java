@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +38,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.MainActivity;
 import com.example.isolatorv.wipi.MapData;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -214,20 +214,22 @@ public class MapFragment extends Fragment implements
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+    /*onCreate*************************************************************************************/
+
 
     public interface OnFragmentInteractionListener {
 
         void onClicked();
 
     }
-
+    //플래그먼트가 액티비티에 떨어질 때 호출
+    /*onDetach*************************************************************************************/
     @Override
     public void onDetach() {
         super.onDetach();
         listener = null;
     }
-
-    /*onCreate*************************************************************************************/
+    /*onDetach*************************************************************************************/
 
     //onCreate와 같은 매서드
     /*onCreateView*********************************************************************************/
@@ -302,7 +304,6 @@ public class MapFragment extends Fragment implements
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "병원 찾기", Toast.LENGTH_SHORT).show();
                 hospitalOn=!hospitalOn;
                 createMarker();
             }
@@ -311,7 +312,6 @@ public class MapFragment extends Fragment implements
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "용품샵 찾기", Toast.LENGTH_SHORT).show();
                 petstoreOn =!petstoreOn;
                 createMarker();
             }
@@ -320,7 +320,6 @@ public class MapFragment extends Fragment implements
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "주말에 오픈 하는 병원 찾기", Toast.LENGTH_SHORT).show();
                 hospitalWeekendOn = !hospitalWeekendOn;
                 createMarker();
             }
@@ -329,7 +328,6 @@ public class MapFragment extends Fragment implements
         fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "커피숍 찾기", Toast.LENGTH_SHORT).show();
                 coffieShopOn = !coffieShopOn;
                 createMarker();
             }
@@ -337,6 +335,10 @@ public class MapFragment extends Fragment implements
 
         GetData task = new GetData();
         task.execute("http://13.229.34.115/AndroidPHP.php");
+
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.map_title);
 
         return layout;
     }
