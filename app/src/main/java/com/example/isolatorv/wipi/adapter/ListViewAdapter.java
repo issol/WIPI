@@ -52,7 +52,7 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        final int pos= i;
+
         final Context context = viewGroup.getContext();
 
         if(view == null){
@@ -63,7 +63,6 @@ public class ListViewAdapter extends BaseAdapter {
         ImageView pet_image= (ImageView) view.findViewById(R.id.petImage);
         TextView pet_name = (TextView)view.findViewById(R.id.petName);
         TextView pet_type = (TextView)view.findViewById(R.id.petType);
-
         TextView pet_age = (TextView)view.findViewById(R.id.petAge);
         TextView pet_weight = (TextView)view.findViewById(R.id.petWeight);
 
@@ -80,7 +79,6 @@ public class ListViewAdapter extends BaseAdapter {
 
         pet_name.setText(listViewItem.getPet_name());
         pet_type.setText(listViewItem.getPet_type());
-
         pet_age.setText(listViewItem.getPet_age());
         pet_weight.setText(listViewItem.getPet_size());
 

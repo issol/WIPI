@@ -1,47 +1,45 @@
-package com.example.isolatorv.wipi.fragment;
+ package com.example.isolatorv.wipi.fragment;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+        import android.app.ProgressDialog;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.SharedPreferences;
+        import android.os.AsyncTask;
+        import android.os.Bundle;
+        import android.support.annotation.Nullable;
+        import android.support.v4.app.Fragment;
+        import android.support.v4.content.ContextCompat;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.Button;
+        import android.widget.ImageView;
+        import android.widget.ListView;
+        import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.isolatorv.wipi.CircleImageView;
-import com.example.isolatorv.wipi.R;
-import com.example.isolatorv.wipi.adapter.ListViewAdapter;
-import com.example.isolatorv.wipi.login.Constants;
-import com.example.isolatorv.wipi.login.JoinActivity;
-import com.example.isolatorv.wipi.login.RegisterPet;
+        import com.bumptech.glide.Glide;
+        import com.bumptech.glide.load.engine.DiskCacheStrategy;
+        import com.example.isolatorv.wipi.CircleImageView;
+        import com.example.isolatorv.wipi.R;
+        import com.example.isolatorv.wipi.adapter.ListViewAdapter;
+        import com.example.isolatorv.wipi.login.Constants;
+        import com.example.isolatorv.wipi.login.JoinActivity;
+        import com.example.isolatorv.wipi.login.RegisterPet;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+        import org.json.JSONArray;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+        import java.io.BufferedReader;
+        import java.io.InputStream;
+        import java.io.InputStreamReader;
+        import java.net.HttpURLConnection;
+        import java.net.URL;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
+        import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 
 /**
@@ -105,7 +103,7 @@ public class MyProfileFragment extends Fragment {
 
 
 
-        listView = (ListView)layout.findViewById(R.id.listview1);
+        listView = (ListView)layout.findViewById(R.id.pet_list);
 
 
         pref= getActivity().getSharedPreferences("WIPI",0);
@@ -117,13 +115,10 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setCustomView(R.layout.profile_title);
+
         return layout;
     }
 
-<<<<<<< HEAD
     private void getData() {
         class GetData extends AsyncTask<String, Void, String> {
             ProgressDialog progressDialog;
@@ -132,24 +127,6 @@ public class MyProfileFragment extends Fragment {
             List<String> petTypeList = new ArrayList<String>();
             List<String> petAgeList = new ArrayList<String>();
             List<String> petImageList = new ArrayList<String>();
-=======
-    /*onCreateView*********************************************************************************/
-    private class GetData extends AsyncTask<String, Void, String> {
-            ProgressDialog progressDialog;
-            String errorString =null;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = ProgressDialog.show(getActivity(),"Please Wait",null,true,true);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            progressDialog.dismiss();
->>>>>>> 7d06828d5ac385d6b8ef9258905461d5d187b669
 
             String petAge[];
             String petWeight[];
@@ -238,7 +215,6 @@ public class MyProfileFragment extends Fragment {
                     for (int i = 0; i < jsonarray.length(); i++) {
                         JSONObject item = jsonarray.getJSONObject(i);
 
-<<<<<<< HEAD
                         if (item.getInt("sno") == sno) {
                             petNameList.add(item.getString("pet_name"));
                             petTypeList.add(item.getString("pet_type"));
@@ -254,11 +230,8 @@ public class MyProfileFragment extends Fragment {
                     for(int i = 0; i<petNameList.size();i++){
                         Log.d("TAG",String.valueOf(i));
                         adapter.addItem(petImageList.get(i), petNameList.get(i), petTypeList.get(i), petAgeList.get(i), "small");
-                       // adapter.addItem(petImageList.get(1), petNameList.get(1), petTypeList.get(1), petAgeList.get(1), "small");
+                        // adapter.addItem(petImageList.get(1), petNameList.get(1), petTypeList.get(1), petAgeList.get(1), "small");
 
-=======
-                        break;
->>>>>>> 7d06828d5ac385d6b8ef9258905461d5d187b669
                     }
 
 

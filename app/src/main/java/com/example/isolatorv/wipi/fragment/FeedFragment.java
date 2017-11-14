@@ -269,16 +269,8 @@ public class FeedFragment extends Fragment {
     }
     /*onCreateView*********************************************************************************/
 
-<<<<<<< HEAD
-
-//        new Thread(new ConnectThread("192.168.0.13", 80)).start();
-
-     //   new Thread(new ConnectThread("192.168.0.13", 80)).start();
-        //new Thread(new ConnectThread("192.168.0.7", 80)).start();
 
 
-        return layout;
-=======
     //생성될때 초기화 UI는 안됨
     /*onCreate*************************************************************************************/
     @Override
@@ -295,7 +287,7 @@ public class FeedFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
->>>>>>> 7d06828d5ac385d6b8ef9258905461d5d187b669
+
     }
     /*onAttach*************************************************************************************/
 
