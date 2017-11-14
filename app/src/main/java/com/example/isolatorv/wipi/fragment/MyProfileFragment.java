@@ -36,6 +36,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
@@ -79,9 +81,8 @@ public class MyProfileFragment extends Fragment {
         unique_id = extra.getString("unique_id");
         sno = extra.getInt("sno");
 
+        getData();
 
-        GetData task = new GetData();
-        task.execute("http://13.229.34.115/getPetInfo.php");
 
     }
     /*onAttach*************************************************************************************/
@@ -118,126 +119,131 @@ public class MyProfileFragment extends Fragment {
         return layout;
     }
 
-    /*onCreateView*********************************************************************************/
-    private class GetData extends AsyncTask<String, Void, String> {
-        ProgressDialog progressDialog;
-        String errorString =null;
+    private void getData() {
+        class GetData extends AsyncTask<String, Void, String> {
+            ProgressDialog progressDialog;
+            String errorString = null;
+            List<String> petNameList = new ArrayList<String>();
+            List<String> petTypeList = new ArrayList<String>();
+            List<String> petAgeList = new ArrayList<String>();
+            List<String> petImageList = new ArrayList<String>();
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = ProgressDialog.show(getActivity(),"Please Wait",null,true,true);
-        }
+            String petAge[];
+            String petWeight[];
+            String petImage[];
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            progressDialog.dismiss();
-
-            Log.d(Constants.TAG, "response  - " +  result);
-
-            if (result == null){
-
-                Log.d(Constants.TAG,errorString);
-            }
-            else {
-                mJsonString = result;
-                showResult();
-            }
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String serverURL = params[0];
-
-
-            try {
-
-                URL url = new URL(serverURL);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
-                httpURLConnection.setReadTimeout(5000);
-                httpURLConnection.setConnectTimeout(5000);
-                httpURLConnection.connect();
-
-
-                int responseStatusCode = httpURLConnection.getResponseCode();
-                Log.d(Constants.TAG, "response code - " + responseStatusCode);
-
-                InputStream inputStream;
-                if(responseStatusCode == HttpURLConnection.HTTP_OK) {
-                    inputStream = httpURLConnection.getInputStream();
-                }
-                else{
-                    inputStream = httpURLConnection.getErrorStream();
-                }
-
-
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                StringBuilder sb = new StringBuilder();
-                String line;
-
-                while((line = bufferedReader.readLine()) != null){
-                    sb.append(line);
-                }
-
-                bufferedReader.close();
-
-
-                return sb.toString().trim();
-
-
-            } catch (Exception e) {
-                Log.d(Constants.TAG, "InsertData: Error ", e);
-                errorString = e.toString();
-
-                return null;
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressDialog = ProgressDialog.show(getActivity(), "Please Wait", null, true, true);
             }
 
-        }
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
 
-        private void showResult(){
-            try{
-                JSONObject jsonobject = new JSONObject(mJsonString);
-                JSONArray jsonarray = jsonobject.getJSONArray("result");
+                progressDialog.dismiss();
 
-                for(int i = 0; i <jsonarray.length(); i++){
-                    JSONObject item = jsonarray.getJSONObject(i);
+                Log.d(Constants.TAG, "response  - " + result);
 
-                    if(item.getInt("sno")==sno){
-                        petName = item.getString("pet_name");
-                        petType = item.getString("pet_type");
-                        petAge = item.getString("pet_age");
-                        petImage = item.getString("pet_image");
+                if (result == null) {
 
-                        adapter = new ListViewAdapter(getActivity());
+                    Log.d(Constants.TAG, errorString);
+                } else {
+                    mJsonString = result;
+                    showResult();
+                }
+            }
 
+            @Override
+            protected String doInBackground(String... params) {
 
-                        adapter.addItem(petImage,petName, petType,"male",petAge, "small");
-                        listView.setAdapter(adapter);
-                        Log.d("TAG", petName);
-                        Log.d("TAG", petType);
-                        Log.d("TAG", petAge);
+                String serverURL = params[0];
 
 
+                try {
+
+                    URL url = new URL(serverURL);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                    httpURLConnection.setReadTimeout(5000);
+                    httpURLConnection.setConnectTimeout(5000);
+                    httpURLConnection.connect();
 
 
+                    int responseStatusCode = httpURLConnection.getResponseCode();
+                    Log.d(Constants.TAG, "response code - " + responseStatusCode);
 
-
-                        break;
+                    InputStream inputStream;
+                    if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                        inputStream = httpURLConnection.getInputStream();
+                    } else {
+                        inputStream = httpURLConnection.getErrorStream();
                     }
 
 
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line);
+                    }
+
+                    bufferedReader.close();
+
+
+                    return sb.toString().trim();
+
+
+                } catch (Exception e) {
+                    Log.d(Constants.TAG, "InsertData: Error ", e);
+                    errorString = e.toString();
+
+                    return null;
+                }
+
+            }
+
+            private void showResult() {
+                try {
+                    JSONObject jsonobject = new JSONObject(mJsonString);
+                    JSONArray jsonarray = jsonobject.getJSONArray("result");
+
+                    for (int i = 0; i < jsonarray.length(); i++) {
+                        JSONObject item = jsonarray.getJSONObject(i);
+
+                        if (item.getInt("sno") == sno) {
+                            petNameList.add(item.getString("pet_name"));
+                            petTypeList.add(item.getString("pet_type"));
+                            petAgeList.add(item.getString("pet_age"));
+                            petImageList.add(item.getString("pet_image"));
+
+
+                        }
+
+                    }
+                    adapter = new ListViewAdapter(getActivity());
+
+                    for(int i = 0; i<petNameList.size();i++){
+                        Log.d("TAG",String.valueOf(i));
+                        adapter.addItem(petImageList.get(i), petNameList.get(i), petTypeList.get(i), petAgeList.get(i), "small");
+                       // adapter.addItem(petImageList.get(1), petNameList.get(1), petTypeList.get(1), petAgeList.get(1), "small");
+
+                    }
+
+
+                    listView.setAdapter(adapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        GetData task = new GetData();
+        task.execute("http://13.229.34.115/getPetInfo.php");
 
     }
     private void logout() {

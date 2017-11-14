@@ -21,18 +21,18 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class SetLoginHandler {
-    private String uniqueId;
+
     public String sendPostRequest(String requestURL, String unique_id) {
 
         URL url;
 
 
         StringBuilder sb = new StringBuilder();
-        uniqueId = unique_id;
+        String uniqueId = unique_id;
         Log.d("TAG4", uniqueId);
         try {
             url = new URL(requestURL);
-
+            Log.d("Url :", requestURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(15000);
             conn.setConnectTimeout(15000);
@@ -44,6 +44,7 @@ public class SetLoginHandler {
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
+            Log.d("Unique_id == " , uniqueId);
             writer.write("unique_id=" + uniqueId);
 
             writer.flush();

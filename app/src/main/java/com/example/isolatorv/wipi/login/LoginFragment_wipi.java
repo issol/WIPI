@@ -187,7 +187,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
                     unique_id = resp.getUser().getUnique_id();
 
 
-                    setLogin(unique_id);
+                   // setLogin(unique_id);
 
                     getData(unique_id);
 
@@ -252,7 +252,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
 
     }
 
-    private void setLogin(final String unique_id){
+    private void setLogin(String unique_id){
         String uniq = unique_id;
         class SetLogin extends AsyncTask<String,Void,String> {
 
@@ -270,7 +270,7 @@ public class LoginFragment_wipi extends Fragment implements View.OnClickListener
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                //Toast.makeText(getActivity(),s,Toast.LENGTH_LONG).show();
+
             }
 
             @Override

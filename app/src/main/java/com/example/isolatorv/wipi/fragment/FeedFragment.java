@@ -127,12 +127,12 @@ public class FeedFragment extends Fragment {
 
 
 
-<<<<<<< HEAD
+
 //        new Thread(new ConnectThread("192.168.0.13", 80)).start();
-=======
-        new Thread(new ConnectThread("192.168.0.13", 80)).start();
+
+     //   new Thread(new ConnectThread("192.168.0.13", 80)).start();
         //new Thread(new ConnectThread("192.168.0.7", 80)).start();
->>>>>>> 7fe82e43e8742382269718a967ca60ac93161242
+
 
         return layout;
     }
