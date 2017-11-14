@@ -220,14 +220,15 @@ public class FeedFragment extends Fragment {
 
         sendButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                /*new Thread(new ConnectThread("192.168.0.13", 80)).start();
 
+                new Thread(new ConnectThread("192.168.0.9", 80)).start();
                 if (!isConnected) showErrorDialog("서버로 접속된후 다시 해보세요.");
                 else {
                     new Thread(new SenderThread("aa")).start();
-                    //Log.d(TAG, mInputEditText.getText().toString());
+                    Log.d(TAG, "데이터 전송" +
+                            "");
 
-                }*/
+                }
                 Log.d(TAG,doDayOfWeek());
                 feeds = dbHelper.getFeedData(id,doDayOfWeek());
                 Log.d(TAG,"밥주기 feeds data size : "+feeds.size());
@@ -379,9 +380,6 @@ public class FeedFragment extends Fragment {
                     if (isConnected) {
 
                         Log.d(TAG, "connected to " + serverIP);
-
-
-
                         mReceiverThread = new Thread(new ReceiverThread());
                         mReceiverThread.start();
                     }else{
@@ -506,8 +504,6 @@ public class FeedFragment extends Fragment {
     /*showErrorDialog******************************************************************************/
 
     private void setInit(){
-
-
         //Animations
         show_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_show);
         hide_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_hide);
@@ -628,7 +624,7 @@ public class FeedFragment extends Fragment {
                 if(i==0)
                     t1 = times.get(i).toString();
                 else
-                    t2 = "2017-11-19";
+                    t2 = times.get(i).toString();
             }
             Log.d(TAG,"t1 : "+t1+" "+"t2 : "+t2);
             dayDistinction(diffOfDate(t1,t2));
