@@ -1,8 +1,11 @@
 package com.example.isolatorv.wipi.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -29,17 +32,27 @@ import android.widget.Toast;
 import com.example.isolatorv.wipi.R;
 import com.example.isolatorv.wipi.Utils.DBHelper;
 import com.example.isolatorv.wipi.adapter.FeedListViewAdapter;
+import com.example.isolatorv.wipi.adapter.ListViewAdapter;
+import com.example.isolatorv.wipi.login.Constants;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -58,14 +71,18 @@ public class FeedFragment extends Fragment {
     }
 
 
-
-
+    private String userName;
+    private String userEmail;
+    private String petName;
+    private String unique_id;
 
 
     private static final String TAG = "TcpClient";
 
     private boolean isConnected = false;
 
+    private int sno;
+    String mJsonString;
     private String mServerIP = null;
     private Socket mSocket = null;
     private PrintWriter mOut;
@@ -98,7 +115,7 @@ public class FeedFragment extends Fragment {
     private List feeds2 = null;
     private List feeds3 = null;
     private List times = null;
-    private List mingu = null;
+    private List hasival=null;
 
     private boolean FAB_Status = false;
     private boolean feedcompiltecheck = false;
@@ -110,6 +127,8 @@ public class FeedFragment extends Fragment {
     private String t2 = null;
     private String chagedate = null;
     private int id=0;
+
+    SharedPreferences pref;
 
     private ListView listview=null;
     private FeedListViewAdapter adapter=null;
@@ -126,13 +145,22 @@ public class FeedFragment extends Fragment {
         fab2 = (FloatingActionButton) layout.findViewById(R.id.fab_2);
         fab3 = (FloatingActionButton) layout.findViewById(R.id.fab_3);
 
-        setInit();
-        db();
+        pref = getActivity().getSharedPreferences("WIPI", 0);
+        sno = pref.getInt(Constants.SNO,0);
+        Log.d("TAG", String.valueOf(sno));
 
+        hasival =new ArrayList();
 
+        Bundle extra = getArguments();
+        userName = extra.getString("name");
+        userEmail = extra.getString("email");
+        unique_id = extra.getString("unique_id");
+        sno = extra.getInt("sno");
+
+        getData();
 
         adapter = new FeedListViewAdapter(getActivity());
-        createList();
+
         listview = (ListView) layout.findViewById(R.id.feed_listView);
         listview.setAdapter(adapter);
         listview.setVerticalScrollBarEnabled(false);
@@ -198,6 +226,7 @@ public class FeedFragment extends Fragment {
                     day = feeds.get(4).toString();
                     count = feeds.get(5).toString();
 
+                    Log.d(TAG, String.valueOf(hasival.size()));
                     showErrorDialog(name, date, count,day);
                 }catch (Exception e){
                     Toast.makeText(getActivity(),"데이터 없음",Toast.LENGTH_LONG).show();
@@ -234,7 +263,6 @@ public class FeedFragment extends Fragment {
                 Log.d(TAG,"밥주기 feeds data size : "+feeds.size());
                 String day =null,count=null;
                 try{
-
                     day = feeds.get(4).toString();
                     count = feeds.get(5).toString();
 
@@ -266,9 +294,13 @@ public class FeedFragment extends Fragment {
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.feed_title);
+
         return layout;
     }
     /*onCreateView*********************************************************************************/
+
+
+
 
     //생성될때 초기화 UI는 안됨
     /*onCreate*************************************************************************************/
@@ -286,6 +318,7 @@ public class FeedFragment extends Fragment {
         } else {
             throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
+
 
     }
     /*onAttach*************************************************************************************/
@@ -461,8 +494,8 @@ public class FeedFragment extends Fragment {
                 }
 
                 Log.d(TAG, "ReceiverThread: thread has exited");
-                if (mOut != null) {
-                    mOut.flush();
+                    if (mOut != null) {
+                        mOut.flush();
                     mOut.close();
                 }
 
@@ -516,27 +549,24 @@ public class FeedFragment extends Fragment {
         dbHelper = new DBHelper(getActivity(), "myDb", null, 1);
         dbHelper.testDB();
 
-        mingu = dbHelper.getAllMINGUEData();
-        if(mingu.size()<2){
-            dbHelper.addMingue("dog","2");
-            dbHelper.addMingue("cat","3");
-            mingu = dbHelper.getAllMINGUEData();
+
+        if(hasival.size()!=0){
+            if(hasival.size()==4||hasival.size()==8||hasival.size()==12)id=1;
+
+            if(hasival.size()==4){
+                fab1enable =true;
+            }
+            if(hasival.size()==8){
+                fab1enable =true;
+                fab2enable =true;
+            }
+            if(hasival.size()==12){
+                fab1enable =true;
+                fab2enable =true;
+                fab3enable =true;
+            }
         }
 
-        if(mingu.size()==3||mingu.size()==6||mingu.size()==9)id=1;
-
-        if(mingu.size()==3){
-            fab1enable =true;
-        }
-        if(mingu.size()==6){
-            fab1enable =true;
-            fab2enable =true;
-        }
-        if(mingu.size()==9){
-            fab1enable =true;
-            fab2enable =true;
-            fab3enable =true;
-        }
     }
 
     private void expandFAB() {
@@ -721,53 +751,66 @@ public class FeedFragment extends Fragment {
         switch((int) day){
             case 0:
                 Log.d(TAG,"diffOfDate : 차이 0");
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
                 break;
             case 1:
                 Log.d(TAG,"diffOfDate : 차이 1");
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
+
                 break;
             case 2:
                 Log.d(TAG,"diffOfDate : 차이 2");
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
                 break;
             case 3:
                 Log.d(TAG,"diffOfDate : 차이 3");
                 if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
                 break;
             case 4:
                 Log.d(TAG,"diffOfDate : 차이 4");
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
                 break;
             case 5:
                 Log.d(TAG,"diffOfDate : 차이 5");
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
                 break;
             case 6:
                 Log.d(TAG,"diffOfDate : 차이 6");
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
                 break;
             case 7 :
                 Log.d(TAG,"diffOfData : 차이 7");
 
-                if(mingu.size()==3){
+                if(hasival.size()==4){
                     for(int i=0;i<feeds1.size();i++)
                         dbHelper.deleteList(id);
                 }
-                if(mingu.size()==6){
+                if(hasival.size()==8){
                     for(int i=0;i<feeds1.size();i++)
                         dbHelper.deleteList(id);
                     for(int i=0;i<feeds1.size();i++)
                         dbHelper.deleteList(id+1);
                 }
-                if(mingu.size()==9){
+                if(hasival.size()==12){
                     for(int i=0;i<feeds1.size();i++)
                         dbHelper.deleteList(id);
                     for(int i=0;i<feeds1.size();i++)
@@ -778,9 +821,12 @@ public class FeedFragment extends Fragment {
 
                 dbHelper.upDatetime(times.get(1).toString(),0);
                 feeds = dbHelper.getFeedData(id,String.valueOf(doDayOfWeek()));
-                if(feeds.size()==0)
-                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?mingu.get(9):(id==1?mingu.get(1):mingu.get(4))),getTime(),doDayOfWeek(),0);
+                if(feeds.size()==0){
+                    dbHelper.addFeed(String.valueOf(id),"x",String.valueOf(id==3?hasival.get(8):(id==1?hasival.get(0):hasival.get(4))),getTime(),doDayOfWeek(),0);
+                    Log.d(TAG,"dayDistinction실행");
+                }
                 break;
+
         }
     }
 
@@ -810,6 +856,129 @@ public class FeedFragment extends Fragment {
             adapter.addItem(LISTM_MENU[i],ox);
             ox="x";
         }
+    }
+
+    private void getData() {
+        class GetData extends AsyncTask<String, Void, String> {
+            ProgressDialog progressDialog;
+            String errorString = null;
+            List<String> petNameList = new ArrayList<String>();
+            List<String> petTypeList = new ArrayList<String>();
+            List<String> petAgeList = new ArrayList<String>();
+            List<String> petImageList = new ArrayList<String>();
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                progressDialog = ProgressDialog.show(getActivity(), "Please Wait", null, true, true);
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                progressDialog.dismiss();
+
+                Log.d(Constants.TAG, "response  - " + result);
+
+                if (result == null) {
+
+                    Log.d(Constants.TAG, errorString);
+                } else {
+                    mJsonString = result;
+                    showResult();
+                }
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                String serverURL = params[0];
+
+
+                try {
+
+                    URL url = new URL(serverURL);
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                    httpURLConnection.setReadTimeout(5000);
+                    httpURLConnection.setConnectTimeout(5000);
+                    httpURLConnection.connect();
+
+
+                    int responseStatusCode = httpURLConnection.getResponseCode();
+                    Log.d(Constants.TAG, "response code - " + responseStatusCode);
+
+                    InputStream inputStream;
+                    if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                        inputStream = httpURLConnection.getInputStream();
+                    } else {
+                        inputStream = httpURLConnection.getErrorStream();
+                    }
+
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line);
+                    }
+
+                    bufferedReader.close();
+
+
+                    return sb.toString().trim();
+
+
+                } catch (Exception e) {
+                    Log.d(Constants.TAG, "InsertData: Error ", e);
+                    errorString = e.toString();
+
+                    return null;
+                }
+
+            }
+
+            private void showResult() {
+                try {
+                    JSONObject jsonobject = new JSONObject(mJsonString);
+                    JSONArray jsonarray = jsonobject.getJSONArray("result");
+
+                    for (int i = 0; i < jsonarray.length(); i++) {
+                        JSONObject item = jsonarray.getJSONObject(i);
+
+                        if (item.getInt("sno") == sno) {
+                            hasival.add(item.getString("pet_name"));
+                            hasival.add(item.getString("pet_type"));
+                            hasival.add(item.getString("pet_age"));
+                            hasival.add(item.getString("pet_image"));
+
+                        }
+
+                    }
+
+                    for(int i = 0; i<hasival.size();i++){
+                        Log.d("TAG",String.valueOf(i));
+                        Log.d(TAG,hasival.get(i).toString());
+                    }
+
+                    setInit();
+                    db();
+                    createList();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        GetData task = new GetData();
+        task.execute("http://13.229.34.115/getPetInfo.php");
+
     }
 }
 

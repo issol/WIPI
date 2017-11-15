@@ -44,15 +44,10 @@ public class DBHelper extends SQLiteOpenHelper {
         sb2.append(" TIME TEXT)");
         //SQLITE Database 로 쿼리 실행
 
-        StringBuffer sb3 = new StringBuffer();
-        sb3.append("CREATE TABLE MINGUE_TABLE(");
-        sb3.append("_ID INTEGER PRIMARY KEY AUTOINCREMENT,");
-        sb3.append("_NAME TEXT,");
-        sb3.append("_AGE TEXT)");
+
 
         db.execSQL(sb.toString());
         db.execSQL(sb2.toString());
-        db.execSQL(sb3.toString());
         Log.d(TAG,"DBHelper : db생성 완료");
     }
 
@@ -65,42 +60,9 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
     }
 
-    public void addMingue(String name,String age){
-        SQLiteDatabase db = getWritableDatabase();
 
-        StringBuffer sb =new StringBuffer();
-        sb.append("INSERT INTO MINGUE_TABLE(");
-        sb.append("_NAME,_AGE)");
-        sb.append("VALUES (?,?)");
 
-        db.execSQL(sb.toString(),
-                new Object[]{
-                        name,
-                        age
-                });
 
-        Log.d(TAG,"DBHelper-MINGUE : db Insert 완료");
-    }
-
-    public List getAllMINGUEData(){
-        StringBuffer sb = new StringBuffer();
-        sb.append("SELECT _ID,_NAME,_AGE FROM MINGUE_TABLE");
-
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(sb.toString(),null);
-        List Mingu = new ArrayList();
-
-        while(cursor.moveToNext()){
-            String id = cursor.getString(0);
-            String name = cursor.getString(1);
-            String age = cursor.getString(2);
-            Mingu.add(id);
-            Mingu.add(name);
-            Mingu.add(age);
-        }
-        Log.d(TAG,"DBHelper-Mingu : db 불러오기 완료");
-        return Mingu;
-    }
     public void addTime(String time){
         SQLiteDatabase db = getWritableDatabase();
 

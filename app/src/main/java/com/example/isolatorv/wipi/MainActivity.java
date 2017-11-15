@@ -8,7 +8,7 @@ import android.support.v4.content.ContextCompat;
 
 
 
-import android.util.Log;
+
 import android.widget.Toast;
 
 
@@ -46,7 +46,6 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
     private String unique_id;
 
 
-
     List<NavigationPage> navigationPages = new ArrayList<>();
 
     @Override
@@ -63,7 +62,6 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
         petAge = profile.getP_age();
 
 
-
         NavigationPage page1 = new NavigationPage("Feed", getResources().getDrawable(R.drawable.wipi_feed), FeedFragment.newInstance());
         NavigationPage page2 = new NavigationPage("Map", ContextCompat.getDrawable(this, R.drawable.wipi_map), MapFragment.newInstance());
         NavigationPage page3 = new NavigationPage("Diary", ContextCompat.getDrawable(this, R.drawable.wipi_diary), DiaryFragment.newInstance());
@@ -74,6 +72,7 @@ public class MainActivity extends BottomBarHolderActivity implements FeedFragmen
         navigationPages.add(page2);
         navigationPages.add(page3);
         navigationPages.add(page4);
+
 
         super.setUpBottomBarHolderActivity(navigationPages, sno, userName, userEmail,unique_id );
     }
