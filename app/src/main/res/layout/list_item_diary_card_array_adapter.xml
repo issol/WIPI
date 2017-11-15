@@ -1,65 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="120dp">
 
     <LinearLayout
-        android:padding="10dp"
-        android:background="@drawable/bg_card_01"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:padding="5dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/weather"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/ic_snow_2"
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:textColor="@color/defaultText"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:id="@+id/text1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/large_text_size"
-                    android:gravity="center_vertical" />
-                <TextView
-                    android:textColor="@color/defaultText"
-                    android:id="@+id/text3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/large_text_size"
-                    android:gravity="right" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        <ImageView
+            android:id="@+id/weather"
+            android:layout_marginRight="10dp"
+            app:srcCompat="@drawable/ic_snow_2"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+        <TextView
             android:textColor="@color/defaultText"
-            android:maxLines="3"
-            android:padding="5dp"
-            android:id="@+id/text2"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/large_text_size"
-            android:gravity="left" />
+            android:gravity="center_vertical" />
+
     </LinearLayout>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:textColor="@color/defaultText"
+        android:maxLines="3"
+        android:padding="5dp"
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textColor="#999999"
+        android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:gravity="center" />
 
 </LinearLayout>

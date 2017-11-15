@@ -1,3 +1,4 @@
+
 package com.example.isolatorv.wipi.fragment;
 
 import android.app.ProgressDialog;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.isolatorv.wipi.CircleImageView;
+import com.example.isolatorv.wipi.ProfileData;
 import com.example.isolatorv.wipi.R;
 import com.example.isolatorv.wipi.adapter.ListViewAdapter;
 import com.example.isolatorv.wipi.login.Constants;
@@ -41,7 +44,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 
 
 /**
@@ -63,7 +66,8 @@ public class MyProfileFragment extends Fragment {
     private ListView listView;
     private ListViewAdapter adapter;
     ImageView viewPetImage;
-    private Button logoutBtn;
+    ImageView addPet;
+    ImageButton logoutBtn;
 
     String mJsonString;
     //플래그먼트가 액티비티에 붙을때 호출
@@ -91,18 +95,24 @@ public class MyProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_my_profile,container,false);
+        View mCustomView = inflater.from(getActivity()).inflate(R.layout.profile_title, null);
 
 
-        logoutBtn = (Button) layout.findViewById(R.id.logoutBtn);
 
+        addPet = (ImageView) layout.findViewById(R.id.addList);
         viewPetImage = (ImageView) layout.findViewById(R.id.pet_image);
 
 
-
         listView = (ListView)layout.findViewById(R.id.pet_list);
+
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.profile_title);
+
+
+        logoutBtn = (ImageButton) mCustomView.findViewById(R.id.action_logout);
+
+
 
         pref= getActivity().getSharedPreferences("WIPI",0);
 
@@ -113,9 +123,23 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
+        addPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProfileData profile = new ProfileData(userName,userEmail,unique_id);
+                Intent intent = new Intent(getActivity(), RegisterPet.class);
+                intent.putExtra("userInfo", profile);
+
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+
 
         return layout;
     }
+
 
     private void getData() {
         class GetData extends AsyncTask<String, Void, String> {
@@ -125,6 +149,7 @@ public class MyProfileFragment extends Fragment {
             List<String> petTypeList = new ArrayList<String>();
             List<String> petAgeList = new ArrayList<String>();
             List<String> petImageList = new ArrayList<String>();
+            List<Integer> petWeightList = new ArrayList<Integer>();
 
 
             @Override
@@ -214,6 +239,7 @@ public class MyProfileFragment extends Fragment {
                             petNameList.add(item.getString("pet_name"));
                             petTypeList.add(item.getString("pet_type"));
                             petAgeList.add(item.getString("pet_age"));
+                            petWeightList.add(item.getInt("pet_weight"));
                             petImageList.add(item.getString("pet_image"));
                         }
 
@@ -222,8 +248,11 @@ public class MyProfileFragment extends Fragment {
 
                     for(int i = 0; i<petNameList.size();i++){
                         Log.d("TAG",String.valueOf(i));
-                        adapter.addItem(petImageList.get(i), petNameList.get(i), petTypeList.get(i), petAgeList.get(i), "small");
+                        adapter.addItem(petImageList.get(i), petNameList.get(i), petTypeList.get(i), petAgeList.get(i),  petWeightList.get(i));
                         // adapter.addItem(petImageList.get(1), petNameList.get(1), petTypeList.get(1), petAgeList.get(1), "small");
+                        if(i==2){
+                            addPet.setVisibility(View.INVISIBLE);
+                        }
 
                     }
 

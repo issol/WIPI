@@ -91,13 +91,11 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.create_diary_title));
+        getSupportActionBar().setTitle("Write Diary");
         setDateTime();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        FontUtils.setToolbarTypeface(toolbar, Typeface.DEFAULT);
 
-        bindView();
         bindEvent();
         initSpinner();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -112,7 +110,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
 
     }
 
-    private void bindView() {}
+
 
     private void bindEvent() {
 
@@ -330,9 +328,9 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     protected void onResume() {
         super.onResume();
 
-        FontUtils.setTypeface(this, getAssets(), this.mContents);
-        FontUtils.setTypeface(this, getAssets(), this.mTitle);
-        setDiaryFontSize();
+       // FontUtils.setTypeface(this, getAssets(), this.mContents);
+       // FontUtils.setTypeface(this, getAssets(), this.mTitle);
+        //setDiaryFontSize();
     }
 
     private void setDiaryFontSize() {
@@ -355,10 +353,6 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     class PhotoClickListener implements View.OnClickListener {
 

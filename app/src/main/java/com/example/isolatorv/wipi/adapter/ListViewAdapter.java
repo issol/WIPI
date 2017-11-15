@@ -80,12 +80,12 @@ public class ListViewAdapter extends BaseAdapter {
         pet_name.setText(listViewItem.getPet_name());
         pet_type.setText(listViewItem.getPet_type());
         pet_age.setText(listViewItem.getPet_age());
-        pet_weight.setText(listViewItem.getPet_size());
+        pet_weight.setText(String.valueOf(listViewItem.getPet_size())+" kg");
 
         return view;
     }
 
-    public void addItem(String pet_image, String pet_name, String pet_type, String pet_age, String pet_size) {
+    public void addItem(String pet_image, String pet_name, String pet_type, String pet_age, int pet_size) {
         ListViewItem item = new ListViewItem();
 
         item.setPet_image(pet_image);

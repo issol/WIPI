@@ -13,7 +13,7 @@ public class ListViewItem {
     private String pet_type;
     private String pet_sex;
     private String pet_age;
-    private String pet_size;
+    private int pet_size;
 
     public String getPet_image() {
         return pet_image;
@@ -55,11 +55,11 @@ public class ListViewItem {
         this.pet_age = pet_age;
     }
 
-    public String getPet_size() {
+    public int getPet_size() {
         return pet_size;
     }
 
-    public void setPet_size(String pet_size) {
+    public void setPet_size(int pet_size) {
         this.pet_size = pet_size;
     }
 }

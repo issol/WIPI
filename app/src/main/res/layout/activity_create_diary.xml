@@ -30,7 +30,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:padding="@dimen/card_layout_padding"
-            android:background="@color/colorAccentWithAlpha"
+            android:background="#84AFEF"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -38,7 +38,8 @@
                 android:layout_marginBottom="@dimen/card_layout_margin"
                 android:background="@drawable/bg_card_01"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="155dp"
+                android:layout_gravity="center"
                 android:layout_height="50dp">
 
                 <LinearLayout
@@ -47,9 +48,9 @@
                     android:layout_height="match_parent">
 
 
-
                     <ImageView
                         android:background="@drawable/click_effect_01"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginRight="@dimen/toolbar_icon_margin_right"
                         android:id="@+id/datePicker"
                         android:src="@drawable/calendar_4"
@@ -65,12 +66,12 @@
                         android:layout_height="wrap_content" />
 
 
-                        <ImageView
-                                android:id="@+id/photoPicker"
-                                android:background="@drawable/click_effect_01"
-                                android:src="@drawable/image_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                    <ImageView
+                        android:id="@+id/photoPicker"
+                        android:background="@drawable/click_effect_01"
+                        android:src="@drawable/image_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
 
                 </LinearLayout>
@@ -101,7 +102,7 @@
                     android:textColor="@color/defaultText"
                     android:gravity="center_vertical"
                     android:id="@+id/title"
-                    android:hint="@string/guide_message"
+                    android:hint="제목을 입력하세요."
                     android:textSize="@dimen/large_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -124,7 +125,7 @@
                         android:textColor="@color/defaultText"
                         android:textSize="@dimen/large_text_size"
                         android:id="@+id/contents"
-                        android:hint="@string/contents_text_hint"
+                        android:hint="내용을 입력하세요."
                         android:gravity="left"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
