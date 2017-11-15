@@ -14,7 +14,7 @@ public class ProfileData implements Parcelable{
     private int sno;
 
     public String p_name, p_type, p_age;
-
+    public int p_weight;
     public ProfileData(){
 
     }

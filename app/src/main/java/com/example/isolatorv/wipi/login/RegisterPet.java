@@ -61,7 +61,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
 
     private AppCompatButton buttonUpload;
-    private EditText pet_name, pet_type, pet_age;
+    private EditText pet_name, pet_type, pet_age,pet_weight;
 
 
     private ImageView imageView;
@@ -71,6 +71,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
     private int sno;
     private int id;
     private String p_name, p_type, p_age;
+    private int p_weight;
     private String u_name, u_email;
     private int isLogined;
 
@@ -81,13 +82,6 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
     String mJsonString;
 
-    public int getIsLogined() {
-        return isLogined;
-    }
-
-    public void setIsLogined(int isLogined) {
-        this.isLogined = isLogined;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +104,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
         pet_name = (EditText) findViewById(R.id.pet_name);
         pet_type = (EditText) findViewById(R.id.pet_type);
         pet_age = (EditText) findViewById(R.id.pet_age);
+        pet_weight = (EditText) findViewById(R.id.pet_weight);
 
         GetData task = new GetData();
         task.execute("http://13.229.34.115/getSno.php");
@@ -158,6 +153,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
         p_name = pet_name.getText().toString();
         p_type = pet_type.getText().toString();
         p_age= pet_age.getText().toString();
+        p_weight = Integer.parseInt(pet_weight.getText().toString());
         class UploadImage extends AsyncTask<Bitmap,Void,String> {
 
             ProgressDialog loading;
@@ -186,7 +182,7 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
 
 
                 data.put(UPLOAD_KEY, uploadImage);
-                String result = rh.sendPostRequest(UPLOAD_URL,data, sno, p_name, p_type, p_age);
+                String result = rh.sendPostRequest(UPLOAD_URL,data, sno, p_name, p_type, p_age, p_weight);
 
                 return result;
             }
@@ -356,9 +352,6 @@ public class RegisterPet extends AppCompatActivity implements View.OnClickListen
                     if(item.getString("unique_id").equals(unique_id)){
                         sno = item.getInt("sno");
                         isLogined = item.getInt("user_logined");
-                        Log.d("TAG", String.valueOf(sno));
-                        Log.d("TAG", String.valueOf(isLogined));
-
 
                         break;
                     }

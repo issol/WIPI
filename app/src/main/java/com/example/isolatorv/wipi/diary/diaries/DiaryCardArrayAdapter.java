@@ -59,7 +59,7 @@ public class DiaryCardArrayAdapter extends ArrayAdapter<DiaryDto> {
             holder = (ViewHolder)row.getTag();
         }
 
-        initFontStyle(holder);
+        //initFontStyle(holder);
         float fontSize = CommonUtils.loadFloatPreference(context, "font_size", 0);
         if (fontSize > 0) {
             holder.textView1.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);

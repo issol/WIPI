@@ -21,7 +21,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class RequestHandler {
 
     public String sendPostRequest(String requestURL,
-                                  HashMap<String, String> postDataParams,int pet_sno, String name, String type, String age) {
+                                  HashMap<String, String> postDataParams,int pet_sno, String name, String type, String age,int weight) {
 
         URL url;
 
@@ -29,6 +29,7 @@ public class RequestHandler {
         String pet_name = name;
         String pet_type = type;
         String pet_age = age;
+        int pet_weight = weight;
 
         StringBuilder sb = new StringBuilder();
         try {
@@ -45,7 +46,7 @@ public class RequestHandler {
             OutputStream os = conn.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
-            writer.write("sno=" + sno + "&pet_name=" + pet_name + "&pet_type=" + pet_type + "&pet_age=" + pet_age + "&" + getPostDataString(postDataParams));
+            writer.write("sno=" + sno + "&pet_name=" + pet_name + "&pet_type=" + pet_type + "&pet_age=" + pet_age + "&pet_weight=" + pet_weight + "&" +  getPostDataString(postDataParams));
 
             writer.flush();
             writer.close();

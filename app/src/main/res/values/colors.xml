@@ -14,7 +14,7 @@
     <color name="calendarBackground">#FFFFFF</color>
     <color name="tab_text_normal">#212121</color>
 
-
+    <color name = "mainColor">#84AFEF</color>
 
     <color name="colorBackground">#F8F8F8</color>
     <color name="colorNavAccentSelected">#84b0ef</color>
