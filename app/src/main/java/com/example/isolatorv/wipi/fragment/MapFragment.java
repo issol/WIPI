@@ -306,6 +306,15 @@ public class MapFragment extends Fragment implements
             public void onClick(View v) {
                 hospitalOn=!hospitalOn;
                 createMarker();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
         });
 
@@ -314,6 +323,15 @@ public class MapFragment extends Fragment implements
             public void onClick(View v) {
                 petstoreOn =!petstoreOn;
                 createMarker();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
         });
 
@@ -322,6 +340,15 @@ public class MapFragment extends Fragment implements
             public void onClick(View v) {
                 hospitalWeekendOn = !hospitalWeekendOn;
                 createMarker();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
         });
 
@@ -330,6 +357,15 @@ public class MapFragment extends Fragment implements
             public void onClick(View v) {
                 coffieShopOn = !coffieShopOn;
                 createMarker();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
         });
 
@@ -533,34 +569,39 @@ public class MapFragment extends Fragment implements
     /*onConnected**********************************************************************************/
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        if (mRequestingLocationUpdates == false) {
+       try{
+           if (mRequestingLocationUpdates == false) {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-                int hasFineLocationPermission = ContextCompat.checkSelfPermission(getActivity(),
-                        Manifest.permission.ACCESS_FINE_LOCATION);
+                   int hasFineLocationPermission = ContextCompat.checkSelfPermission(getActivity(),
+                           Manifest.permission.ACCESS_FINE_LOCATION);
 
-                if (hasFineLocationPermission == PackageManager.PERMISSION_DENIED) {
+                   if (hasFineLocationPermission == PackageManager.PERMISSION_DENIED) {
 
-                    ActivityCompat.requestPermissions(getActivity(),
-                            new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                       ActivityCompat.requestPermissions(getActivity(),
+                               new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                               PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
 
-                } else {
+                   } else {
 
-                    Log.d(TAG, "onConnected : 퍼미션 가지고 있음");
-                    Log.d(TAG, "onConnected : call startLocationUpdates");
-                    startLocationUpdates();
-                    mGoogleMap.setMyLocationEnabled(true);
-                }
+                       Log.d(TAG, "onConnected : 퍼미션 가지고 있음");
+                       Log.d(TAG, "onConnected : call startLocationUpdates");
+                       startLocationUpdates();
+                       mGoogleMap.setMyLocationEnabled(true);
+                   }
 
-            } else {
+               } else {
 
-                Log.d(TAG, "onConnected : call startLocationUpdates");
-                startLocationUpdates();
-                mGoogleMap.setMyLocationEnabled(true);
-            }
-        }
+                   Log.d(TAG, "onConnected : call startLocationUpdates");
+                   startLocationUpdates();
+                   mGoogleMap.setMyLocationEnabled(true);
+               }
+           }
+       }catch (Exception e){
+           e.getMessage();
+       }
+
     }
     /*onConnected**********************************************************************************/
 

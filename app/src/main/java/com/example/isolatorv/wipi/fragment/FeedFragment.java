@@ -92,7 +92,7 @@ public class FeedFragment extends Fragment {
 
 
 
-    static final String[] LISTM_MENU = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+    static final String[] LISTM_MENU = {"Sun", "Mon", "Thu" , "Wed","Tue", "Fri", "Sat"};
     FloatingActionButton fab;
     FloatingActionButton fab1;
     FloatingActionButton fab2;
@@ -189,6 +189,15 @@ public class FeedFragment extends Fragment {
                 feeds =dbHelper.getFeedData(id,String.valueOf(doDayOfWeek()));
                 if(feeds.size()==0)dayDistinction(diffOfDate(t1,t2));
                 createList();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
         });
 
@@ -199,6 +208,15 @@ public class FeedFragment extends Fragment {
                 feeds =dbHelper.getFeedData(id,doDayOfWeek());
                 if(feeds.size()==0)dayDistinction(diffOfDate(t1,t2));
                 createList();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
 
         });
@@ -209,6 +227,16 @@ public class FeedFragment extends Fragment {
                 id=3;
                 feeds =dbHelper.getFeedData(id,String.valueOf(doDayOfWeek()));
                 if(feeds.size()==0)dayDistinction(diffOfDate(t1,t2));
+                createList();
+                if (FAB_Status == false) {
+                    //Display FAB menu
+                    expandFAB();
+                    FAB_Status = true;
+                } else {
+                    //Close FAB menu
+                    hideFAB();
+                    FAB_Status = false;
+                }
             }
         });
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -267,14 +295,14 @@ public class FeedFragment extends Fragment {
                     count = feeds.get(5).toString();
 
                     switch (count){
-                        case "0": dbHelper.upDatefeed(id,1);
+                        case "0": dbHelper.upDatefeed(id,1,doDayOfWeek());
                             Toast.makeText(getActivity(),"밥주기 1회 완료",Toast.LENGTH_SHORT).show();
                             break;
-                        case "1":dbHelper.upDatefeed(id,2);
+                        case "1":dbHelper.upDatefeed(id,2,doDayOfWeek());
                             Toast.makeText(getActivity(),"밥주기 2회 완료",Toast.LENGTH_SHORT).show();
                             break;
-                        case"2":dbHelper.upDatefeed(id,3);
-                            dbHelper.updatefeed2(id,"o");
+                        case"2":dbHelper.upDatefeed(id,3,doDayOfWeek());
+                            dbHelper.updatefeed2(id,"o",doDayOfWeek());
                             createList();
                             Toast.makeText(getActivity(),"밥주기 3회 완료",Toast.LENGTH_SHORT).show();
                             break;
@@ -324,11 +352,21 @@ public class FeedFragment extends Fragment {
     /*onAttach*************************************************************************************/
 
     //플래그먼트가 액티비티에 떨어질 때 호출
+    /*onStop***************************************************************************************/
+    @Override
+    public void onStop() {
+        super.onStop();
+        FAB_Status = false;
+    }
+    /*onStop***************************************************************************************/
+
+    //플래그먼트가 액티비티에 떨어질 때 호출
     /*onDetach*************************************************************************************/
     @Override
     public void onDetach() {
         super.onDetach();
         listener = null;
+        FAB_Status = false;
     }
     /*onDetach*************************************************************************************/
 
@@ -405,24 +443,28 @@ public class FeedFragment extends Fragment {
                 }
             }
 
+            try{
+                getActivity().runOnUiThread(new Runnable() {
 
-            getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
-                @Override
-                public void run() {
+                        if (isConnected) {
 
-                    if (isConnected) {
+                            Log.d(TAG, "connected to " + serverIP);
+                            mReceiverThread = new Thread(new ReceiverThread());
+                            mReceiverThread.start();
+                        }else{
 
-                        Log.d(TAG, "connected to " + serverIP);
-                        mReceiverThread = new Thread(new ReceiverThread());
-                        mReceiverThread.start();
-                    }else{
+                            Log.d(TAG, "failed to connect to server " + serverIP);
+                        }
 
-                        Log.d(TAG, "failed to connect to server " + serverIP);
                     }
-
+                });
+            }catch(Exception e){
+                    e.getMessage();
                 }
-            });
+
         }
     }
     /*ConnectThread********************************************************************************/
@@ -538,33 +580,38 @@ public class FeedFragment extends Fragment {
     /*showErrorDialog******************************************************************************/
 
     private void setInit(){
-        //Animations
-        show_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_show);
-        hide_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_hide);
-        show_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_show);
-        hide_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_hide);
-        show_fab_3 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab3_show);
-        hide_fab_3 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab3_hide);
+        try{
+            //Animations
+            show_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_show);
+            hide_fab_1 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab1_hide);
+            show_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_show);
+            hide_fab_2 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab2_hide);
+            show_fab_3 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab3_show);
+            hide_fab_3 = AnimationUtils.loadAnimation(getActivity(), R.anim.fab3_hide);
 
-        dbHelper = new DBHelper(getActivity(), "myDb", null, 1);
-        dbHelper.testDB();
+            dbHelper = new DBHelper(getActivity(), "myDb", null, 1);
+            dbHelper.testDB();
 
 
-        if(hasival.size()!=0){
-            if(hasival.size()==4||hasival.size()==8||hasival.size()==12)id=1;
+            if(hasival.size()!=0){
+                if(hasival.size()==4||hasival.size()==8||hasival.size()==12)id=1;
 
-            if(hasival.size()==4){
-                fab1enable =true;
+                if(hasival.size()==4){
+                    fab1enable =true;
+                }
+                if(hasival.size()==8){
+                    fab1enable =true;
+                    fab2enable =true;
+                }
+                if(hasival.size()==12){
+                    fab1enable =true;
+                    fab2enable =true;
+                    fab3enable =true;
+                }
             }
-            if(hasival.size()==8){
-                fab1enable =true;
-                fab2enable =true;
-            }
-            if(hasival.size()==12){
-                fab1enable =true;
-                fab2enable =true;
-                fab3enable =true;
-            }
+
+        }catch (Exception e){
+            e.getMessage();
         }
 
     }
@@ -655,7 +702,7 @@ public class FeedFragment extends Fragment {
                 if(i==0)
                     t1 = times.get(i).toString();
                 else
-                    t2 = times.get(i).toString();
+                    t2 = "2017-11-21";
             }
             Log.d(TAG,"t1 : "+t1+" "+"t2 : "+t2);
             dayDistinction(diffOfDate(t1,t2));
@@ -680,7 +727,7 @@ public class FeedFragment extends Fragment {
         builder.setTitle(name);
         builder.setCancelable(false);
         builder.setMessage("요일 : "+String.valueOf(day)+ "\n"+
-                "아침 : "+String.valueOf(count.equals("3")?"o":(count.equals("1")?"o":"x"))+
+                "아침 : "+String.valueOf(count.equals("3")?"o":(count.equals("1")?"o":(count.equals("2")?"o":"x")))+
                 " 점심 : "+String.valueOf(count.equals("3")?"o":(count.equals("2")?"o":"x"))+
                 " 저녁 : "+String.valueOf(count.equals("3")?"o":"x"));
 
@@ -708,7 +755,7 @@ public class FeedFragment extends Fragment {
                 strWeek = "Mon";
                 break;
             case 3:
-                strWeek = "Tue";
+                strWeek = "Thu";
                 break;
             case 4:
                 strWeek = "Wed";
@@ -747,6 +794,7 @@ public class FeedFragment extends Fragment {
     public void dayDistinction(long day){
         feeds = dbHelper.getFeedData(id,doDayOfWeek());
         feeds1 = dbHelper.getAllFeedData(id);
+        Log.d(TAG,"dayDistinciton()_feeds_size : "+feeds.size());
         Log.d(TAG,"feedAlldatasize : "+feeds1.size());
         switch((int) day){
             case 0:

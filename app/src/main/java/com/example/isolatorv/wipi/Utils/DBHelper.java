@@ -178,18 +178,18 @@ public class DBHelper extends SQLiteOpenHelper {
         return feedarry;
     }
 
-    public void upDatefeed(int id,int count){
+    public void upDatefeed(int id,int count,String day){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("_COUNT",count);
-        db.update("FEED_TABLE",values,"_Id=?",new String[]{String.valueOf(id)});
+        db.update("FEED_TABLE",values,"_Id=? AND _Day=?",new String[]{String.valueOf(id),day});
         Log.d(TAG,"DBHelper-feed_count : db 업데이트 완료");
     }
-    public void updatefeed2(int id,String ox){
+    public void updatefeed2(int id,String ox,String day){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("_PUSH",ox);
-        db.update("FEED_TABLE",values,"_ID=?",new String[]{String.valueOf(id)});
+        db.update("FEED_TABLE",values,"_ID=? AND _Day=?",new String[]{String.valueOf(id),day});
         Log.d(TAG,"DBHelper-feed_push : db 업데이트 완료");
     }
     public void deleteList(int id){
