@@ -279,12 +279,11 @@ public class FeedFragment extends Fragment {
             public void onClick(View v){
 
                 new Thread(new ConnectThread("192.168.0.9", 80)).start();
-                if (!isConnected) showErrorDialog("서버로 접속된후 다시 해보세요.");
+                if (!isConnected) Log.d(TAG,"서버에접속된 후 사용가능");
                 else {
                     new Thread(new SenderThread("aa")).start();
                     Log.d(TAG, "데이터 전송" +
                             "");
-
                 }
                 Log.d(TAG,doDayOfWeek());
                 feeds = dbHelper.getFeedData(id,doDayOfWeek());

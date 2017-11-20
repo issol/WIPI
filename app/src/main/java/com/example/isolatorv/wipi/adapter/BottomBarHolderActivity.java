@@ -83,12 +83,18 @@ public class BottomBarHolderActivity extends AppCompatActivity implements Bottom
                 break;
             case BottomNavigationBar.MENU_BAR_4:
                 fragment = mNavigationPageList.get(3).getFragment();
-                Bundle bundle2 = new Bundle();
-                bundle2.putInt("sno", userSno);
-                bundle2.putString("name", userName);
-                bundle2.putString("email", userEmail);
-                bundle2.putString("unique_id", unique_id);
-                fragment.setArguments(bundle2);
+
+                try{
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt("sno", userSno);
+                    bundle2.putString("name", userName);
+                    bundle2.putString("email", userEmail);
+                    bundle2.putString("unique_id", unique_id);
+                    fragment.setArguments(bundle2);
+                }catch (Exception e){
+                    e.getMessage();
+                }
+
                 break;
         }
 

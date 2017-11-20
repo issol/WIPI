@@ -123,6 +123,7 @@ public class MapFragment extends Fragment implements
     private boolean hostpitalreday = true;
     private boolean petstoreready = false;
 
+
     List<MapData> hospitalList = null;
     List<MapData> petShopList = null;
     List<MapData> hostpitalholiday=null;
@@ -178,13 +179,6 @@ public class MapFragment extends Fragment implements
     private static final String TAG_POST = "Post";
     private static final String TAG_NAME = "Name";
 
-    private static final String TAG_JSON2="result2";
-    private static final String TAG_INDEX2="EX";
-    private static final String TAG_RATITUDE2 = "Lat";
-    private static final String TAG_RONGTITUDE2 = "Long";
-    private static final String TAG_ADDRESS2 ="Address";
-    private static final String TAG_POST2 = "Post";
-    private static final String TAG_NAME2 = "Name";
 
     String mJsonString;
     String mJsonString2;
@@ -238,6 +232,7 @@ public class MapFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.map, container, false);
         previous_marker = new ArrayList<Marker>();
+
         if(hospitalList==null)hospitalList = new ArrayList<MapData>();
         if(petShopList==null)petShopList = new ArrayList<MapData>();
         if(hostpitalholiday==null)hostpitalholiday = new ArrayList<MapData>();
@@ -375,6 +370,7 @@ public class MapFragment extends Fragment implements
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         actionBar.setCustomView(R.layout.map_title);
+
 
         return layout;
     }
@@ -534,6 +530,7 @@ public class MapFragment extends Fragment implements
             public void onMapClick(LatLng latLng) {
 
                 Log.d(TAG, "onMapClick :");
+
             }
         });
 
@@ -562,6 +559,8 @@ public class MapFragment extends Fragment implements
 
             }
         });
+
+
     }
     /*onMapReady***********************************************************************************/
 
@@ -705,8 +704,6 @@ public class MapFragment extends Fragment implements
 
 
         LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-
-
         if (mMoveMapByAPI) {
 
             Log.d(TAG, "setCurrentLocation :  mGoogleMap moveCamera "
@@ -757,11 +754,7 @@ public class MapFragment extends Fragment implements
             showDialogForPermissionSetting("퍼미션 거부 + Don't ask again(다시 묻지 않음) " +
                     "체크 박스를 설정한 경우로 설정에서 퍼미션 허가해야합니다.");
         } else if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED) {
-
-
             Log.d(TAG, "checkPermissions : 퍼미션 가지고 있음");
-
-
             if (mGoogleApiClient.isConnected() == false) {
 
                 Log.d(TAG, "checkPermissions : 퍼미션 가지고 있음");
@@ -777,22 +770,17 @@ public class MapFragment extends Fragment implements
     public void onRequestPermissionsResult(int permsRequestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
-
         if (permsRequestCode
                 == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION && grantResults.length > 0) {
 
             boolean permissionAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
 
             if (permissionAccepted) {
-
-
                 if (mGoogleApiClient.isConnected() == false) {
 
                     Log.d(TAG, "onRequestPermissionsResult : mGoogleApiClient connect");
                     mGoogleApiClient.connect();
                 }
-
-
             } else {
 
                 checkPermissions();
@@ -806,7 +794,6 @@ public class MapFragment extends Fragment implements
     /*showDialogForPermission***********************************************************************/
     @TargetApi(Build.VERSION_CODES.M)
     private void showDialogForPermission(String msg) {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("알림");
         builder.setMessage(msg);
@@ -1291,4 +1278,6 @@ public class MapFragment extends Fragment implements
         }
     }
     /*GetData***************************************************************************************/
+
+
 }
