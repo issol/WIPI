@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.0.0\49eb3ad545e7701234e4dd83db8dc1344b577f23\converter-gson-2.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="49eb3ad545e7701234e4dd83db8dc1344b577f23">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\10.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\org.apache.commons\commons-lang3\3.0\8873bd0bb5cb9ee37f1b04578eb7e26fcdd44cb0\commons-lang3-3.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8873bd0bb5cb9ee37f1b04578eb7e26fcdd44cb0">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\caldroid-3.0.1.aar\41f67c9d23dfb241b3c17632bbcd955f\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fea01abd91186a7148aaaf8c517b823eedaac79a">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\24.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\io.realm\realm-annotations\3.0.0\32a01bbb8cb421b6d53d7a102412142b0391c8c7\realm-annotations-3.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="32a01bbb8cb421b6d53d7a102412142b0391c8c7">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\relinker-1.2.2.aar\6fb9d21eaa11063f949c66a903a9e4e0\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b64dd5f01bc37de289f90fd59299b0c76d119611">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\40.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\glide-transformations-2.0.1.aar\a16ca73f58d85ec22cb7e796e94d8f03\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="df451c6f391e3e32022fc964ed87bd57a5869128">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\16.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\android.scalablelayout-2.1.6.aar\b203375a4973acb0d2e87a5ea544d2cd\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3180c73721213f306dc02de421e1147d3bd2c754">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\51.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\colorpicker-0.0.13.aar\dcfa63f67230cad5aa001d437d28d5ab\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1e82f4dd0ec0adfbd0592a964c560662e856f3d8">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\21.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\joda-time\joda-time\2.1\8f79e353ef77da6710e1f10d34fc3698eaaacbca\joda-time-2.1.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="8f79e353ef77da6710e1f10d34fc3698eaaacbca">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\35.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.3.1.aar\c47c85b8ec0d7cda965caf293608140d\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\49.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\transition-25.3.1.aar\61c829f3f8dddf70f751a87aaaacdde8\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\30.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\placesAPI-1.1.3.aar\959bcf1f52927c013ca66137aa57ff7a\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2d7855619490a1b0eb3aff27f2593b7418fb0dca">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-drive-8.4.0.aar\baeadffc74f9bc9fc8653db81eab572a\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\AppData\Local\Android\Sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\PhotoView-2.0.0.aar\c56cf03e498ef742e7b05f9d548f0fb8\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="183fcbfcca75b095b63125f5e31ebd8b5f5f3216">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\38.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.3.1.aar\b3843eddf29b747c6a379516c10e7471\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\navigationtabbar-1.2.5.aar\99f88c5c1df35a0015731a254637bc46\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="dce3b09be94e30554913f3e3e537b3517478bfd7">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-base-11.0.4.aar\3b62d752ef8269f919f059da14b3dd61\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.0.0\5c06d197fb7fa875ad452f562e3310dd9949d066\retrofit-2.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5c06d197fb7fa875ad452f562e3310dd9949d066">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\11.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-maps-11.0.4.aar\060f5d7d98a8f1c831565f330504f320\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fcae52a60bc07924d370b4d376116cd8f8581f54">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\design-25.3.1.aar\565e16b135fbe3bcad22ba1a4cedce70\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.3.1.aar\51eaa265ec9ef1dfd7b0ea576bdb2142\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\39.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.3.1.aar\0ec14daf805bdbfe84db2d5129d00a41\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\52.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\library-5.4.3.aar\2a8ac82cbca9f0ffc23b21a31ea2b0b4\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a06b0579dbe59192ef460e3de04657720925d05b">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-fragment-25.3.1.aar\37647b747c2eaf40c8b45f329209d977\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\46.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\phoenix-1.2.3.aar\35993f373d6d3aee9debe54ae2035473\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="4dfe2dd3f402072c5268f341830cdc5263187074">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\library-1.3.1.aar\06b89229adedd747122cc6296f0e91d5\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7f2f348b830f292429db987f74ba3e67c6752322">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.2.0\f7873a2ebde246a45c2a8d6f3247108b4c88a879\okhttp-3.2.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.1\369f9aa48a629b4e92557b37326f42dc3de796e4\MPAndroidChart-v3.0.1.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="369f9aa48a629b4e92557b37326f42dc3de796e4">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\bottom-bar-2.3.1.aar\f629a3a1d4406a94f60c1cd95e9448a7\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a9cbdabba632cbf8be001cdbf34110cf42a64015">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.darwinsys\hirondelle-date4j\1.5.1\7b52de513f87ae4d9ff5d17518def0a1e9bc3df0\hirondelle-date4j-1.5.1.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7b52de513f87ae4d9ff5d17518def0a1e9bc3df0">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\adapters-1.3.1.aar\1edca60784ef8db477455a2b303df2af\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="68956f5ba1517b7a3d513ba540548e257741cbae">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-places-11.0.4.aar\b368a638746d888fa9fcab052e05266b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="5594a368622908d89c47d9a391aa2724fe046c35">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\12.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-v4-25.3.1.aar\f8541678708b61e97cf0841092e4acd6\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\31.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\butterknife-8.4.0.aar\d4fe85ea99cff387f819c473028f8e6e\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.3.1.aar\f372dafc4b769bc989a9d6bfd706204c\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\47.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.3.1.aar\3b6a1a4186e95e9d8d6edb71f6d1fe3b\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b1cbbca8f18c00e92a56044ed8cfcdf9\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.3.1.aar\29015ff5fb414cb0a6ee51a2d2ba6df6\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\22.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.4.0\ea392375cf9ff59234a82e7928a204215ccc98cd\butterknife-annotations-8.4.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\44.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.3.1.aar\37b2c41a8df9a9d92ca76ee0b3609fda\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\45.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\support-compat-25.3.1.aar\a4864c90440434a254df8b6c1f430670\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\50.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.6.1\b9d63507329a7178e026fc334f87587ee5070ac5\gson-2.6.1.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9d63507329a7178e026fc334f87587ee5070ac5">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\43.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\3.0.0\baseLibrary-3.0.0.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="67f705fc2d0fd50732579c1293431c878e612530">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\commons-io\commons-io\2.4\commons-io-2.4.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.0.4.aar\ac8e218a703b0a1d186170d396bfad59\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\28.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.0.4.aar\052f35ebe37285df603b9412bf587ebb\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\play-services-location-11.0.4.aar\5f8ef3e779135da358ec096d58b2e869\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="41f47bbcd281fdb1e42e220220ab3bfa1da591e0">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\14.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\circleimageview-2.1.0.aar\c6da72ec93f10b6acbe092425f38d042\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\18.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\tlsdm\.gradle\caches\transforms-1\files-1.1\realm-android-library-3.0.0.aar\9d70f237ffeac002c6a1ad3ed6c9b995\jars\classes.jar"
+        jumboMode="false"
+        min-sdk-version="16"
+        optimize="true"
+        revision="26.0.2"
+        sha1="aed23c739ad564efb5193b88bc785868f7de878b">
+        <dex dex="C:\Users\tlsdm\Desktop\android\WIPIproject\app\build\intermediates\transforms\preDex\release\4.jar" />
+    </item>
+
+</items>

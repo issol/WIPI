@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.isolatorv.wipi.MainActivity;
 import com.example.isolatorv.wipi.R;
@@ -53,9 +54,18 @@ public class BottomBarHolderActivity extends AppCompatActivity implements Bottom
     }
 
     private void setupFragments(){
+        Fragment fragment =null;
+        fragment = mNavigationPageList.get(0).getFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, mNavigationPageList.get(0).getFragment());
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("sno", userSno);
+        bundle.putString("name", userName);
+        bundle.putString("email", userEmail);
+        bundle.putString("unique_id", unique_id);
+        fragment.setArguments(bundle);
     }
 
     @Override
@@ -73,12 +83,18 @@ public class BottomBarHolderActivity extends AppCompatActivity implements Bottom
                 break;
             case BottomNavigationBar.MENU_BAR_4:
                 fragment = mNavigationPageList.get(3).getFragment();
-                Bundle bundle = new Bundle();
-                bundle.putInt("sno", userSno);
-                bundle.putString("name", userName);
-                bundle.putString("email", userEmail);
-                bundle.putString("unique_id", unique_id);
-                fragment.setArguments(bundle);
+
+                try{
+                    Bundle bundle2 = new Bundle();
+                    bundle2.putInt("sno", userSno);
+                    bundle2.putString("name", userName);
+                    bundle2.putString("email", userEmail);
+                    bundle2.putString("unique_id", unique_id);
+                    fragment.setArguments(bundle2);
+                }catch (Exception e){
+                    e.getMessage();
+                }
+
                 break;
         }
 

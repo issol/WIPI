@@ -1,51 +1,50 @@
- package com.example.isolatorv.wipi.fragment;
 
-        import android.app.ProgressDialog;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.v4.app.Fragment;
-        import android.support.v4.content.ContextCompat;
-        import android.support.v7.app.ActionBar;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.Button;
-        import android.widget.ImageButton;
-        import android.widget.ImageView;
-        import android.widget.ListView;
-        import android.widget.TextView;
-        import android.widget.Toast;
+package com.example.isolatorv.wipi.fragment;
 
-        import com.bumptech.glide.Glide;
-        import com.bumptech.glide.load.engine.DiskCacheStrategy;
-        import com.example.isolatorv.wipi.CircleImageView;
-        import com.example.isolatorv.wipi.ProfileData;
-        import com.example.isolatorv.wipi.R;
-        import com.example.isolatorv.wipi.adapter.ListViewAdapter;
-        import com.example.isolatorv.wipi.login.Constants;
-        import com.example.isolatorv.wipi.login.JoinActivity;
-        import com.example.isolatorv.wipi.login.RegisterPet;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.isolatorv.wipi.CircleImageView;
+import com.example.isolatorv.wipi.ProfileData;
+import com.example.isolatorv.wipi.R;
+import com.example.isolatorv.wipi.adapter.ListViewAdapter;
+import com.example.isolatorv.wipi.login.Constants;
+import com.example.isolatorv.wipi.login.JoinActivity;
+import com.example.isolatorv.wipi.login.RegisterPet;
 
-        import java.io.BufferedReader;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.net.HttpURLConnection;
-        import java.net.URL;
-        import java.util.ArrayList;
-        import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import jp.wasabeef.glide.transformations.CropCircleTransformation;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 
 /**
@@ -108,9 +107,11 @@ public class MyProfileFragment extends Fragment {
 
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setCustomView(mCustomView);
+        actionBar.setCustomView(R.layout.profile_title);
+
 
         logoutBtn = (ImageButton) mCustomView.findViewById(R.id.action_logout);
+
 
 
         pref= getActivity().getSharedPreferences("WIPI",0);
@@ -240,8 +241,6 @@ public class MyProfileFragment extends Fragment {
                             petAgeList.add(item.getString("pet_age"));
                             petWeightList.add(item.getInt("pet_weight"));
                             petImageList.add(item.getString("pet_image"));
-
-
                         }
 
                     }
@@ -270,7 +269,6 @@ public class MyProfileFragment extends Fragment {
 
     }
     private void logout() {
-
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean(Constants.IS_LOGGED_IN,false);
         editor.putString(Constants.EMAIL,"");

@@ -7,50 +7,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#ffffffff">
 
-    <LinearLayout
-        android:layout_weight="10"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="40dp"
-        android:layout_gravity="center"
-        android:orientation="vertical"
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        app:scale_base_height="160"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:background="#ffffffff">
 
         <ImageView
+            app:scale_height="20"
+            app:scale_left="37"
+            app:scale_top="13"
+            app:scale_width="25"
             android:layout_weight="2"
             android:src="@drawable/testimage_2"
             android:id="@+id/feed_imageView"
             android:layout_width="wrap_content"
-            android:layout_marginRight="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_height="0dp" />
+            android:layout_height="wrap_content" />
 
         <Button
+            app:scale_height="8"
+            app:scale_left="25"
+            app:scale_textsize="4"
+            app:scale_top="35"
+            app:scale_width="50"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:textSize="18dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="0.8"
             android:text="Feed"
             android:textColor="#ffffffff"
             android:background="@drawable/feed_btn"
             android:id="@+id/Feed_send_btn"
-            android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <ListView
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"
+            app:scale_height="90"
+            app:scale_left="32"
+            app:scale_top="50"
+            app:scale_width="40"
             android:id="@+id/feed_listView"
-            android:layout_weight="8"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         </ListView>
-    </LinearLayout>
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/feed_fab"
         android:layout_width="wrap_content"

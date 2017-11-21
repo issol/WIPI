@@ -93,4 +93,8 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 
+<<<<<<< HEAD
+=======
+    compile 'com.ssomai:android.scalablelayout:2.1.6'
+>>>>>>> 712453abf473b46a127d5c55eba2837a382cda5f
 }
