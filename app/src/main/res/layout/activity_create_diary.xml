@@ -2,25 +2,25 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <android.support.design.widget.AppBarLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="60dp"
                 android:background="?attr/colorPrimary"
+                app:navigationIcon="@drawable/back_button"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.AppBarLayout>
@@ -29,103 +29,136 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:padding="@dimen/card_layout_padding"
-            android:background="#84AFEF"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#fafafa"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_marginBottom="@dimen/card_layout_margin"
-                android:background="@drawable/bg_card_01"
+                android:padding="5dp"
                 android:orientation="horizontal"
-                android:layout_width="155dp"
-                android:layout_gravity="center"
-                android:layout_height="50dp">
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <TextView
+                    android:id="@+id/viewTime"
+                    android:gravity="center"
+                    android:textSize="19sp"
+                    android:textColor="#000000"
+                    android:background="@drawable/bg_card_01"
+                    android:layout_width="220dp"
+                    android:layout_height="50dp" />
 
                 <LinearLayout
-                    android:gravity="left|center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/bg_card_01"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:minHeight="50dp"
+                    android:layout_height="50dp">
 
-
-                    <ImageView
-                        android:background="@drawable/click_effect_01"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="@dimen/toolbar_icon_margin_right"
-                        android:id="@+id/datePicker"
-                        android:src="@drawable/calendar_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <ImageView
-                        android:background="@drawable/click_effect_01"
-                        android:layout_marginRight="@dimen/toolbar_icon_margin_right"
-                        android:id="@+id/timePicker"
-                        android:src="@drawable/time_8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-
-                    <ImageView
-                        android:id="@+id/photoPicker"
-                        android:background="@drawable/click_effect_01"
-                        android:src="@drawable/image_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                    <Spinner
+                        android:layout_marginLeft="5dp"
+                        android:spinnerMode="dropdown"
+                        android:id="@+id/weatherSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </Spinner>
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:gravity="center_vertical"
-                android:layout_marginBottom="@dimen/card_layout_margin"
-                android:background="@drawable/bg_card_01"
-                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:layout_width="match_parent"
-                android:minHeight="50dp"
-                android:layout_height="wrap_content">
-
-                <Spinner
-                    android:layout_marginLeft="5dp"
-                    android:spinnerMode="dropdown"
-                    android:id="@+id/weatherSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-                </Spinner>
+                android:layout_height="60dp">
 
                 <EditText
+                    android:paddingLeft="5dp"
                     android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:background="@drawable/bg_card_01"
+                    android:background="@drawable/edittext_time"
                     android:textColor="@color/defaultText"
-                    android:gravity="center_vertical"
                     android:id="@+id/title"
-                    android:hint="제목을 입력하세요."
+                    android:singleLine="true"
+                    android:hint="@string/guide_message"
                     android:textSize="@dimen/large_text_size"
+                    android:layout_width="220dp"
+                    android:layout_height="55dp"/>
+
+                <TextView
+                    android:id="@+id/currentTime"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="@drawable/edittext_time2"
+                    android:gravity="center"
+                    android:text="00:00"
+                    android:textSize="19sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <HorizontalScrollView
+                    android:background="@drawable/bg_card_01"
+                    android:layout_width="220dp"
+                    android:layout_height="55dp">
+
+                    <LinearLayout
+                        android:id="@+id/photoContainer"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/photoPicker"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingBottom="10dp"
+                    android:background="@drawable/bg_card_01"
+                    android:drawableBottom="@drawable/add_photo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+
 
             </LinearLayout>
 
             <ScrollView
-                android:layout_marginBottom="@dimen/card_layout_margin"
-                android:fillViewport="true"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="0dp">
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:fillViewport="true"
+                android:layout_height="300dp">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <EditText
-                        android:padding="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp"
                         android:background="@drawable/bg_card_01"
                         android:textColor="@color/defaultText"
                         android:textSize="@dimen/large_text_size"
                         android:id="@+id/contents"
-                        android:hint="내용을 입력하세요."
+                        android:paddingLeft="20dp"
+                        android:hint="@string/contents_text_hint"
                         android:gravity="left"
                         android:layout_width="match_parent"
                         android:layout_weight="1"
@@ -133,31 +166,19 @@
                 </LinearLayout>
 
             </ScrollView>
-
-            <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp">
-                <LinearLayout
-                    android:id="@+id/photoContainer"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                </LinearLayout>
-            </HorizontalScrollView>
+            <Button
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:id="@+id/saveContents"
+                android:layout_gravity="center"
+                android:background="@drawable/create_diary_button"
+                android:text="작성완료"
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
 
 
         </LinearLayout>
-
-    </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/saveContents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/edit" />
 
 
 
