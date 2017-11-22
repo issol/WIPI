@@ -92,7 +92,7 @@ public class FeedFragment extends Fragment {
 
 
 
-    static final String[] LISTM_MENU = {"Sun", "Mon", "Thu" , "Wed","Tue", "Fri", "Sat"};
+    static final String[] LISTM_MENU = {"Sun", "Mon", "Tue" , "Wed","Thu", "Fri", "Sat"};
     FloatingActionButton fab;
     FloatingActionButton fab1;
     FloatingActionButton fab2;
@@ -278,7 +278,7 @@ public class FeedFragment extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
-                new Thread(new ConnectThread("192.168.0.9", 80)).start();
+                new Thread(new ConnectThread("192.168.0.3", 80)).start();
                 if (!isConnected) Log.d(TAG,"서버에접속된 후 사용가능");
                 else {
                     new Thread(new SenderThread("aa")).start();
@@ -754,13 +754,13 @@ public class FeedFragment extends Fragment {
                 strWeek = "Mon";
                 break;
             case 3:
-                strWeek = "Thu";
+                strWeek = "Tue";
                 break;
             case 4:
                 strWeek = "Wed";
                 break;
             case 5:
-                strWeek = "Tue";
+                strWeek = "Thu";
                 break;
             case 6:
                 strWeek = "Fri";
