@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -64,11 +65,6 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
     @BindView(R.id.container)
     ViewPager mViewPager;
 
-    @BindView(R.id.edit)
-    ImageView mEdit;
-
-    @BindView(R.id.delete)
-    ImageView mDelete;
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -112,8 +108,8 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
                 PlaceholderFragment fragment = mSectionsPagerAdapter.getFragment(mViewPager.getCurrentItem());
 //                Log.i("determine", String.valueOf(fragment.getActivity()));
                 if (fragment.getActivity() != null) {
-                    fragment.setDiaryTypeface();
-                    fragment.setDiaryFontSize();
+                    //fragment.setDiaryTypeface();
+                    //fragment.setDiaryFontSize();
                 }
             }
 
@@ -147,7 +143,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
     }
 
-    @OnClick({R.id.delete, R.id.edit})
+   /* @OnClick({R.id.delete, R.id.edit})
     public void onClick(View view) {
 
 //        ViewGroup viewPagerRootView = (ViewGroup) mViewPager.getChildAt(0);
@@ -180,7 +176,7 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
                 finish();
                 break;
         }
-    }
+    }*/
 
 
 
@@ -213,22 +209,31 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
         private static final String DIARY_SEARCH_QUERY = "diary_search_query";
         private int mSequence;
 
-        @BindView(R.id.contents)
-        TextView mContents;
-
-        @BindView(R.id.title)
+        @BindView(R.id.viewTitle)
         TextView mTitle;
 
-        @BindView(R.id.date)
-        TextView mDate;
+        @BindView(R.id.contentsDetail)
+        TextView mContents;
 
-        @BindView(R.id.weather)
+        @BindView(R.id.currentTimeDetail)
+        TextView mCurrentTime;
+
+        @BindView(R.id.deleteBtn)
+        Button mDeleteBtn;
+
+        @BindView(R.id.textDetail)
+        TextView mText;
+
+        @BindView(R.id.viewTimeDetail)
+        TextView mViewTime;
+
+        @BindView(R.id.weatherDetail)
         ImageView mWeather;
 
-        @BindView(R.id.photoContainer)
+        @BindView(R.id.photoContainerDetail)
         ViewGroup mPhotoContainer;
 
-        @BindView(R.id.photoContainerScrollView)
+        @BindView(R.id.photoContainerScrollViewDetail)
         HorizontalScrollView mHorizontalScrollView;
 
         public PlaceholderFragment() {}
@@ -252,21 +257,48 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
 
             // bind view
             View rootView = inflater.inflate(R.layout.fragment_read_diary_detail, container, false);
-            mContents = (TextView) rootView.findViewById(R.id.contents);
-            mTitle = (TextView) rootView.findViewById(R.id.title);
-            mDate = (TextView) rootView.findViewById(R.id.date);
-            mWeather = (ImageView) rootView.findViewById(R.id.weather);
-            ViewGroup mPhotoContainer = (ViewGroup) rootView.findViewById(R.id.photoContainer);
-            HorizontalScrollView mHorizontalScrollView = (HorizontalScrollView) rootView.findViewById(R.id.photoContainerScrollView);
+            mContents = (TextView) rootView.findViewById(R.id.contentsDetail);
+            mTitle = (TextView) rootView.findViewById(R.id.viewTitle);
+            mViewTime = (TextView) rootView.findViewById(R.id.viewTimeDetail);
+            mWeather = (ImageView) rootView.findViewById(R.id.weatherDetail);
+            mCurrentTime = (TextView)rootView.findViewById(R.id.currentTimeDetail);
+            mText = (TextView)rootView.findViewById(R.id.textDetail);
+            mDeleteBtn = (Button)rootView.findViewById(R.id.deleteBtn);
+            ViewGroup mPhotoContainer = (ViewGroup) rootView.findViewById(R.id.photoContainerDetail);
+            HorizontalScrollView mHorizontalScrollView = (HorizontalScrollView) rootView.findViewById(R.id.photoContainerScrollViewDetail);
 
             mSequence = getArguments().getInt(DIARY_SEQUENCE);
             DiaryDto diaryDto = DiaryDao.readDiaryBy(mSequence);
             if (StringUtils.isEmpty(diaryDto.getTitle())) {
                 mTitle.setVisibility(View.GONE);
             }
+
+            mDeleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            DiaryDao.deleteDiary(mSequence);
+                            getActivity().finish();
+                        }
+                    };
+                    DialogInterface.OnClickListener negativeListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    };
+                    DialogUtils.showAlertDialog(getActivity(), getString(R.string.delete_confirm), positiveListener, negativeListener);
+                }
+            });
             mTitle.setText(diaryDto.getTitle());
             mContents.setText(diaryDto.getContents());
-            mDate.setText(DateUtils.getFullPatternDateWithTime(diaryDto.getCurrentTimeMillis()));
+            String fullTime = DateUtils.getFullPatternDateWithTime(diaryDto.getCurrentTimeMillis());
+            String divTime1 = fullTime.substring(0,17);
+            Log.d("TAG", String.valueOf(fullTime.length()));
+            mViewTime.setText(divTime1);
+            mCurrentTime.setText(fullTime.substring(17));
+
 
             String query = getArguments().getString(DIARY_SEARCH_QUERY);
             if (StringUtils.isNotEmpty(query)) {
@@ -275,7 +307,29 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             }
 
             int weather = diaryDto.getWeather();
+            Log.d("TAG", String.valueOf(weather));
+
             EasyDiaryUtils.initWeatherView(mWeather, weather);
+            switch (weather){
+                case 0 :
+                    mText.setText("");
+                    break;
+                case 1:
+                    mText.setText("맑음");
+                    break;
+                case 2:
+                    mText.setText("흐림");
+                    break;
+                case 3:
+                    mText.setText("비");
+                    break;
+                case 4:
+                    mText.setText("번개");
+                    break;
+                case 5:
+                    mText.setText("눈");
+                    break;
+            }
 
             // TODO fixme elegance
             if (diaryDto.getPhotoUris() != null && diaryDto.getPhotoUris().size() > 0) {
@@ -317,24 +371,11 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
         @Override
         public void onResume() {
             super.onResume();
-            setDiaryTypeface();
-            setDiaryFontSize();
+           // setDiaryTypeface();
+           // setDiaryFontSize();
         }
 
-        private void setDiaryTypeface() {
-            FontUtils.setTypeface(getContext(), getActivity().getAssets(), mTitle);
-            FontUtils.setTypeface(getContext(), getActivity().getAssets(), mDate);
-            FontUtils.setTypeface(getContext(), getActivity().getAssets(), mContents);
-        }
 
-        private void setDiaryFontSize() {
-            float fontSize = CommonUtils.loadFloatPreference(getContext(), "font_size", 0);
-            if (fontSize > 0) {
-                mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
-                mDate.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
-                mContents.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize);
-            }
-        }
 
     }
 

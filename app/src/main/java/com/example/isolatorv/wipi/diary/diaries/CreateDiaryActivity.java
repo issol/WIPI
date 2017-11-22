@@ -18,12 +18,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.isolatorv.wipi.R;
@@ -44,6 +46,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -61,6 +64,9 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     private RealmList<PhotoUriDto> mPhotoUris;
     private List<Integer> mRemoveIndexes = new ArrayList<>();
 
+    @BindView(R.id.viewTime)
+    TextView mTime;
+
     @BindView(R.id.contents)
     EditText mContents;
 
@@ -74,16 +80,14 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     ViewGroup mPhotoContainer;
 
     @BindView(R.id.saveContents)
-    ImageView mSaveContents;
+    Button mSaveContents;
 
-    @BindView(R.id.datePicker)
-    ImageView mDatePicker;
-
-    @BindView(R.id.timePicker)
-    ImageView mTimePicker;
 
     @BindView(R.id.photoPicker)
-    ImageView mPhotoPicker;
+    Button mPhotoPicker;
+
+    @BindView(R.id.currentTime)
+    TextView mCurrentTime;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,11 +95,18 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Write Diary");
-        setDateTime();
+        getSupportActionBar().setTitle("다이어리 작성하기");
+       // setDateTime();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                onBackPressed();
+            }
+        });
 
-
+        setDateTime();
         bindEvent();
         initSpinner();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -103,10 +114,11 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     }
 
     public void initSpinner() {
-
         String[]  weatherArr = getResources().getStringArray(R.array.weather_item_array);
         ArrayAdapter arrayAdapter = new DiaryWeatherArrayAdapter(CreateDiaryActivity.this, R.layout.spinner_item_diary_weather_array_adapter, Arrays.asList(weatherArr));
         mWeatherSpinner.setAdapter(arrayAdapter);
+
+
 
     }
 
@@ -150,7 +162,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         );
     }
 
-    @OnClick({ R.id.saveContents, R.id.photoPicker, R.id.datePicker, R.id.timePicker})
+    @OnClick({ R.id.saveContents, R.id.photoPicker})
     public void onClick(View view) {
         float fontSize = mContents.getTextSize();
 
@@ -184,18 +196,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
                     PermissionUtils.confirmPermission(this, this, DiaryConstants.EXTERNAL_STORAGE_PERMISSIONS, DiaryConstants.REQUEST_CODE_EXTERNAL_STORAGE);
                 }
                 break;
-            case R.id.datePicker:
-                if (mDatePickerDialog == null) {
-                    mDatePickerDialog = new DatePickerDialog(this, mStartDateListener, mYear, mMonth - 1, mDayOfMonth);
-                }
-                mDatePickerDialog.show();
-                break;
-            case R.id.timePicker:
-                if (mTimePickerDialog == null) {
-                    mTimePickerDialog = new TimePickerDialog(this, mTimeSetListener, mHourOfDay, mMinute, false);
-                }
-                mTimePickerDialog.show();
-                break;
+
         }
     }
 
@@ -205,26 +206,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
     private int mHourOfDay = Integer.valueOf(DateUtils.getCurrentDateAsString("HH"));
     private int mMinute = Integer.valueOf(DateUtils.getCurrentDateAsString("mm"));
 
-    private DatePickerDialog mDatePickerDialog;
-    private TimePickerDialog mTimePickerDialog;
-    DatePickerDialog.OnDateSetListener mStartDateListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            mYear = year;
-            mMonth = month + 1;
-            mDayOfMonth = dayOfMonth;
-            setDateTime();
-        }
-    };
 
-    TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            mHourOfDay = hourOfDay;
-            mMinute = minute;
-            setDateTime();
-        }
-    };
 
     private void setDateTime() {
         try {
@@ -239,7 +221,43 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
             );
             Date parsedDate = format.parse(dateTimeString);
             mCurrentTimeMillis = parsedDate.getTime();
-            getSupportActionBar().setSubtitle(DateUtils.getFullPatternDateWithTime(mCurrentTimeMillis));
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(parsedDate);
+            String day = "";
+            int dayNum = cal.get(Calendar.DAY_OF_WEEK);
+
+            switch (dayNum) {
+                case 1:
+                    day = "일";
+                    break;
+                case 2:
+                    day = "월";
+                    break;
+                case 3:
+                    day = "화";
+                    break;
+                case 4:
+                    day = "수";
+                    break;
+                case 5:
+                    day = "목";
+                    break;
+                case 6:
+                    day = "금";
+                    break;
+                case 7:
+                    day = "토";
+                    break;
+
+            }
+
+           // getSupportActionBar().setSubtitle(DateUtils.getFullPatternDateWithTime(mCurrentTimeMillis));
+            mTime.setText(mYear+"년 "+ mMonth+ "월 " + mDayOfMonth + "일 "+ day +"요일");
+            mTitle.setHint("제목을 입력하세요.");
+            mCurrentTime.setText(mHourOfDay + " : " +mMinute);
+
+
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

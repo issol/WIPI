@@ -1,97 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="@dimen/card_layout_padding"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
-        android:padding="10dp"
-        android:layout_marginBottom="@dimen/card_layout_margin"
-        android:background="@drawable/bg_card_01"
         android:orientation="vertical"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#fafafa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:padding="5dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
 
-            <ImageView
-                android:id="@+id/weather"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/ic_snow_2"
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
-
+            <TextView
+                android:id="@+id/viewTimeDetail"
+                android:gravity="center"
+                android:textSize="19sp"
+                android:textColor="#000000"
+                android:background="@drawable/bg_card_01"
+                android:layout_width="220dp"
+                android:layout_height="50dp" />
             <LinearLayout
-                android:orientation="vertical"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/bg_card_01"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="60dp">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/weatherDetail"
+                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/ic_snow_2"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp" />
                 <TextView
+                    android:textColor="@color/defaultText"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:textColor="@color/defaultText"
-                    android:enabled="false"
-                    android:gravity="center_vertical"
-                    android:id="@+id/title"
+                    android:id="@+id/textDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textSize="@dimen/large_text_size"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:textColor="@color/defaultText"
-                    android:enabled="false"
-                    android:gravity="center_vertical|right"
-                    android:id="@+id/date"
-                    android:textSize="@dimen/large_text_size"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:gravity="center_vertical" />
 
             </LinearLayout>
 
+
         </LinearLayout>
+
+        <LinearLayout
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:id="@+id/viewTitle"
+                android:layout_width="220dp"
+                android:layout_height="55dp"
+                android:gravity="center"
+                android:textSize="19dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:background="@drawable/bg_card_01"
+                />
+            <TextView
+                android:id="@+id/currentTimeDetail"
+                android:paddingTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/edittext_time2"
+                android:gravity="center"
+                android:text="00:00"
+                android:textSize="19sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <HorizontalScrollView
+                android:id="@+id/photoContainerScrollViewDetail"
+                android:background="@drawable/bg_card_01"
+                android:layout_width="220dp"
+                android:layout_height="55dp">
+
+                <LinearLayout
+                    android:id="@+id/photoContainerDetail"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <Button
+                android:id="@+id/deleteBtn"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_card_01"
+                android:drawableBottom="@drawable/delete_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:fillViewport="true"
+            android:layout_height="350dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_card_01"
+                    android:textColor="@color/defaultText"
+                    android:textSize="17dp"
+                    android:id="@+id/contentsDetail"
+                    android:hint="내용을 입력하세요."
+                    android:gravity="left"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="0dp" />
+            </LinearLayout>
+
+        </ScrollView>
+
 
     </LinearLayout>
 
-    <ScrollView
-        android:fillViewport="true"
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:padding="10dp"
-                android:enabled="false"
-                android:background="@drawable/bg_card_01"
-                android:textColor="@color/defaultText"
-                android:textSize="@dimen/large_text_size"
-                android:id="@+id/contents"
-                android:gravity="left"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="0dp" />
-        </LinearLayout>
-    </ScrollView>
 
-    <HorizontalScrollView
-        android:layout_marginTop="@dimen/card_layout_margin"
-        android:id="@+id/photoContainerScrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp">
-        <LinearLayout
-            android:id="@+id/photoContainer"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
 
-        </LinearLayout>
-    </HorizontalScrollView>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

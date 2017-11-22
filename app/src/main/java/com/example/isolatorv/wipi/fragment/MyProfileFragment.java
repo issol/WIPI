@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -81,6 +82,7 @@ public class MyProfileFragment extends Fragment {
         unique_id = extra.getString("unique_id");
         sno = extra.getInt("sno");
 
+
         getData();
 
 
@@ -95,7 +97,7 @@ public class MyProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_my_profile,container,false);
-        View mCustomView = inflater.from(getActivity()).inflate(R.layout.profile_title, null);
+
 
 
 
@@ -105,23 +107,17 @@ public class MyProfileFragment extends Fragment {
 
         listView = (ListView)layout.findViewById(R.id.pet_list);
 
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setCustomView(R.layout.profile_title);
+
+        Toolbar toolbar = (Toolbar)layout.findViewById(R.id.toolbar1);
 
 
-        logoutBtn = (ImageButton) mCustomView.findViewById(R.id.action_logout);
+
 
 
 
         pref= getActivity().getSharedPreferences("WIPI",0);
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logout();
-            }
-        });
+
 
         addPet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,6 +272,7 @@ public class MyProfileFragment extends Fragment {
         editor.putString(Constants.UNIQUE_ID,"");
         editor.apply();
         Intent intent = new Intent(getActivity(), JoinActivity.class);
+
         startActivity(intent);
         getActivity().finish();
 
