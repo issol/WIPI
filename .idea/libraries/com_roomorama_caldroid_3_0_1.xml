@@ -1,13 +1,8 @@
 <component name="libraryTable">
   <library name="com.roomorama:caldroid-3.0.1">
     <CLASSES>
-<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/caldroid-3.0.1.aar/e2165241f4e4b1b9f5dbf5f31e7655df/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/caldroid-3.0.1.aar/e2165241f4e4b1b9f5dbf5f31e7655df/jars/classes.jar!/" />
-=======
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/caldroid-3.0.1.aar/41f67c9d23dfb241b3c17632bbcd955f/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/caldroid-3.0.1.aar/41f67c9d23dfb241b3c17632bbcd955f/jars/classes.jar!/" />
->>>>>>> 712453abf473b46a127d5c55eba2837a382cda5f
     </CLASSES>
     <JAVADOC />
     <SOURCES>

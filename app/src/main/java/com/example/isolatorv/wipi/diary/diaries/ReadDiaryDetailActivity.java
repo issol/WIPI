@@ -261,6 +261,9 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             mTitle = (TextView) rootView.findViewById(R.id.viewTitle);
             mViewTime = (TextView) rootView.findViewById(R.id.viewTimeDetail);
             mWeather = (ImageView) rootView.findViewById(R.id.weatherDetail);
+            mCurrentTime = (TextView)rootView.findViewById(R.id.currentTimeDetail);
+            mText = (TextView)rootView.findViewById(R.id.textDetail);
+            mDeleteBtn = (Button)rootView.findViewById(R.id.deleteBtn);
             ViewGroup mPhotoContainer = (ViewGroup) rootView.findViewById(R.id.photoContainerDetail);
             HorizontalScrollView mHorizontalScrollView = (HorizontalScrollView) rootView.findViewById(R.id.photoContainerScrollViewDetail);
 
@@ -269,9 +272,33 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             if (StringUtils.isEmpty(diaryDto.getTitle())) {
                 mTitle.setVisibility(View.GONE);
             }
+
+            mDeleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            DiaryDao.deleteDiary(mSequence);
+                            getActivity().finish();
+                        }
+                    };
+                    DialogInterface.OnClickListener negativeListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    };
+                    DialogUtils.showAlertDialog(getActivity(), getString(R.string.delete_confirm), positiveListener, negativeListener);
+                }
+            });
             mTitle.setText(diaryDto.getTitle());
             mContents.setText(diaryDto.getContents());
-            mViewTime.setText(DateUtils.getFullPatternDateWithTime(diaryDto.getCurrentTimeMillis()));
+            String fullTime = DateUtils.getFullPatternDateWithTime(diaryDto.getCurrentTimeMillis());
+            String divTime1 = fullTime.substring(0,17);
+            Log.d("TAG", String.valueOf(fullTime.length()));
+            mViewTime.setText(divTime1);
+            mCurrentTime.setText(fullTime.substring(17));
+
 
             String query = getArguments().getString(DIARY_SEARCH_QUERY);
             if (StringUtils.isNotEmpty(query)) {
@@ -280,7 +307,29 @@ public class ReadDiaryDetailActivity extends EasyDiaryActivity {
             }
 
             int weather = diaryDto.getWeather();
+            Log.d("TAG", String.valueOf(weather));
+
             EasyDiaryUtils.initWeatherView(mWeather, weather);
+            switch (weather){
+                case 0 :
+                    mText.setText("");
+                    break;
+                case 1:
+                    mText.setText("맑음");
+                    break;
+                case 2:
+                    mText.setText("흐림");
+                    break;
+                case 3:
+                    mText.setText("비");
+                    break;
+                case 4:
+                    mText.setText("번개");
+                    break;
+                case 5:
+                    mText.setText("눈");
+                    break;
+            }
 
             // TODO fixme elegance
             if (diaryDto.getPhotoUris() != null && diaryDto.getPhotoUris().size() > 0) {

@@ -119,6 +119,7 @@ public class CreateDiaryActivity extends EasyDiaryActivity {
         mWeatherSpinner.setAdapter(arrayAdapter);
 
 
+
     }
 
 

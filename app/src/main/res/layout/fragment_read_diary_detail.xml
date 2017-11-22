@@ -71,6 +71,8 @@
                 android:id="@+id/viewTitle"
                 android:layout_width="220dp"
                 android:layout_height="55dp"
+                android:gravity="center"
+                android:textSize="19dp"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
                 android:background="@drawable/bg_card_01"
@@ -117,7 +119,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingBottom="10dp"
                 android:background="@drawable/bg_card_01"
-                android:drawableBottom="@drawable/add_photo"
+                android:drawableBottom="@drawable/delete_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -130,7 +132,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:fillViewport="true"
-            android:layout_height="300dp">
+            android:layout_height="350dp">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -139,11 +141,12 @@
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
                     android:background="@drawable/bg_card_01"
                     android:textColor="@color/defaultText"
-                    android:textSize="@dimen/large_text_size"
+                    android:textSize="17dp"
                     android:id="@+id/contentsDetail"
-                    android:hint="@string/contents_text_hint"
+                    android:hint="내용을 입력하세요."
                     android:gravity="left"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
